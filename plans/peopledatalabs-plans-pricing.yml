@@ -1,0 +1,146 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: People Data Labs
+providerId: peopledatalabs
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Data Enrichment
+- Person Data
+- Company Data
+- B2B Data
+- Plans
+description: >-
+  People Data Labs is metered on credits (API matches). Enrichment, search, and
+  supplemental endpoints consume credits per matched record, and pricing is
+  organized around monthly credit allowances. PDL publishes a free plan for
+  evaluation, a self-serve paid tier, and custom enterprise agreements. A
+  time-limited free trial grants API credits for hands-on testing. Exact
+  per-credit rates change over time - verify current numbers on the PDL pricing
+  pages during reconciliation.
+notes: >-
+  Person, company, and IP endpoints are metered separately. The free tier
+  restricts access to sensitive fields (such as personal emails and phone
+  numbers). Figures below reflect published self-serve pricing observed around
+  the creation date and should be reconciled against peopledatalabs.com/pricing.
+sources:
+- https://www.peopledatalabs.com/pricing/person
+- https://www.peopledatalabs.com/pricing/company
+- https://docs.peopledatalabs.com/docs/usage-limits
+plans:
+- id: peopledatalabs-free
+  name: Free
+  type: free
+  description: >-
+    Free-forever evaluation plan for testing the API, capped at a small monthly
+    lookup allowance with restricted access to sensitive contact fields.
+  entries:
+  - label: Person and Company Lookups
+    name: free_lookups
+    type: usage
+    metric: credits
+    limit: 100
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '$0'
+    userMultiplied: false
+  - label: IP Lookups
+    name: free_ip_lookups
+    type: usage
+    metric: credits
+    limit: 25
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '$0'
+    userMultiplied: false
+  elements:
+  - name: Person Enrichment
+  - name: Company Enrichment
+  - name: Search
+  - name: Cleaner APIs
+  - name: Restricted Sensitive Fields
+- id: peopledatalabs-free-trial
+  name: Free Trial
+  type: trial
+  description: >-
+    Time-limited trial (reported as 30 days) that grants a block of API credits
+    for evaluating supported products before purchase.
+  entries:
+  - label: Trial API Credits
+    name: trial_credits
+    type: usage
+    metric: credits
+    limit: 500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '$0 during trial period'
+    userMultiplied: false
+  elements:
+  - name: Supported Products
+  - name: Full Field Access During Trial
+- id: peopledatalabs-pro
+  name: Pro (Self-Serve)
+  type: paid
+  description: >-
+    Self-serve paid plan with a monthly allowance of person enrichment credits
+    plus company lookups, billed monthly or annually (annual reported at a
+    discount). Reported at roughly $98 per month with about 350 person credits
+    and 1,000 company lookups.
+  entries:
+  - label: Person Enrichment Credits
+    name: pro_person_credits
+    type: usage
+    metric: credits
+    limit: 350
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 'from ~$98/month (reported); ~$0.28 per credit'
+    userMultiplied: false
+  - label: Company Lookups
+    name: pro_company_lookups
+    type: usage
+    metric: credits
+    limit: 1000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included in plan (see pricing page)
+    userMultiplied: false
+  elements:
+  - name: Full Field Access
+  - name: Person and Company Enrichment
+  - name: Search
+  - name: Higher Rate Limits
+- id: peopledatalabs-enterprise
+  name: Enterprise / Custom
+  type: enterprise
+  description: >-
+    Custom plan for high-volume usage, bulk data licensing, dedicated success
+    team, SSO/SAML, flexible payment terms, and API or data-license feeds.
+    Reported starting points around $2,500/month for larger commitments.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Credit Volume
+  - name: Bulk Data Licensing
+  - name: Dedicated Success Team
+  - name: SSO and SAML
+  - name: Elevated Rate Limits
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

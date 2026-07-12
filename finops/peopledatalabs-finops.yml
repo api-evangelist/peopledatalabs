@@ -1,0 +1,99 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: People Data Labs
+providerId: peopledatalabs
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Data Enrichment
+- Person Data
+- Company Data
+- B2B Data
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of People Data Labs spend. PDL is billed on credits, where a credit
+  is consumed each time an endpoint returns a matched record. Person, company, and
+  IP endpoints are metered on separate credit pools, and cost is driven by the
+  number of successful matches rather than by request count. Plans bundle a
+  monthly credit allowance (free, self-serve Pro, and custom enterprise), with
+  bulk data licensing available at the enterprise tier. The dominant cost lever is
+  match volume and how tightly enrichment and search inputs are scoped to avoid
+  wasted matches.
+notes: >-
+  Per-credit rates are not reconciled here; verify on the PDL pricing pages.
+  Searches can return many records, so query limits and pagination directly drive
+  credit consumption. Enterprise data-license feeds are priced separately from the
+  metered API.
+sources:
+- https://www.peopledatalabs.com/pricing/person
+- https://www.peopledatalabs.com/pricing/company
+- https://docs.peopledatalabs.com/docs/usage-limits
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: People Data Labs
+serviceCategory: Data and Analytics
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: People Data Labs API
+  ServiceCategory: Data and Analytics
+  ProviderName: People Data Labs
+  PublisherName: People Data Labs
+  InvoiceIssuerName: People Data Labs
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: person_credits
+  description: Credits consumed per matched person record across enrichment, identify, search, and retrieve.
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+- name: company_credits
+  description: Credits consumed per matched company record across company enrichment and search.
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+- name: ip_credits
+  description: Credits consumed per IP enrichment match.
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+- name: utility_calls
+  description: Cleaner, autocomplete, job-title, and skill enrichment usage.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+principles:
+- name: Visibility
+  description: Track credit burn per endpoint and per credit pool (person, company, IP); read rate-limit headers to correlate volume with spend.
+- name: Allocation
+  description: Use separate API keys per team or workload so credit consumption maps to internal cost centers.
+- name: Optimization
+  description: Tighten enrichment inputs to raise match rates, scope search queries and pagination to only needed records, and use the Cleaner APIs to normalize inputs before spending enrichment credits.
+- name: Accountability
+  description: Assign owners per key and review monthly credit consumption against plan allowances before overage or upgrade.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

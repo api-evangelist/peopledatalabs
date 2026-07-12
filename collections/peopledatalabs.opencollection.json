@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "People Data Labs API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "in": "header",
+        "key": "X-Api-Key",
+        "value": "{{apiKey}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Person", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Person Enrichment.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/enrich?profile=linkedin.com/in/seanthorne",
+            "params": [
+              { "name": "profile", "value": "linkedin.com/in/seanthorne", "type": "query", "description": "A social profile URL used as an identifying attribute." }
+            ]
+          },
+          "docs": "Returns the single best-matching person profile for a set of identifying attributes (name, email, phone, profile, company)."
+        },
+        {
+          "info": { "name": "Bulk Person Enrichment.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/person/bulk",
+            "body": { "type": "json", "data": "{\n  \"requests\": [\n    { \"params\": { \"profile\": \"linkedin.com/in/seanthorne\" } }\n  ]\n}" }
+          },
+          "docs": "Enriches up to 100 person records in a single request."
+        },
+        {
+          "info": { "name": "Person Identify.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/identify?name=sean thorne",
+            "params": [
+              { "name": "name", "value": "sean thorne", "type": "query", "description": "A broadly identifying attribute." }
+            ]
+          },
+          "docs": "Returns a ranked selection of candidate profiles for broadly identifying inputs."
+        },
+        {
+          "info": { "name": "Person Search.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/person/search",
+            "body": { "type": "json", "data": "{\n  \"query\": { \"bool\": { \"must\": [ { \"term\": { \"job_company_name\": \"people data labs\" } } ] } },\n  \"size\": 10\n}" }
+          },
+          "docs": "Finds all profiles satisfying an Elasticsearch or SQL query."
+        },
+        {
+          "info": { "name": "Retrieve Person by ID.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/retrieve/:person_id",
+            "params": [
+              { "name": "person_id", "value": "", "type": "path", "description": "The PDL person id." }
+            ]
+          },
+          "docs": "Retrieves a specific person record by its PDL id."
+        },
+        {
+          "info": { "name": "Bulk Person Retrieve.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/person/retrieve/bulk",
+            "body": { "type": "json", "data": "{\n  \"requests\": [ { \"id\": \"qEnOZ5Oh0poWnQ1luFBfVw_0000\" } ]\n}" }
+          },
+          "docs": "Retrieves multiple person records by PDL id in one request."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Company", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Company Enrichment.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/company/enrich?website=peopledatalabs.com",
+            "params": [
+              { "name": "website", "value": "peopledatalabs.com", "type": "query", "description": "A company website domain used as an identifier." }
+            ]
+          },
+          "docs": "Resolves a company from a website, LinkedIn URL, or name and returns firmographic data."
+        },
+        {
+          "info": { "name": "Company Search.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/company/search",
+            "body": { "type": "json", "data": "{\n  \"query\": { \"bool\": { \"must\": [ { \"term\": { \"industry\": \"computer software\" } } ] } },\n  \"size\": 10\n}" }
+          },
+          "docs": "Finds all companies matching an Elasticsearch or SQL query."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Cleaner and Utilities", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Company Cleaner.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/company/clean?name=peopledatalabs",
+            "params": [
+              { "name": "name", "value": "peopledatalabs", "type": "query", "description": "A raw company name to standardize." }
+            ]
+          },
+          "docs": "Standardizes and enriches a raw company name, website, or profile."
+        },
+        {
+          "info": { "name": "School Cleaner.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/school/clean?name=university of oregon",
+            "params": [
+              { "name": "name", "value": "university of oregon", "type": "query", "description": "A raw school name to standardize." }
+            ]
+          },
+          "docs": "Standardizes and enriches a raw school name or profile."
+        },
+        {
+          "info": { "name": "Location Cleaner.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/location/clean?location=san francisco ca",
+            "params": [
+              { "name": "location", "value": "san francisco ca", "type": "query", "description": "A raw location string to standardize." }
+            ]
+          },
+          "docs": "Standardizes and geocodes a raw location string."
+        },
+        {
+          "info": { "name": "Job Title Enrichment.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/job_title/enrich?job_title=software engineer",
+            "params": [
+              { "name": "job_title", "value": "software engineer", "type": "query", "description": "A job title to enrich with related metadata." }
+            ]
+          },
+          "docs": "Returns related titles, levels, and role metadata for a job title."
+        },
+        {
+          "info": { "name": "Skill Enrichment.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/skill/enrich?skill=python",
+            "params": [
+              { "name": "skill", "value": "python", "type": "query", "description": "A skill to enrich with related skills." }
+            ]
+          },
+          "docs": "Returns related and similar skills for a given skill."
+        },
+        {
+          "info": { "name": "Autocomplete.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/autocomplete?field=company&text=goog",
+            "params": [
+              { "name": "field", "value": "company", "type": "query", "description": "The schema field to autocomplete." },
+              { "name": "text", "value": "goog", "type": "query", "description": "The partial text to complete." }
+            ]
+          },
+          "docs": "Returns typeahead suggestions and counts for a schema field."
+        },
+        {
+          "info": { "name": "IP Enrichment.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/ip/enrich?ip=72.212.42.169",
+            "params": [
+              { "name": "ip", "value": "72.212.42.169", "type": "query", "description": "An IP address to enrich with company and location data." }
+            ]
+          },
+          "docs": "Enriches an IP address with associated company and location intelligence."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

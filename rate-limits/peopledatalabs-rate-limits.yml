@@ -1,0 +1,89 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: People Data Labs
+providerId: peopledatalabs
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Data Enrichment
+- Person Data
+- Company Data
+- Rate Limiting
+- Quotas
+description: >-
+  People Data Labs applies per-API-key rate limits using a fixed-window strategy
+  measured over a 60-second window. Limits vary by endpoint and by account type
+  (free/self-serve versus paying/enterprise). Each response carries rate-limit
+  headers; once x-ratelimit-remaining reaches zero, further requests return HTTP
+  429 until the window resets. These per-minute request limits are separate from
+  the monthly credit allowances that govern how many records you can match.
+notes: >-
+  Numbers below reflect published defaults observed around the creation date and
+  can be raised on paid and enterprise plans. Verify current limits on the PDL
+  usage-limits documentation during reconciliation.
+sources:
+- https://docs.peopledatalabs.com/docs/usage-limits
+- https://docs.peopledatalabs.com/docs/reference-person-enrichment-api
+- https://docs.peopledatalabs.com/docs/reference-person-search-api
+responseCodes:
+  throttled: 429
+headers:
+- name: x-ratelimit-limit
+  description: The rate-limit ceiling for the current 60-second window.
+- name: x-ratelimit-remaining
+  description: Requests remaining in the current window; 429 is returned when this reaches zero.
+- name: x-ratelimit-reset
+  description: When the current fixed window resets.
+limits:
+- name: Person Enrichment API
+  scope: api-key
+  metric: requests
+  limit: 100/min free, 1000/min paying
+  timeFrame: minute
+  notes: Bulk person enrichment matches count against monthly credits per record.
+- name: Person Search API
+  scope: api-key
+  metric: requests
+  limit: 10/min default
+  timeFrame: minute
+  notes: Search is more expensive; default self-serve limit is lower.
+- name: Company Enrichment and Search APIs
+  scope: api-key
+  metric: requests
+  limit: per plan
+  timeFrame: minute
+  notes: Metered on company credits; per-minute limits scale with account type.
+- name: Autocomplete API
+  scope: api-key
+  metric: requests
+  limit: 60/min self-serve, up to 1200/min enterprise
+  timeFrame: minute
+  notes: Typeahead suggestion endpoint.
+- name: Skill Enrichment API
+  scope: api-key
+  metric: requests
+  limit: 100/min free, 5000/min paying
+  timeFrame: minute
+- name: Cleaner APIs
+  scope: api-key
+  metric: requests
+  limit: 10/min default
+  timeFrame: minute
+  notes: Company, school, and location cleaner endpoints.
+- name: Person Changelog API
+  scope: api-key
+  metric: requests
+  limit: 100/min self-serve, 500/min enterprise, up to 5000/min
+  timeFrame: minute
+policies:
+- name: Fixed Window
+  description: Limits reset on a fixed 60-second window; calls may be made at any interval within the window until exhausted.
+- name: Backoff Strategy
+  description: Clients should read the x-ratelimit-remaining header and implement exponential backoff with jitter on 429 responses.
+- name: Limit Increases
+  description: Per-minute limits can be raised on paid and enterprise plans by contacting People Data Labs.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,89 @@
+aid: peopledatalabs
+name: People Data Labs
+review:
+  question: Does People Data Labs expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. People Data Labs' public API is entirely
+    request/response REST over HTTPS at https://api.peopledatalabs.com/v5. There
+    is no server-push transport - no WebSocket and no Server-Sent Events (SSE) -
+    on the PDL API to model. Every documented endpoint is a synchronous GET or
+    POST that returns a JSON body; bulk endpoints accept up to 100 records per
+    request but still respond synchronously.
+findings:
+  summary: |
+    People Data Labs does not publish a documented public WebSocket API. PDL is
+    a B2B person and company data enrichment provider. Its entire public surface
+    is versioned REST at https://api.peopledatalabs.com/v5, authenticated with a
+    single X-Api-Key header (an api_key query parameter is also accepted). PDL
+    publishes an official OpenAPI 3.0.3 specification (title
+    "api.peopledatalabs.com", version 5.0) covering person enrichment, identify,
+    search, and retrieve; company enrichment and search; IP enrichment; job
+    title and skill enrichment; company, school, and location cleaners; and
+    autocomplete. No realtime, bidirectional, or streaming WebSocket (ws:// or
+    wss://) endpoint is documented anywhere in PDL's API reference.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.peopledatalabs.com/v5
+      documented: true
+      note: All person, company, IP, cleaner, enrichment, and autocomplete endpoints are synchronous REST.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events streaming is documented on any PDL endpoint.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the PDL API reference or OpenAPI specification as of the review date.
+  authentication: |
+    API key in the X-Api-Key request header (api_key query parameter also
+    supported). All requests must be HTTPS.
+  endpointsConfirmedRest:
+    - GET  https://api.peopledatalabs.com/v5/person/enrich
+    - GET  https://api.peopledatalabs.com/v5/person/identify
+    - GET  https://api.peopledatalabs.com/v5/person/search
+    - POST https://api.peopledatalabs.com/v5/person/search
+    - GET  https://api.peopledatalabs.com/v5/person/retrieve/{person_id}
+    - POST https://api.peopledatalabs.com/v5/person/retrieve/bulk
+    - GET  https://api.peopledatalabs.com/v5/company/enrich
+    - GET  https://api.peopledatalabs.com/v5/company/search
+    - POST https://api.peopledatalabs.com/v5/company/search
+    - GET  https://api.peopledatalabs.com/v5/company/clean
+    - POST https://api.peopledatalabs.com/v5/company/clean
+    - GET  https://api.peopledatalabs.com/v5/school/clean
+    - POST https://api.peopledatalabs.com/v5/school/clean
+    - GET  https://api.peopledatalabs.com/v5/location/clean
+    - POST https://api.peopledatalabs.com/v5/location/clean
+    - GET  https://api.peopledatalabs.com/v5/ip/enrich
+    - GET  https://api.peopledatalabs.com/v5/job_title/enrich
+    - POST https://api.peopledatalabs.com/v5/job_title/enrich
+    - GET  https://api.peopledatalabs.com/v5/skill/enrich
+    - GET  https://api.peopledatalabs.com/v5/autocomplete
+    - POST https://api.peopledatalabs.com/v5/autocomplete
+sources:
+  - url: https://docs.peopledatalabs.com/docs/introduction
+    type: Documentation
+    note: API structure - base URL, v5 versioning, X-Api-Key auth, HTTPS-only; no WebSocket mentioned.
+  - url: https://docs.peopledatalabs.com/docs/person-endpoints
+    type: APIReference
+    note: Person enrichment, identify, search, retrieve, and bulk endpoints - all REST.
+  - url: https://docs.peopledatalabs.com/docs/company-endpoints
+    type: APIReference
+    note: Company enrichment and search endpoints - all REST.
+  - url: https://docs.peopledatalabs.com/docs/usage-limits
+    type: Documentation
+    note: Fixed-window per-key rate limits with 429 responses; no streaming transport.
+  - url: https://github.com/peopledatalabs/openAPI-specifications
+    type: OpenAPI
+    note: Official OpenAPI 3.0.3 spec (version 5.0); single REST server https://api.peopledatalabs.com. No WebSocket channels.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. People Data Labs' public API is
+    request/response REST only, so no AsyncAPI document was created - there is
+    no server-push transport (WebSocket or SSE) on the PDL API to model.

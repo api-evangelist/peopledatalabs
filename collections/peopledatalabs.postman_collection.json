@@ -1,0 +1,179 @@
+{
+  "info": {
+    "name": "People Data Labs API",
+    "description": "People Data Labs (PDL) v5 REST API for person and company data enrichment, search, identity resolution, and reference-data cleaning. Authenticated with an X-Api-Key header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "in", "value": "header", "type": "string" },
+      { "key": "key", "value": "X-Api-Key", "type": "string" },
+      { "key": "value", "value": "{{apiKey}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.peopledatalabs.com/v5" },
+    { "key": "apiKey", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Person",
+      "item": [
+        {
+          "name": "Person Enrichment",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/person/enrich?profile=linkedin.com/in/seanthorne",
+              "host": ["{{baseUrl}}"],
+              "path": ["person", "enrich"],
+              "query": [ { "key": "profile", "value": "linkedin.com/in/seanthorne" } ]
+            },
+            "description": "Returns the single best-matching person profile for a set of identifying attributes."
+          }
+        },
+        {
+          "name": "Bulk Person Enrichment",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"requests\": [ { \"params\": { \"profile\": \"linkedin.com/in/seanthorne\" } } ]\n}" },
+            "url": { "raw": "{{baseUrl}}/person/bulk", "host": ["{{baseUrl}}"], "path": ["person", "bulk"] },
+            "description": "Enriches up to 100 person records in a single request."
+          }
+        },
+        {
+          "name": "Person Identify",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/person/identify?name=sean thorne",
+              "host": ["{{baseUrl}}"],
+              "path": ["person", "identify"],
+              "query": [ { "key": "name", "value": "sean thorne" } ]
+            },
+            "description": "Returns a ranked selection of candidate profiles for broadly identifying inputs."
+          }
+        },
+        {
+          "name": "Person Search",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"query\": { \"bool\": { \"must\": [ { \"term\": { \"job_company_name\": \"people data labs\" } } ] } },\n  \"size\": 10\n}" },
+            "url": { "raw": "{{baseUrl}}/person/search", "host": ["{{baseUrl}}"], "path": ["person", "search"] },
+            "description": "Finds all profiles satisfying an Elasticsearch or SQL query."
+          }
+        },
+        {
+          "name": "Retrieve Person by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/person/retrieve/:person_id", "host": ["{{baseUrl}}"], "path": ["person", "retrieve", ":person_id"], "variable": [ { "key": "person_id", "value": "" } ] },
+            "description": "Retrieves a specific person record by its PDL id."
+          }
+        },
+        {
+          "name": "Bulk Person Retrieve",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"requests\": [ { \"id\": \"qEnOZ5Oh0poWnQ1luFBfVw_0000\" } ]\n}" },
+            "url": { "raw": "{{baseUrl}}/person/retrieve/bulk", "host": ["{{baseUrl}}"], "path": ["person", "retrieve", "bulk"] },
+            "description": "Retrieves multiple person records by PDL id in one request."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Company",
+      "item": [
+        {
+          "name": "Company Enrichment",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/company/enrich?website=peopledatalabs.com",
+              "host": ["{{baseUrl}}"],
+              "path": ["company", "enrich"],
+              "query": [ { "key": "website", "value": "peopledatalabs.com" } ]
+            },
+            "description": "Resolves a company from a website, LinkedIn URL, or name and returns firmographic data."
+          }
+        },
+        {
+          "name": "Company Search",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"query\": { \"bool\": { \"must\": [ { \"term\": { \"industry\": \"computer software\" } } ] } },\n  \"size\": 10\n}" },
+            "url": { "raw": "{{baseUrl}}/company/search", "host": ["{{baseUrl}}"], "path": ["company", "search"] },
+            "description": "Finds all companies matching an Elasticsearch or SQL query."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cleaner and Utilities",
+      "item": [
+        {
+          "name": "Company Cleaner",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/company/clean?name=peopledatalabs", "host": ["{{baseUrl}}"], "path": ["company", "clean"], "query": [ { "key": "name", "value": "peopledatalabs" } ] },
+            "description": "Standardizes and enriches a raw company name, website, or profile."
+          }
+        },
+        {
+          "name": "School Cleaner",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/school/clean?name=university of oregon", "host": ["{{baseUrl}}"], "path": ["school", "clean"], "query": [ { "key": "name", "value": "university of oregon" } ] },
+            "description": "Standardizes and enriches a raw school name or profile."
+          }
+        },
+        {
+          "name": "Location Cleaner",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/location/clean?location=san francisco ca", "host": ["{{baseUrl}}"], "path": ["location", "clean"], "query": [ { "key": "location", "value": "san francisco ca" } ] },
+            "description": "Standardizes and geocodes a raw location string."
+          }
+        },
+        {
+          "name": "Job Title Enrichment",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/job_title/enrich?job_title=software engineer", "host": ["{{baseUrl}}"], "path": ["job_title", "enrich"], "query": [ { "key": "job_title", "value": "software engineer" } ] },
+            "description": "Returns related titles, levels, and role metadata for a job title."
+          }
+        },
+        {
+          "name": "Skill Enrichment",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/skill/enrich?skill=python", "host": ["{{baseUrl}}"], "path": ["skill", "enrich"], "query": [ { "key": "skill", "value": "python" } ] },
+            "description": "Returns related and similar skills for a given skill."
+          }
+        },
+        {
+          "name": "Autocomplete",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/autocomplete?field=company&text=goog", "host": ["{{baseUrl}}"], "path": ["autocomplete"], "query": [ { "key": "field", "value": "company" }, { "key": "text", "value": "goog" } ] },
+            "description": "Returns typeahead suggestions and counts for a schema field."
+          }
+        },
+        {
+          "name": "IP Enrichment",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/ip/enrich?ip=72.212.42.169", "host": ["{{baseUrl}}"], "path": ["ip", "enrich"], "query": [ { "key": "ip", "value": "72.212.42.169" } ] },
+            "description": "Enriches an IP address with associated company and location intelligence."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+aid: peopledatalabs
+url: https://raw.githubusercontent.com/api-evangelist/peopledatalabs/refs/heads/main/apis.yml
+name: People Data Labs
+kind: company
+description: People Data Labs (PDL) is a B2B data enrichment and web intelligence
+  provider offering a REST API over a dataset of nearly three billion person
+  profiles and tens of millions of company records. The api.peopledatalabs.com/v5
+  API lets developers enrich, identify, and search person and company data,
+  resolve contacts and firmographics, look up companies from a domain or LinkedIn
+  URL, and clean and standardize job titles, skills, schools, companies, and
+  locations. Authentication is a single X-Api-Key header, all endpoints are HTTPS
+  REST, and PDL publishes an official OpenAPI specification.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Data Enrichment
+- Web Intelligence
+- Person Data
+- Company Data
+- B2B Data
+- Contact Discovery
+- Reference Data
+- Firmographics
+- Identity Resolution
+created: '2026-07-11'
+modified: '2026-07-11'
+specificationVersion: '0.19'
+apis:
+- aid: peopledatalabs:peopledatalabs-person-enrichment-api
+  name: People Data Labs Person Enrichment API
+  tags:
+  - Person Data
+  - Data Enrichment
+  - Contact Discovery
+  - Identity Resolution
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
+  baseURL: https://api.peopledatalabs.com/v5
+  properties:
+  - url: https://docs.peopledatalabs.com/docs/person-enrichment-api
+    type: Documentation
+  - url: https://docs.peopledatalabs.com/docs/reference-person-enrichment-api
+    type: APIReference
+  - url: openapi/peopledatalabs-openapi.yml
+    type: OpenAPI
+  - url: collections/peopledatalabs.opencollection.json
+    type: OpenCollection
+  - url: collections/peopledatalabs.postman_collection.json
+    type: PostmanCollection
+  description: Performs a one-to-one match against nearly three billion person
+    profiles and returns the single best profile for identifying attributes such
+    as name, email, phone, LinkedIn or other social profile, and company. Returns
+    the full Person Schema - names, contact details, employment history, education,
+    location, and social accounts - via GET /person/enrich, with bulk person
+    enrichment for up to 100 records per request.
+- aid: peopledatalabs:peopledatalabs-person-search-api
+  name: People Data Labs Person Search API
+  tags:
+  - Person Data
+  - Search
+  - Contact Discovery
+  - Web Intelligence
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.peopledatalabs.com/docs/person-endpoints
+  baseURL: https://api.peopledatalabs.com/v5
+  properties:
+  - url: https://docs.peopledatalabs.com/docs/person-endpoints
+    type: Documentation
+  - url: https://docs.peopledatalabs.com/docs/reference-person-search-api
+    type: APIReference
+  - url: openapi/peopledatalabs-openapi.yml
+    type: OpenAPI
+  - url: collections/peopledatalabs.opencollection.json
+    type: OpenCollection
+  - url: collections/peopledatalabs.postman_collection.json
+    type: PostmanCollection
+  description: Finds every profile that satisfies a set of criteria using
+    Elasticsearch or SQL queries (GET and POST /person/search), returns a ranked
+    selection of candidate profiles for broadly identifying inputs via
+    /person/identify, and retrieves specific records by PDL id via
+    /person/retrieve/{person_id} and /person/retrieve/bulk. Built for list
+    building, audience discovery, and identity resolution across the person
+    dataset.
+- aid: peopledatalabs:peopledatalabs-company-enrichment-api
+  name: People Data Labs Company Enrichment API
+  tags:
+  - Company Data
+  - Firmographics
+  - Data Enrichment
+  - Reference Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.peopledatalabs.com/docs/company-enrichment-api
+  baseURL: https://api.peopledatalabs.com/v5
+  properties:
+  - url: https://docs.peopledatalabs.com/docs/company-enrichment-api
+    type: Documentation
+  - url: https://docs.peopledatalabs.com/docs/company-endpoints
+    type: APIReference
+  - url: openapi/peopledatalabs-openapi.yml
+    type: OpenAPI
+  - url: collections/peopledatalabs.opencollection.json
+    type: OpenCollection
+  - url: collections/peopledatalabs.postman_collection.json
+    type: PostmanCollection
+  description: Resolves a company from an identifier such as a website domain,
+    LinkedIn URL, or name and returns firmographic reference data - industry,
+    employee count, headquarters location, founding year, ticker, tags, and
+    social profiles - via GET /company/enrich. Ideal for domain-to-company
+    lookups, CRM enrichment, and account intelligence.
+- aid: peopledatalabs:peopledatalabs-company-search-api
+  name: People Data Labs Company Search API
+  tags:
+  - Company Data
+  - Search
+  - Firmographics
+  - B2B Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.peopledatalabs.com/docs/company-endpoints
+  baseURL: https://api.peopledatalabs.com/v5
+  properties:
+  - url: https://docs.peopledatalabs.com/docs/company-endpoints
+    type: Documentation
+  - url: https://docs.peopledatalabs.com/docs/reference-company-search-api
+    type: APIReference
+  - url: openapi/peopledatalabs-openapi.yml
+    type: OpenAPI
+  - url: collections/peopledatalabs.opencollection.json
+    type: OpenCollection
+  - url: collections/peopledatalabs.postman_collection.json
+    type: PostmanCollection
+  description: Finds all companies matching Elasticsearch or SQL criteria across
+    firmographic fields such as industry, size, location, tags, and founding year
+    via GET and POST /company/search. Powers target-account list building, market
+    mapping, and total-addressable-market analysis over the company dataset.
+- aid: peopledatalabs:peopledatalabs-cleaner-utilities-api
+  name: People Data Labs Cleaner and Enrichment Utilities API
+  tags:
+  - Reference Data
+  - Data Cleaning
+  - Autocomplete
+  - Web Intelligence
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.peopledatalabs.com/docs/cleaner-apis
+  baseURL: https://api.peopledatalabs.com/v5
+  properties:
+  - url: https://docs.peopledatalabs.com/docs/cleaner-apis
+    type: Documentation
+  - url: https://docs.peopledatalabs.com/docs/cleaner-apis-reference
+    type: APIReference
+  - url: openapi/peopledatalabs-openapi.yml
+    type: OpenAPI
+  - url: collections/peopledatalabs.opencollection.json
+    type: OpenCollection
+  - url: collections/peopledatalabs.postman_collection.json
+    type: PostmanCollection
+  description: Standardizes and enriches reference data with the Cleaner APIs -
+    company (/company/clean), school (/school/clean), and location
+    (/location/clean) - plus job title enrichment (/job_title/enrich), skill
+    enrichment (/skill/enrich), IP enrichment (/ip/enrich), and typeahead
+    suggestions via /autocomplete. Used to normalize messy inputs before
+    enrichment and to build data-quality and web-intelligence pipelines.
+common:
+- type: Authentication
+  url: authentication/peopledatalabs-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/peopledatalabs
+- type: LinkedIn
+  url: https://www.linkedin.com/company/people-data-labs
+- type: Website
+  url: https://www.peopledatalabs.com
+- type: Documentation
+  url: https://docs.peopledatalabs.com
+- type: Plans
+  url: plans/peopledatalabs-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/peopledatalabs-rate-limits.yml
+- type: FinOps
+  url: finops/peopledatalabs-finops.yml
+- url: https://www.peopledatalabs.com/blog
+  type: Blog
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/peopledatalabs-openapi.yml
+summary:
+  types:
+  - apiKey
+schemes:
+- name: APIKeyHeader
+  type: apiKey
+  in: header
+  parameterName: X-Api-Key
+  description: >-
+    People Data Labs authenticates every request with an API key issued in the
+    PDL dashboard. The key is passed in the X-Api-Key request header. The key can
+    also be supplied as an api_key query-string parameter, but the header is the
+    recommended method. All requests must be made over HTTPS.
+  sources:
+  - openapi/peopledatalabs-openapi.yml
+  - https://docs.peopledatalabs.com/docs/authentication
