@@ -159,6 +159,8 @@ apis:
     suggestions via /autocomplete. Used to normalize messy inputs before
     enrichment and to build data-quality and web-intelligence pipelines.
 common:
+- type: AgenticAccess
+  url: agentic-access/peopledatalabs-agentic-access.yml
 - type: Authentication
   url: authentication/peopledatalabs-authentication.yml
 - type: GitHubOrganization
