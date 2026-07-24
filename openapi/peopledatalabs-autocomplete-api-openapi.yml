@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  description: People Data Labs API
+  title: api.peopledatalabs.com Autocomplete API
+  version: '5.0'
+servers:
+- url: https://api.peopledatalabs.com
+tags:
+- name: Autocomplete
+paths:
+  /v5/autocomplete:
+    get:
+      security:
+      - APIKeyHeader: []
+      description: Autocompletes a limited amount of fields.
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type
+        schema:
+          type: string
+          default: application/json
+          enum:
+          - application/json
+      - name: field
+        in: query
+        description: An enumerated field that will be used to calculate the autocompletion
+        required: true
+        schema:
+          type: string
+          enum:
+          - company
+          - country
+          - industry
+          - location
+          - major
+          - region
+          - role
+          - school
+          - sub_role
+          - skill
+          - title
+      - name: text
+        in: query
+        description: Text that is used as the seed for autocompletion
+        schema:
+          type: string
+          default: ''
+      - name: size
+        in: query
+        description: Numbers of results returned for autocompletion
+        schema:
+          type: integer
+          default: 10
+      - name: titlecase
+        in: query
+        description: Setting to `true` will titlecase any records returned
+        schema:
+          type: boolean
+          default: false
+      - name: pretty
+        in: query
+        description: Whether the output should have human-readable indentation
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Autocompletion completed.
+        '400':
+          description: Request contained either missing or invalid parameters
+        '401':
+          description: Request contained a missing or invalid key
+        '402':
+          description: You have reached your account maximum (all matches used)
+        '404':
+          description: No records were found matching your request
+        '405':
+          description: Request method is not allowed on the requested resource
+        '429':
+          description: An error occurred due to requests hitting the API too quickly
+      summary: /autocomplete
+      tags:
+      - Autocomplete
+    post:
+      security:
+      - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                field:
+                  type: string
+                  description: An enumerated field that will be used to calculate the autocompletion
+                  example: company
+                  enum:
+                  - company
+                  - country
+                  - industry
+                  - location
+                  - major
+                  - region
+                  - role
+                  - school
+                  - sub_role
+                  - skill
+                  - title
+                text:
+                  type: string
+                  description: Text that is used as the seed for autocompletion
+                  example: people da
+                  default: ''
+                size:
+                  type: integer
+                  description: The number of results returned for autocompletion
+                  maximum: 100
+                  minimum: 1
+                  format: int32
+                  default: 10
+                titlecase:
+                  type: boolean
+                  description: Setting titlecase to true will titlecase any records returned
+                  default: false
+                pretty:
+                  type: boolean
+                  description: Whether the output should have human-readable indentation
+                  default: false
+      responses:
+        '200':
+          description: Autocompletion completed.
+        '400':
+          description: Request contained either missing or invalid parameters
+        '401':
+          description: Request contained a missing or invalid key
+        '402':
+          description: You have reached your account maximum (all matches used)
+        '404':
+          description: No records were found matching your request
+        '405':
+          description: Request method is not allowed on the requested resource
+        '429':
+          description: An error occurred due to requests hitting the API too quickly
+      summary: /autocomplete
+      tags:
+      - Autocomplete
+components:
+  securitySchemes:
+    APIKeyHeader:
+      in: header
+      name: X-API-Key
+      type: apiKey
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
+  samples-enabled: true

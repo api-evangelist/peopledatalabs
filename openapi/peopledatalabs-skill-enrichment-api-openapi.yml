@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  description: People Data Labs API
+  title: api.peopledatalabs.com Autocomplete Skill Enrichment API
+  version: '5.0'
+servers:
+- url: https://api.peopledatalabs.com
+tags:
+- name: Skill Enrichment
+paths:
+  /v5/skill/enrich:
+    get:
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type
+        schema:
+          type: string
+          default: application/json
+          enum:
+          - application/json
+      - name: skill
+        in: query
+        description: skill that will be enriched.
+        required: true
+        schema:
+          type: string
+      - name: titlecase
+        in: query
+        description: Setting to `true` will titlecase any records returned.
+        schema:
+          type: boolean
+          default: false
+      - name: pretty
+        in: query
+        description: Whether the output should have human-readable indentation.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Skill enrich completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '400':
+          description: Request contained either missing or invalid parameters
+        '401':
+          description: Request contained a missing or invalid key
+        '402':
+          description: You have reached your account maximum (all matches used)
+        '404':
+          description: No records were found matching your request
+        '405':
+          description: Request method is not allowed on the requested resource
+        '429':
+          description: An error occurred due to requests hitting the API too quickly
+      summary: /skill/enrich
+      tags:
+      - Skill Enrichment
+components:
+  schemas:
+    Skill:
+      type: object
+      properties:
+        cleaned_skill:
+          type: string
+          example: ai
+          description: The skill that matches the API input skill after passing it through our internal skill cleaner.
+        similar_skills:
+          type: array
+          items:
+            type: string
+          example:
+          - machine learning
+          - artificial intelligence
+          - deep learning
+          - data science
+          - iot
+          description: A list of to five of the most contextually-similar skills to the cleaned_skill, determined using our global resume data.
+        'relevant_job_titles:':
+          type: array
+          items:
+            type: string
+          example:
+          - data scientist
+          - software engineer
+          - senior data scientist
+          - chief technology officer
+          - senior software engineer
+          description: A list of up to five of the most contextually-similar job titles to the cleaned_skill, determined using our global resume data.
+  securitySchemes:
+    APIKeyHeader:
+      in: header
+      name: X-API-Key
+      type: apiKey
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
+  samples-enabled: true
