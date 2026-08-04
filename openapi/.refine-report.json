@@ -1,0 +1,26 @@
+{
+  "provider": "peopledatalabs",
+  "sources": [
+    "peopledatalabs-autocomplete-api-openapi.yml",
+    "peopledatalabs-cleaner-endpoints-api-openapi.yml",
+    "peopledatalabs-company-endpoints-api-openapi.yml",
+    "peopledatalabs-ip-enrichment-api-openapi.yml",
+    "peopledatalabs-job-title-enrichment-api-openapi.yml",
+    "peopledatalabs-person-endpoints-api-openapi.yml",
+    "peopledatalabs-skill-enrichment-api-openapi.yml"
+  ],
+  "outputs": [
+    "peopledatalabs-autocomplete-api-openapi.yml",
+    "peopledatalabs-cleaner-endpoints-api-openapi.yml",
+    "peopledatalabs-company-endpoints-api-openapi.yml",
+    "peopledatalabs-ip-enrichment-api-openapi.yml",
+    "peopledatalabs-job-title-enrichment-api-openapi.yml",
+    "peopledatalabs-person-endpoints-api-openapi.yml",
+    "peopledatalabs-skill-enrichment-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
