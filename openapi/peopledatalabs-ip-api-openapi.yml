@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: People Data Labs Autocomplete IP API
+  description: People Data Labs (PDL) provides APIs for enriching and building people and company profiles at scale. The API offers person enrichment, person search, person identification, company enrichment, company search, IP enrichment, and job posting search across a dataset of professional profiles and organizations.
+  version: v5
+  contact:
+    name: People Data Labs Support
+    url: https://docs.peopledatalabs.com/docs/support
+  license:
+    name: People Data Labs Terms of Service
+    url: https://www.peopledatalabs.com/terms-of-service
+servers:
+- url: https://api.peopledatalabs.com/v5
+  description: People Data Labs production API
+security:
+- ApiKeyAuth: []
+tags:
+- name: IP
+  description: IP-based enrichment operations.
+paths:
+  /ip/enrich:
+    get:
+      tags:
+      - IP
+      summary: IP enrichment
+      description: Returns company and location data for the supplied IP address.
+      parameters:
+      - name: ip
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An enriched IP record.
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

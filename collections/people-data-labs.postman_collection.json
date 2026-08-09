@@ -1,0 +1,1032 @@
+{
+  "item": [
+    {
+      "id": "d1f51172-671e-47d3-80ba-dfc0e8fa06bd",
+      "name": "Person",
+      "description": {
+        "content": "Person enrichment, search, and identification operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cba89f7f-ac35-4ee5-97b6-d318e6acedce",
+          "name": "Enrich a person profile",
+          "request": {
+            "name": "Enrich a person profile",
+            "description": {
+              "content": "Returns a single enriched person profile based on identifiers such as email, phone, profile URL, name, or company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "person",
+                "enrich"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "phone",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "profile",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_likelihood",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1948356-d3d7-417e-b731-a358565fa881",
+              "name": "A single enriched person record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "person",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "company",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "min_likelihood",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04a09414-78c8-4815-b801-1e5288b22062",
+          "name": "Search for person profiles",
+          "request": {
+            "name": "Search for person profiles",
+            "description": {
+              "content": "Returns multiple person profiles matching an SQL or Elasticsearch query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "person",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sql",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd0f94c0-0fbc-4c2c-b08f-60f03008c7f0",
+              "name": "A list of matching person profiles.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "person",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2eb0f647-9a10-4752-b9da-3bb7bbd0db4a",
+          "name": "Identify a person",
+          "request": {
+            "name": "Identify a person",
+            "description": {
+              "content": "Returns a list of likely matching person profiles for the supplied identifiers, with match likelihood scores.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "person",
+                "identify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "phone",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9fc21e5-0c4d-41a5-855b-9a5affa6b709",
+              "name": "A list of likely matching person profiles.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "person",
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a56e975-beb2-43ab-b713-0b1dc96fc4eb",
+          "name": "Bulk person enrichment",
+          "request": {
+            "name": "Bulk person enrichment",
+            "description": {
+              "content": "Enrich multiple person profiles in a single request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "person",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07efb8ef-7c03-438c-9097-e9a9aafa1d04",
+              "name": "An array of enriched person records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "person",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2cdc071e-9f97-43d1-ab4b-1e898edfe16f",
+      "name": "Company",
+      "description": {
+        "content": "Company enrichment and search operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ee4132a-3ca1-4a80-9017-60e4969c8540",
+          "name": "Enrich a company profile",
+          "request": {
+            "name": "Enrich a company profile",
+            "description": {
+              "content": "Returns an enriched company profile based on identifiers such as website, name, or LinkedIn profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "enrich"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "website",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "profile",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticker",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bf825c3-e471-44bb-bc28-7da01cf1f367",
+              "name": "An enriched company record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "website",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ticker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe927eb0-c399-4aa4-82a2-a7aec14e2796",
+          "name": "Search for companies",
+          "request": {
+            "name": "Search for companies",
+            "description": {
+              "content": "Returns multiple company profiles matching an SQL or Elasticsearch query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sql",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a229a477-3731-4e51-9ae2-756674433ee5",
+              "name": "A list of matching company profiles.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "21e26a07-950a-42d9-b866-68dca3e2d59d",
+      "name": "IP",
+      "description": {
+        "content": "IP-based enrichment operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5c54151-da24-4e29-a2aa-e735bf5df0f9",
+          "name": "IP enrichment",
+          "request": {
+            "name": "IP enrichment",
+            "description": {
+              "content": "Returns company and location data for the supplied IP address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip",
+                "enrich"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "679389fe-765c-4505-a646-e05e93990e2f",
+              "name": "An enriched IP record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a985995b-8755-4f52-aa3b-0a88b4a30cf8",
+      "name": "Jobs",
+      "description": {
+        "content": "Job posting search operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "708bc205-63eb-481f-94fb-dee247ebc19e",
+          "name": "Search job postings",
+          "request": {
+            "name": "Search job postings",
+            "description": {
+              "content": "Returns job postings matching the supplied query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "job_posting",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sql",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1314edeb-40d7-44d0-9468-ee92913a5cac",
+              "name": "A list of matching job postings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job_posting",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "49e8edb8-4be7-4a63-8050-77b175602f8f",
+      "name": "Autocomplete",
+      "description": {
+        "content": "Autocomplete suggestions for fields like skills and titles.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "993b39d7-843a-4449-9cf6-d19fe91a718a",
+          "name": "Autocomplete suggestions",
+          "request": {
+            "name": "Autocomplete suggestions",
+            "description": {
+              "content": "Returns autocomplete suggestions for fields like skill, title, company, and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "autocomplete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "field",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "638d8842-d998-43b3-b106-70041a6d3f81",
+              "name": "A list of autocomplete suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "autocomplete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.peopledatalabs.com/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a65edd64-5245-485a-9b56-53454ca32950",
+    "name": "People Data Labs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "People Data Labs (PDL) provides APIs for enriching and building people and company profiles at scale. The API offers person enrichment, person search, person identification, company enrichment, company search, IP enrichment, and job posting search across a dataset of professional profiles and organizations.\n\nContact Support:\n Name: People Data Labs Support",
+      "type": "text/plain"
+    }
+  }
+}

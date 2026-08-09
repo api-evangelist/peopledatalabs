@@ -2,14 +2,12 @@ aid: peopledatalabs
 url: https://raw.githubusercontent.com/api-evangelist/peopledatalabs/refs/heads/main/apis.yml
 name: People Data Labs
 kind: company
-description: People Data Labs (PDL) is a B2B data enrichment and web intelligence
-  provider offering a REST API over a dataset of nearly three billion person
-  profiles and tens of millions of company records. The api.peopledatalabs.com/v5
-  API lets developers enrich, identify, and search person and company data,
-  resolve contacts and firmographics, look up companies from a domain or LinkedIn
-  URL, and clean and standardize job titles, skills, schools, companies, and
-  locations. Authentication is a single X-Api-Key header, all endpoints are HTTPS
-  REST, and PDL publishes an official OpenAPI specification.
+description: People Data Labs (PDL) is a B2B data enrichment and web intelligence provider offering a
+  REST API over a dataset of nearly three billion person profiles and tens of millions of company records.
+  The api.peopledatalabs.com/v5 API lets developers enrich, identify, and search person and company data,
+  resolve contacts and firmographics, look up companies from a domain or LinkedIn URL, and clean and standardize
+  job titles, skills, schools, companies, and locations. Authentication is a single X-Api-Key header,
+  all endpoints are HTTPS REST, and PDL publishes an official OpenAPI specification.
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -35,7 +33,7 @@ tags:
 - Firmographics
 - Identity Resolution
 created: '2026-07-11'
-modified: '2026-07-11'
+modified: '2026-08-08'
 specificationVersion: '0.19'
 apis:
 - aid: peopledatalabs:peopledatalabs-autocomplete-api
@@ -176,8 +174,7 @@ apis:
     url: https://docs.peopledatalabs.com/docs/cleaner-apis-reference
 - aid: peopledatalabs:peopledatalabs-job-title-enrichment-api
   name: People Data Labs Job Title Enrichment API
-  description: >-
-    The Job Title Enrichment API from People Data Labs — 1 operation(s) for job title enrichment.
+  description: The Job Title Enrichment API from People Data Labs — 1 operation(s) for job title enrichment.
   humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
@@ -298,6 +295,32 @@ common:
   url: finops/peopledatalabs-finops.yml
 - url: https://www.peopledatalabs.com/blog
   type: Blog
+- type: TrustCenter
+  url: security/peopledatalabs-trust-center.yml
+- type: DomainSecurity
+  url: security/peopledatalabs-domain-security.yml
+- type: Portal
+  url: https://www.peopledatalabs.com/
+- type: Signup
+  url: https://dashboard.peopledatalabs.com/signup
+- type: Login
+  url: https://dashboard.peopledatalabs.com/login
+- type: Pricing
+  url: https://www.peopledatalabs.com/pricing
+- type: TermsOfService
+  url: https://www.peopledatalabs.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.peopledatalabs.com/privacy-policy
+- type: Support
+  url: https://docs.peopledatalabs.com/docs/support
+- type: StatusPage
+  url: https://status.peopledatalabs.com/
+- type: Integrations
+  url: https://www.peopledatalabs.com/data-lab/integrations
+- type: LlmsText
+  url: https://docs.peopledatalabs.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-merged-from:
+- people-data-labs

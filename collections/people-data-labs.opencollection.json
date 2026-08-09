@@ -1,0 +1,327 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "People Data Labs API",
+    "version": "v5"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Person",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enrich a person profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/enrich",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "phone",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "company",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_likelihood",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a single enriched person profile based on identifiers such as email, phone, profile URL, name, or company."
+        },
+        {
+          "info": {
+            "name": "Search for person profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/search",
+            "params": [
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns multiple person profiles matching an SQL or Elasticsearch query."
+        },
+        {
+          "info": {
+            "name": "Identify a person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/identify",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "phone",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of likely matching person profiles for the supplied identifiers, with match likelihood scores."
+        },
+        {
+          "info": {
+            "name": "Bulk person enrichment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/person/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enrich multiple person profiles in a single request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Company",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enrich a company profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/company/enrich",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "website",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ticker",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns an enriched company profile based on identifiers such as website, name, or LinkedIn profile."
+        },
+        {
+          "info": {
+            "name": "Search for companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/company/search",
+            "params": [
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns multiple company profiles matching an SQL or Elasticsearch query."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "IP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "IP enrichment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/ip/enrich",
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns company and location data for the supplied IP address."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search job postings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/job_posting/search",
+            "params": [
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns job postings matching the supplied query."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Autocomplete",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Autocomplete suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/autocomplete",
+            "params": [
+              {
+                "name": "field",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "text",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns autocomplete suggestions for fields like skill, title, company, and location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
