@@ -2,12 +2,12 @@ aid: peopledatalabs
 url: https://raw.githubusercontent.com/api-evangelist/peopledatalabs/refs/heads/main/apis.yml
 name: People Data Labs
 kind: company
-description: People Data Labs (PDL) is a B2B data enrichment and web intelligence provider offering a
-  REST API over a dataset of nearly three billion person profiles and tens of millions of company records.
-  The api.peopledatalabs.com/v5 API lets developers enrich, identify, and search person and company data,
-  resolve contacts and firmographics, look up companies from a domain or LinkedIn URL, and clean and standardize
-  job titles, skills, schools, companies, and locations. Authentication is a single X-Api-Key header,
-  all endpoints are HTTPS REST, and PDL publishes an official OpenAPI specification.
+description: People Data Labs (PDL) is a B2B data enrichment and web intelligence provider offering a REST API over
+  a dataset of nearly three billion person profiles and tens of millions of company records. The api.peopledatalabs.com/v5
+  API lets developers enrich, identify, and search person and company data, resolve contacts and firmographics,
+  look up companies from a domain or LinkedIn URL, and clean and standardize job titles, skills, schools, companies,
+  and locations. Authentication is a single X-Api-Key header, all endpoints are HTTPS REST, and PDL publishes an
+  official OpenAPI specification.
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -33,19 +33,21 @@ tags:
 - Firmographics
 - Identity Resolution
 created: '2026-07-11'
-modified: '2026-08-08'
+modified: '2026-08-14'
 specificationVersion: '0.19'
 apis:
 - aid: peopledatalabs:peopledatalabs-autocomplete-api
   name: People Data Labs Autocomplete API
   description: The Autocomplete API from People Data Labs — 1 operation(s) for autocomplete.
-  humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
+  humanURL: https://docs.peopledatalabs.com/docs/autocomplete-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
   - Autocomplete
   properties:
   - type: OpenAPI
     url: openapi/peopledatalabs-autocomplete-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-autocomplete-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/person-enrichment-api
   - type: APIReference
@@ -73,13 +75,15 @@ apis:
 - aid: peopledatalabs:peopledatalabs-cleaner-endpoints-api
   name: People Data Labs Cleaner Endpoints API
   description: The Cleaner Endpoints API from People Data Labs — 3 operation(s) for cleaner endpoints.
-  humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
+  humanURL: https://docs.peopledatalabs.com/docs/cleaner-apis
   baseURL: https://api.peopledatalabs.com/v5
   tags:
   - Cleaner Endpoints
   properties:
   - type: OpenAPI
     url: openapi/peopledatalabs-cleaner-endpoints-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-cleaner-endpoints-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/person-enrichment-api
   - type: APIReference
@@ -107,13 +111,15 @@ apis:
 - aid: peopledatalabs:peopledatalabs-company-endpoints-api
   name: People Data Labs Company Endpoints API
   description: The Company Endpoints API from People Data Labs — 2 operation(s) for company endpoints.
-  humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
+  humanURL: https://docs.peopledatalabs.com/docs/company-endpoints
   baseURL: https://api.peopledatalabs.com/v5
   tags:
   - Company Endpoints
   properties:
   - type: OpenAPI
     url: openapi/peopledatalabs-company-endpoints-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-company-endpoints-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/person-enrichment-api
   - type: APIReference
@@ -141,13 +147,15 @@ apis:
 - aid: peopledatalabs:peopledatalabs-ip-enrichment-api
   name: People Data Labs IP Enrichment API
   description: The IP Enrichment API from People Data Labs — 1 operation(s) for ip enrichment.
-  humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
+  humanURL: https://docs.peopledatalabs.com/docs/ip-enrichment-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
   - IP Enrichment
   properties:
   - type: OpenAPI
     url: openapi/peopledatalabs-ip-enrichment-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-ip-enrichment-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/person-enrichment-api
   - type: APIReference
@@ -175,13 +183,15 @@ apis:
 - aid: peopledatalabs:peopledatalabs-job-title-enrichment-api
   name: People Data Labs Job Title Enrichment API
   description: The Job Title Enrichment API from People Data Labs — 1 operation(s) for job title enrichment.
-  humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
+  humanURL: https://docs.peopledatalabs.com/docs/job-title-enrichment-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
   - Job Title Enrichment
   properties:
   - type: OpenAPI
     url: openapi/peopledatalabs-job-title-enrichment-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-job-title-enrichment-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/person-enrichment-api
   - type: APIReference
@@ -209,13 +219,15 @@ apis:
 - aid: peopledatalabs:peopledatalabs-person-endpoints-api
   name: People Data Labs Person Endpoints API
   description: The Person Endpoints API from People Data Labs — 5 operation(s) for person endpoints.
-  humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
+  humanURL: https://docs.peopledatalabs.com/docs/person-endpoints
   baseURL: https://api.peopledatalabs.com/v5
   tags:
   - Person Endpoints
   properties:
   - type: OpenAPI
     url: openapi/peopledatalabs-person-endpoints-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-person-endpoints-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/person-enrichment-api
   - type: APIReference
@@ -243,13 +255,15 @@ apis:
 - aid: peopledatalabs:peopledatalabs-skill-enrichment-api
   name: People Data Labs Skill Enrichment API
   description: The Skill Enrichment API from People Data Labs — 1 operation(s) for skill enrichment.
-  humanURL: https://docs.peopledatalabs.com/docs/person-enrichment-api
+  humanURL: https://docs.peopledatalabs.com/docs/skill-enrichment-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
   - Skill Enrichment
   properties:
   - type: OpenAPI
     url: openapi/peopledatalabs-skill-enrichment-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-skill-enrichment-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/person-enrichment-api
   - type: APIReference
@@ -274,6 +288,61 @@ apis:
     url: https://docs.peopledatalabs.com/docs/cleaner-apis
   - type: APIReference
     url: https://docs.peopledatalabs.com/docs/cleaner-apis-reference
+- aid: peopledatalabs:peopledatalabs-subscription-api
+  name: People Data Labs Subscription API
+  description: 'The Subscription API from People Data Labs — 5 operations for managing webhook subscriptions: create,
+    list, retrieve, update and delete the HTTPS target URL that People Data Labs pushes batched person-update notifications
+    to. Webhook access itself is limited to enterprise API and Data License customers.'
+  humanURL: https://docs.peopledatalabs.com/docs/webhooks
+  baseURL: https://api.peopledatalabs.com/v5
+  tags:
+  - Subscription
+  - Webhooks
+  - Event Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/peopledatalabs-subscription-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/peopledatalabs-webhooks.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-subscription-api-overlay.yaml
+  - type: Documentation
+    url: https://docs.peopledatalabs.com/docs/webhooks
+- aid: peopledatalabs:peopledatalabs-preview-enrichment-api
+  name: People Data Labs Preview Enrichment API
+  description: 'The Preview Enrichment API from People Data Labs — 1 operation returning a preview of a person match:
+    a small set of identity fields plus booleans indicating which further fields exist on the record, so a caller
+    can test coverage before spending a full enrichment credit.'
+  humanURL: https://docs.peopledatalabs.com/docs/preview-enrichment-api
+  baseURL: https://api.peopledatalabs.com/v5
+  tags:
+  - Preview Enrichment
+  - Person Data
+  properties:
+  - type: OpenAPI
+    url: openapi/peopledatalabs-preview-enrichment-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-preview-enrichment-api-overlay.yaml
+  - type: Documentation
+    url: https://docs.peopledatalabs.com/docs/preview-enrichment-api
+- aid: peopledatalabs:peopledatalabs-subject-request-api
+  name: People Data Labs Subject Request API
+  description: The Subject Request API from People Data Labs — 1 operation returning a CSV of PDL Person IDs belonging
+    to data subjects who have opted out of People Data Labs data, so downstream systems can delete the matching
+    records. The privacy-compliance surface of the platform.
+  humanURL: https://docs.peopledatalabs.com/docs/subject-request-api
+  baseURL: https://api.peopledatalabs.com/v5
+  tags:
+  - Subject Request
+  - Privacy
+  - Compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/peopledatalabs-subject-request-api-openapi.yml
+  - type: Overlay
+    url: overlays/peopledatalabs-subject-request-api-overlay.yaml
+  - type: Documentation
+    url: https://docs.peopledatalabs.com/docs/subject-request-api
 common:
 - type: AgenticAccess
   url: agentic-access/peopledatalabs-agentic-access.yml
@@ -300,8 +369,8 @@ common:
 - type: DomainSecurity
   url: security/peopledatalabs-domain-security.yml
 - type: Portal
-  url: https://www.peopledatalabs.com/
-- type: Signup
+  url: https://dashboard.peopledatalabs.com/
+- type: SignUp
   url: https://dashboard.peopledatalabs.com/signup
 - type: Login
   url: https://dashboard.peopledatalabs.com/login
@@ -312,15 +381,66 @@ common:
 - type: PrivacyPolicy
   url: https://www.peopledatalabs.com/privacy-policy
 - type: Support
-  url: https://docs.peopledatalabs.com/docs/support
+  url: https://support.peopledatalabs.com/hc/en-us
 - type: StatusPage
   url: https://status.peopledatalabs.com/
 - type: Integrations
   url: https://www.peopledatalabs.com/data-lab/integrations
 - type: LlmsText
   url: https://docs.peopledatalabs.com/llms.txt
+- type: Packages
+  url: packages/peopledatalabs-packages.yml
+- type: SDKs
+  url: packages/peopledatalabs-packages.yml
+- type: WellKnown
+  url: well-known/peopledatalabs-well-known.yml
+- type: MCPServer
+  url: mcp/peopledatalabs-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/peopledatalabs-tool-crosswalk.yml
+- type: AgentCard
+  url: a2a/peopledatalabs-a2a.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/peopledatalabs-llms.txt
+- type: Conformance
+  url: conformance/peopledatalabs-conformance.yml
+- type: Compliance
+  url: https://www.peopledatalabs.com/security
+- type: ErrorCatalog
+  url: errors/peopledatalabs-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/peopledatalabs-lifecycle.yml
+- type: Conventions
+  url: conventions/peopledatalabs-conventions.yml
+- type: ChangeLog
+  url: changelog/peopledatalabs-changelog.yml
+- type: Components
+  url: components/peopledatalabs-components.yml
+- type: DataModel
+  url: data-model/peopledatalabs-data-model.yml
+- type: Sandbox
+  url: sandbox/peopledatalabs-sandbox.yml
+- type: Webhooks
+  url: asyncapi/peopledatalabs-webhooks.yml
+- type: Postman
+  url: https://www.postman.com/pdl-official/workspace/people-data-labs-workspace/collection/32867294-ef278c05-d32d-47a1-b147-b819bc96238a
+- type: GettingStarted
+  url: https://docs.peopledatalabs.com/docs/quickstart
+- type: APIReference
+  url: https://docs.peopledatalabs.com/docs/endpoints
+- type: DeveloperPortal
+  url: https://docs.peopledatalabs.com/
+- type: ChangeLog
+  url: https://docs.peopledatalabs.com/links/release-notes
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 x-merged-from:
 - people-data-labs
+x-enrichment:
+  date: '2026-08-14'
+  status: enriched
+  artifacts_added: 38
+  pass: local-v1
