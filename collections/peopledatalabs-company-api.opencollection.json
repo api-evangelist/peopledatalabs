@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "People Data Labs Autocomplete Company API",
+    "version": "v5"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Company",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enrich a company profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/company/enrich",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "website",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ticker",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns an enriched company profile based on identifiers such as website, name, or LinkedIn profile."
+        },
+        {
+          "info": {
+            "name": "Search for companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/company/search",
+            "params": [
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns multiple company profiles matching an SQL or Elasticsearch query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,516 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "api.peopledatalabs.com Autocomplete Person Endpoints API",
+    "version": "5.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Person Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/person/enrich",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/enrich",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "pdl_id",
+                "value": "",
+                "type": "query",
+                "description": "The PDL ID of the person to enrich"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The person's full name, at least first and last"
+              },
+              {
+                "name": "first_name",
+                "value": "",
+                "type": "query",
+                "description": "The person's first name"
+              },
+              {
+                "name": "last_name",
+                "value": "",
+                "type": "query",
+                "description": "The person's last name"
+              },
+              {
+                "name": "middle_name",
+                "value": "",
+                "type": "query",
+                "description": "The person's middle name"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "A location in which a person lives"
+              },
+              {
+                "name": "street_address",
+                "value": "",
+                "type": "query",
+                "description": "A street address in which the person lives"
+              },
+              {
+                "name": "locality",
+                "value": "",
+                "type": "query",
+                "description": "A locality in which the person lives"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "A state or region in which the person lives"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "A country in which the person lives"
+              },
+              {
+                "name": "postal_code",
+                "value": "",
+                "type": "query",
+                "description": "The postal code where the person lives. If there is no value for country, the postal code is assumed to be US"
+              },
+              {
+                "name": "company",
+                "value": "",
+                "type": "query",
+                "description": "A name, website, or social url of a company where the person has worked"
+              },
+              {
+                "name": "school",
+                "value": "",
+                "type": "query",
+                "description": "A name, website, or social url of a university or college the person has attended"
+              },
+              {
+                "name": "phone",
+                "value": "",
+                "type": "query",
+                "description": "A phone number the person has used"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "An email the person has used"
+              },
+              {
+                "name": "email_hash",
+                "value": "",
+                "type": "query",
+                "description": "A SHA-256 or MD5 email hash"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query",
+                "description": "A social profile the person has used. https://docs.peopledatalabs.com/docs/social-networks"
+              },
+              {
+                "name": "lid",
+                "value": "",
+                "type": "query",
+                "description": "The person's LinkedIn ID"
+              },
+              {
+                "name": "birth_date",
+                "value": "",
+                "type": "query",
+                "description": "The person's birth date: either the year or a full birth date in the format YYYY-MM-DD"
+              },
+              {
+                "name": "data_include",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated string of fields that you would like the response to include. Begin the string with a - if you would instead like to exclude the specified fields. If you would like to exclude all data from being returned, use data_include=\"\""
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether the output should have human-readable indentation"
+              },
+              {
+                "name": "min_likelihood",
+                "value": "",
+                "type": "query",
+                "description": "The minimum likelihood score that a response must have in order to count as a match"
+              },
+              {
+                "name": "include_if_matched",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, includes a top-level (alongside \"data\", \"status\", etc) field \"matched\" which includes a value for each queried field parameter that was \"matched-on\" during our internal query."
+              },
+              {
+                "name": "required",
+                "value": "",
+                "type": "query",
+                "description": "The fields a response must have in order to count as a match"
+              },
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "Setting titlecase to true will titlecase the person data in 200 responses."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/person/enrich"
+        },
+        {
+          "info": {
+            "name": "/person/identify",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/identify",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The person's full name, at least first and last"
+              },
+              {
+                "name": "first_name",
+                "value": "",
+                "type": "query",
+                "description": "The person's first name"
+              },
+              {
+                "name": "last_name",
+                "value": "",
+                "type": "query",
+                "description": "The person's last name"
+              },
+              {
+                "name": "middle_name",
+                "value": "",
+                "type": "query",
+                "description": "The person's middle name"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "A location in which a person lives"
+              },
+              {
+                "name": "street_address",
+                "value": "",
+                "type": "query",
+                "description": "A street address in which the person lives"
+              },
+              {
+                "name": "locality",
+                "value": "",
+                "type": "query",
+                "description": "A locality in which the person lives"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "A state or region in which the person lives"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "A country in which the person lives"
+              },
+              {
+                "name": "postal_code",
+                "value": "",
+                "type": "query",
+                "description": "The postal code where the person lives. If there is no value for country, the postal code is assumed to be US"
+              },
+              {
+                "name": "company",
+                "value": "",
+                "type": "query",
+                "description": "A name, website, or social url of a company where the person has worked"
+              },
+              {
+                "name": "school",
+                "value": "",
+                "type": "query",
+                "description": "A name, website, or social url of a university or college the person has attended"
+              },
+              {
+                "name": "phone",
+                "value": "",
+                "type": "query",
+                "description": "A phone number the person has used"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "An email the person has used"
+              },
+              {
+                "name": "email_hash",
+                "value": "",
+                "type": "query",
+                "description": "A sha256 email hash"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query",
+                "description": "A social profile the person has used. https://docs.peopledatalabs.com/docs/social-networks"
+              },
+              {
+                "name": "lid",
+                "value": "",
+                "type": "query",
+                "description": "The person's LinkedIn ID"
+              },
+              {
+                "name": "birth_date",
+                "value": "",
+                "type": "query",
+                "description": "The person's birth date: either the year or a full birth date in the format YYYY-MM-DD"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether the output should have human-readable indentation"
+              },
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "Setting titlecase to true will titlecase the person data in 200 responses."
+              },
+              {
+                "name": "data_include",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated string of fields that you would like the response to include. Begin the string with a - if you would instead like to exclude the specified fields. If you would like to exclude all data from being returned, use data_include=\"\""
+              },
+              {
+                "name": "include_if_matched",
+                "value": "",
+                "type": "query",
+                "description": "If true, the response will include the field matches.matched_on that contains a list of every query input that matched this profile"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/person/identify"
+        },
+        {
+          "info": {
+            "name": "/person/search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/search",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "An Elasticsearch (v7.7) query. See our underlying Elasticsearch mapping for reference. You can build a query using the Query Builder Tool (https://dashboard.peopledatalabs.com/tools/query-builder)"
+              },
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query",
+                "description": "A SQL query of the format: SELECT * FROM person WHERE XXX, where XXX is a standard SQL boolean query involving our person fields"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of matched records to return for this query if they exist*. Must be between 1 and 100"
+              },
+              {
+                "name": "scroll_token",
+                "value": "",
+                "type": "query",
+                "description": "An offset key for paginating between batches. Can be used for any number of records. Each search API response returns a scroll_token which can be used to fetch the next size records."
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "query",
+                "description": "The dataset category to return records from. Can be multiple comma seperated categories or all"
+              },
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "Setting titlecase to true will titlecase any records returned"
+              },
+              {
+                "name": "data_include",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated string of fields that you would like the response to include. Begin the string with a - if you would instead like to exclude the specified fields. If you would like to exclude all data from being returned, use data_include=\"\""
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether the output should have human-readable indentation."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/person/search"
+        },
+        {
+          "info": {
+            "name": "/person/search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/person/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/person/search"
+        },
+        {
+          "info": {
+            "name": "/person/retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/retrieve/:person_id",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "person_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of a person"
+              },
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "Setting titlecase to true will titlecase the person data in 200 responses."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/person/retrieve"
+        },
+        {
+          "info": {
+            "name": "/person/retrieve/bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/person/retrieve/bulk",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "Setting titlecase to true will titlecase the person data in 200 responses."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/person/retrieve/bulk"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

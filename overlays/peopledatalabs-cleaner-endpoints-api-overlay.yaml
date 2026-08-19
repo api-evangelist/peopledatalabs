@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for api.peopledatalabs.com Autocomplete Cleaner Endpoints API
+  version: 1.0.0
+extends: openapi/peopledatalabs-cleaner-endpoints-api-openapi.yml
+x-generated: '2026-08-14'
+x-method: generated
+x-tags:
+- Cleaner Endpoints
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: peopledatalabs
+    x-apievangelist-profile: https://apis.io/provider/peopledatalabs/
+    x-apievangelist-source: https://github.com/peopledatalabs/openAPI-specifications
+    x-apievangelist-artifacts:
+      authentication: authentication/peopledatalabs-authentication.yml
+      conventions: conventions/peopledatalabs-conventions.yml
+      errors: errors/peopledatalabs-problem-types.yml
+      rate-limits: rate-limits/peopledatalabs-rate-limits.yml
+      plans: plans/peopledatalabs-plans-pricing.yml
+      sandbox: sandbox/peopledatalabs-sandbox.yml
+      data-model: data-model/peopledatalabs-data-model.yml
+      lifecycle: lifecycle/peopledatalabs-lifecycle.yml
+- target: $.servers
+  update:
+  - url: https://api.peopledatalabs.com
+    description: Production
+  - url: https://sandbox.api.peopledatalabs.com
+    description: Sandbox — synthetic data, no credits consumed
+  x-note: 'Adds the documented sandbox host, which the provider spec omits. Source: https://docs.peopledatalabs.com/docs/sandbox-apis-reference'
+- target: $.info
+  update:
+    x-apievangelist-gap-operationids: The provider spec declares no operationId on any operation. Agents and code
+      generators must address operations by METHOD + path. Recorded as a contract gap; API Evangelist does not invent
+      operationIds into a provider contract.

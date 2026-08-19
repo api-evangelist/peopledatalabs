@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "f1418930-854e-4925-9bc4-8aa85b656916",
+      "name": "IP",
+      "description": {
+        "content": "IP-based enrichment operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "128da1fb-56b8-4073-98b0-f5d57ed8aa76",
+          "name": "IP enrichment",
+          "request": {
+            "name": "IP enrichment",
+            "description": {
+              "content": "Returns company and location data for the supplied IP address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip",
+                "enrich"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "10a3e2a5-9a61-4ec1-9622-48c4f9f658ea",
+              "name": "An enriched IP record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.peopledatalabs.com/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d5f9496a-641e-49dd-94b4-a1c48f385a64",
+    "name": "People Data Labs Autocomplete IP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "People Data Labs (PDL) provides APIs for enriching and building people and company profiles at scale. The API offers person enrichment, person search, person identification, company enrichment, company search, IP enrichment, and job posting search across a dataset of professional profiles and organizations.\n\nContact Support:\n Name: People Data Labs Support",
+      "type": "text/plain"
+    }
+  }
+}

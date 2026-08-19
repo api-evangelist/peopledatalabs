@@ -1,0 +1,661 @@
+{
+  "item": [
+    {
+      "id": "a9a6b814-d1f6-4da0-b0c6-234e7a9c5485",
+      "name": "IP Enrichment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7b787ae-21a2-4df4-8680-ad79f814c86c",
+          "name": "/ip/enrich",
+          "request": {
+            "name": "/ip/enrich",
+            "description": {},
+            "url": {
+              "path": [
+                "v5",
+                "ip",
+                "enrich"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "(Required) IP that will be enriched."
+                },
+                {
+                  "disabled": false,
+                  "key": "return_ip_location",
+                  "value": "false",
+                  "description": "IP responses will not include location data for the IP by default.  Setting to `true` will return IP specific location info."
+                },
+                {
+                  "disabled": false,
+                  "key": "return_ip_metadata",
+                  "value": "false",
+                  "description": "IP responses will not include metadata for the IP by default.  Setting to `true` will return IP specific metadata."
+                },
+                {
+                  "disabled": false,
+                  "key": "return_person",
+                  "value": "false",
+                  "description": "Setting to `true` will return person fields associated with the IP."
+                },
+                {
+                  "disabled": false,
+                  "key": "return_if_unmatched",
+                  "value": "false",
+                  "description": "Setting to `true` will return IP specific metadata or location data regardless of a company match."
+                },
+                {
+                  "disabled": false,
+                  "key": "titlecase",
+                  "value": "false",
+                  "description": "Setting to `true` will titlecase any records returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "false",
+                  "description": "Whether the output should have human-readable indentation."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ac163339-54ac-4fed-9439-ab0190ac41e6",
+              "name": "IP enrich completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_ip_location",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_ip_metadata",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_person",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_if_unmatched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 402,\n  \"data\": {\n    \"ip\": {\n      \"address\": \"string\",\n      \"metadata\": {\n        \"version\": 6,\n        \"mobile\": true,\n        \"hosting\": false,\n        \"proxy\": false,\n        \"tor\": true,\n        \"vpn\": false,\n        \"relay\": true,\n        \"service\": \"string\",\n        \"asn_domain\": \"string\"\n      },\n      \"location\": {\n        \"geo\": \"string\",\n        \"street_address\": \"string\",\n        \"address_line_2\": \"string\",\n        \"continent\": \"europe\",\n        \"locality\": \"string\",\n        \"metro\": \"mobile, alabama\",\n        \"postal_code\": \"string\",\n        \"name\": \"string\",\n        \"country\": \"french southern territories\",\n        \"region\": \"string\"\n      }\n    },\n    \"company\": {\n      \"confidence\": \"high\",\n      \"id\": \"string\",\n      \"website\": \"string\",\n      \"name\": \"string\",\n      \"location\": {\n        \"geo\": \"string\",\n        \"street_address\": \"string\",\n        \"address_line_2\": \"string\",\n        \"continent\": \"asia\",\n        \"locality\": \"string\",\n        \"metro\": \"san francisco, california\",\n        \"postal_code\": \"string\",\n        \"name\": \"string\",\n        \"country\": \"hong kong\",\n        \"region\": \"string\"\n      },\n      \"size\": \"5001-10000\",\n      \"industry\": \"string\",\n      \"inferred_revenue\": \"string\",\n      \"employee_count\": 4436,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"person\": {\n      \"confidence\": \"high\",\n      \"job_title_role\": \"trades\",\n      \"job_title_sub_role\": \"product\",\n      \"job_title_levels\": \"cxo\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "331691c8-9a73-4bc3-8142-025b0c6ce1af",
+              "name": "Request contained either missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_ip_location",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_ip_metadata",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_person",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_if_unmatched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bee2bcad-3528-414a-b635-72434e61c895",
+              "name": "Request contained a missing or invalid key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_ip_location",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_ip_metadata",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_person",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_if_unmatched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7fa6515-e786-4613-af7a-2fceb0144853",
+              "name": "You have reached your account maximum (all matches used)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_ip_location",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_ip_metadata",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_person",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_if_unmatched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e8e6ba1-a636-4ace-9403-8f1993e54169",
+              "name": "No records were found matching your request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_ip_location",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_ip_metadata",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_person",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_if_unmatched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80aa9fed-cdee-41c4-8d4d-fc799f7749ac",
+              "name": "Request method is not allowed on the requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_ip_location",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_ip_metadata",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_person",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_if_unmatched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef298f8b-a8d6-4d3c-93a0-b2b110476beb",
+              "name": "An error occurred due to requests hitting the API too quickly",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "ip",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_ip_location",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_ip_metadata",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_person",
+                      "value": "false"
+                    },
+                    {
+                      "key": "return_if_unmatched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.peopledatalabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "49198ba0-fb44-49f9-828f-4f7714e7ca40",
+    "name": "api.peopledatalabs.com Autocomplete IP Enrichment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "People Data Labs API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "item": [
+    {
+      "id": "adba5833-30e2-4d5a-95e5-0a67901a7010",
+      "name": "Subject Request",
+      "description": {
+        "content": "Data-subject request endpoint: retrieves a CSV of PDL Person IDs that have opted out of People Data Labs data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2d7c980-e08a-475b-b5be-d8f46057fccf",
+          "name": "/v5/person/subjectrequest",
+          "request": {
+            "name": "/v5/person/subjectrequest",
+            "description": {
+              "content": "Retrieves a CSV file containing the PDL Person IDs that have Opt-ed out of our data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "person",
+                "subjectrequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2682ce34-e7fb-4ac0-9b23-22522a226465",
+              "name": "List of PDL IDs to be deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    "subjectrequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6eb559dd-4df3-477e-babf-4d8eb722574e",
+              "name": "Internal Error of our systems.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    "subjectrequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.peopledatalabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cc9e296e-1ba6-449f-8dcc-1f6f8e804536",
+    "name": "api.peopledatalabs.com Subject Request API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "People Data Labs API",
+      "type": "text/plain"
+    }
+  }
+}

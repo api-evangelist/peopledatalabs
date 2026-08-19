@@ -1,0 +1,90 @@
+generated: '2026-08-14'
+method: searched
+source: >-
+  https://docs.peopledatalabs.com/llms.txt SDK section, https://github.com/peopledatalabs,
+  and the npm / PyPI / RubyGems / crates.io / proxy.golang.org registry metadata endpoints
+summary:
+  official_sdks: 5
+  official_components: 1
+  languages:
+  - python
+  - javascript
+  - ruby
+  - go
+  - rust
+  note: >-
+    Every package below is published from the peopledatalabs GitHub organization and
+    linked from the People Data Labs documentation, so all are first-party. The Go
+    client is the outlier — its newest release predates every other SDK by more than
+    two years and it has never been versioned past 1.x while the JS client reached
+    14.x; that is the clearest decay signal in the SDK set.
+packages:
+- language: python
+  registry: pypi
+  name: peopledatalabs
+  url: https://pypi.org/project/peopledatalabs/
+  install: pip install peopledatalabs
+  repository: https://github.com/peopledatalabs/peopledatalabs-python
+  docs: https://docs.peopledatalabs.com/docs/python-sdk
+  official: true
+  version: 6.4.13
+  published: '2026-01-12'
+- language: javascript
+  registry: npm
+  name: peopledatalabs
+  url: https://www.npmjs.com/package/peopledatalabs
+  install: npm install peopledatalabs
+  repository: https://github.com/peopledatalabs/peopledatalabs-js
+  docs: https://docs.peopledatalabs.com/docs/javascript-sdk
+  official: true
+  version: 14.4.0
+  published: '2026-07-22'
+  note: Universal JS client with TypeScript support; the most actively released PDL SDK.
+- language: ruby
+  registry: rubygems
+  name: peopledatalabs
+  url: https://rubygems.org/gems/peopledatalabs
+  install: gem install peopledatalabs
+  repository: https://github.com/peopledatalabs/peopledatalabs-ruby
+  docs: https://docs.peopledatalabs.com/docs/ruby-sdk
+  official: true
+  version: 5.2.1
+  published: '2025-07-25'
+- language: rust
+  registry: crates.io
+  name: peopledatalabs
+  url: https://crates.io/crates/peopledatalabs
+  install: cargo add peopledatalabs
+  repository: https://github.com/peopledatalabs/peopledatalabs-rust
+  docs: https://docs.peopledatalabs.com/docs/rust-sdk
+  official: true
+  version: 5.0.0
+  published: '2026-07-22'
+- language: go
+  registry: go-modules
+  name: github.com/peopledatalabs/peopledatalabs-go
+  url: https://pkg.go.dev/github.com/peopledatalabs/peopledatalabs-go
+  install: go get github.com/peopledatalabs/peopledatalabs-go
+  repository: https://github.com/peopledatalabs/peopledatalabs-go
+  docs: https://docs.peopledatalabs.com/docs/go-sdk
+  official: true
+  version: v1.4.4
+  published: '2024-03-18'
+  note: >-
+    Read from proxy.golang.org/@latest. No tagged release in over two years, while the
+    API itself shipped monthly dataset releases through July 2026 (v35.0) and added
+    the subscription, preview-enrichment and subject-request endpoints. The repository
+    is not archived and its default branch was touched 2026-07-22, but no new module
+    version has been published.
+- language: javascript
+  registry: npm
+  name: pdl-react-autocomplete
+  url: https://www.npmjs.com/package/pdl-react-autocomplete
+  install: npm i -S pdl-react-autocomplete
+  repository: https://github.com/peopledatalabs/pdl-react-autocomplete
+  docs: https://docs.peopledatalabs.com/docs/react-component-for-autocomplete
+  official: true
+  version: 2.1.23
+  published: '2026-01-12'
+  kind: ui-component
+  note: React component wrapping the Autocomplete API; catalogued in components/ as well.

@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "People Data Labs Autocomplete Jobs API",
+    "version": "v5"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search job postings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/job_posting/search",
+            "params": [
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns job postings matching the supplied query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

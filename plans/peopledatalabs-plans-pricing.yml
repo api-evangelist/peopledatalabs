@@ -4,8 +4,20 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: People Data Labs
 providerId: peopledatalabs
 created: '2026-07-11'
-modified: '2026-07-11'
+modified: '2026-08-14'
+generated: '2026-08-14'
+method: searched
+source: https://www.peopledatalabs.com/pricing
+plan_count: 4
 reconciled: false
+reconciliation_note: >-
+  Re-checked 2026-08-14. peopledatalabs.com/pricing and /pricing/person return HTTP 200
+  but render entirely client-side — the served HTML contains only the page title, so the
+  tier names, prices and credit allowances below could not be re-verified by machine on
+  this pass. They are retained as captured on 2026-07-11 from the same pricing pages and
+  the Help Center "Plan types: Free, Pro and Enterprise" article. Treat the dollar figures
+  as reported, not confirmed; the plan STRUCTURE (free, free trial, self-serve paid,
+  enterprise/custom, all metered on credits) is confirmed by the current documentation.
 tags:
 - Data Enrichment
 - Person Data

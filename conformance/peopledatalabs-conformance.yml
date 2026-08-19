@@ -1,0 +1,108 @@
+generated: '2026-08-14'
+method: searched
+source:
+- https://www.peopledatalabs.com/security
+- https://docs.peopledatalabs.com/docs/errors
+- https://docs.peopledatalabs.com/docs/authentication
+- https://docs.peopledatalabs.com/docs/data-sources
+derived_from:
+- openapi/_original/peopledatalabs-openapi.yml
+- openapi/_original/peopledatalabs-docs-openapi.json
+summary: >-
+  People Data Labs conforms to the technical baseline (OpenAPI 3.0.3, HTTPS-only, JSON,
+  conventional HTTP status codes) and holds named security certifications, but it adopts
+  none of the cross-cutting API standards — no OAuth, no OIDC, no RFC 9457 problem
+  details, no RFC 8594 sunset signalling, no standardised RateLimit headers.
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: >-
+    Two OpenAPI 3.0.3 documents published — github.com/peopledatalabs/openAPI-specifications
+    (pdl-specs.json) and docs.peopledatalabs.com/api-reference/openapi.json.
+- id: openapi-operationids
+  conforms: false
+  evidence: >-
+    Neither published document declares operationId on any of its operations, so no
+    operation has a stable machine name.
+- id: rest
+  conforms: true
+  evidence: Resource-oriented paths, HTTP verbs, JSON responses, conventional status codes.
+- id: https-only
+  conforms: true
+  evidence: 'Docs: "Calls made over standard HTTP will fail."'
+- id: api-key-auth
+  conforms: true
+  evidence: securitySchemes APIKeyHeader (apiKey, in header, X-API-Key) in both specs.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in either spec; no OAuth documented.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on every host.
+- id: rfc8414-oauth-metadata
+  conforms: false
+  evidence: /.well-known/oauth-authorization-server returns 404 on every host.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use a vendor envelope {status, error:{type,message}} with content-type
+    application/json, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on api, www, docs and dashboard hosts.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header documented; no deprecation policy published.
+- id: ietf-ratelimit-headers
+  conforms: false
+  evidence: >-
+    Rate limiting is signalled with vendor x-ratelimit-* headers whose values are nested
+    JSON objects (minute/day/month), not the draft RateLimit / RateLimit-Policy fields.
+    Retry-After is not sent.
+- id: idempotency-key
+  conforms: false
+  evidence: No idempotency key header documented; no Idempotency-Key parameter in either spec.
+- id: json-api
+  conforms: false
+- id: odata
+  conforms: false
+- id: scim
+  conforms: false
+- id: fhir
+  conforms: false
+- id: a2a
+  conforms: partial
+  evidence: >-
+    An A2A agent card is served at docs.peopledatalabs.com/.well-known/agent-card.json but
+    omits the required description field and uses supportedInterfaces rather than
+    additionalInterfaces. Graded flavored in a2a/peopledatalabs-a2a.yml.
+- id: mcp
+  conforms: true
+  evidence: >-
+    A public MCP server answers tools/list anonymously at docs.peopledatalabs.com/mcp and
+    is advertised at /.well-known/mcp.json. Scope is documentation search only.
+- id: llms-txt
+  conforms: true
+  evidence: https://docs.peopledatalabs.com/llms.txt returns 200 text/plain with a full page index.
+- id: elasticsearch-query-dsl
+  conforms: true
+  evidence: >-
+    Person, Company and Job Posting search accept Elasticsearch v7.7 query DSL, and PDL
+    publishes its Elasticsearch mappings for each dataset.
+- id: sql-query
+  conforms: true
+  evidence: 'Search endpoints accept a SQL query of the form SELECT * FROM person WHERE ...'
+compliance_program:
+  url: https://www.peopledatalabs.com/security
+  certifications:
+  - SOC 2
+  - ISO 27001
+  - FIPS 140
+  artifact: security/peopledatalabs-trust-center.yml
+regulatory:
+- id: gdpr-ccpa-subject-requests
+  conforms: true
+  evidence: >-
+    Subject Request API (GET /v5/person/subjectrequest) returns a CSV of PDL Person IDs
+    that have opted out and must be deleted downstream.
+  docs: https://docs.peopledatalabs.com/docs/subject-request-api

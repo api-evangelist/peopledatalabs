@@ -4,8 +4,12 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: People Data Labs
 providerId: peopledatalabs
 created: '2026-07-11'
-modified: '2026-07-11'
-reconciled: false
+modified: '2026-08-14'
+generated: '2026-08-14'
+method: searched
+source: https://docs.peopledatalabs.com/docs/usage-limits
+limit_count: 7
+reconciled: true
 tags:
 - Data Enrichment
 - Person Data
@@ -20,22 +24,76 @@ description: >-
   429 until the window resets. These per-minute request limits are separate from
   the monthly credit allowances that govern how many records you can match.
 notes: >-
-  Numbers below reflect published defaults observed around the creation date and
-  can be raised on paid and enterprise plans. Verify current limits on the PDL
-  usage-limits documentation during reconciliation.
+  Header names, semantics and examples below were re-read verbatim from the PDL usage-limits
+  documentation on 2026-08-14. The per-endpoint request-per-minute numbers are published
+  defaults that can be raised on paid and enterprise plans; PDL directs the exact current
+  defaults to a Help Center article ("Plan types: Free, Pro and Enterprise") which sits
+  behind a Cloudflare bot challenge, so those numbers remain as previously captured.
+  Where a route has several active limits, PDL applies the one with the lowest time
+  granularity and returns that limit's reset time.
 sources:
 - https://docs.peopledatalabs.com/docs/usage-limits
 - https://docs.peopledatalabs.com/docs/reference-person-enrichment-api
 - https://docs.peopledatalabs.com/docs/reference-person-search-api
 responseCodes:
   throttled: 429
+  creditsExhausted: 402
+retryAfterHeader: false
 headers:
 - name: x-ratelimit-limit
-  description: The rate-limit ceiling for the current 60-second window.
+  description: >-
+    A JSON object of ceilings for the current windows, with `minute`, `day` and `month`
+    members. `day` is populated on the Autocomplete API only; `month` on the Company
+    Cleaner API only.
+  example: '{"minute": 1201, "day": null, "month": null}'
+- name: x-ratelimit-limit.minute
+  description: The maximum number of requests you can make in a minute.
+  example: '1201'
+- name: x-ratelimit-limit.day
+  description: Maximum requests per day. Autocomplete API only.
+  example: '12001'
+- name: x-ratelimit-limit.month
+  description: Maximum requests per month. Company Cleaner API only.
+  example: '120001'
 - name: x-ratelimit-remaining
-  description: Requests remaining in the current window; 429 is returned when this reaches zero.
+  description: >-
+    A JSON object of remaining requests per window (`minute`/`day`/`month`). When the
+    applicable member reaches zero, requests return 429 until the window resets.
+  example: '{"minute": 1200, "day": null, "month": null}'
+- name: x-ratelimit-remaining.minute
+  description: Requests available in the next minute.
+  example: '1200'
 - name: x-ratelimit-reset
-  description: When the current fixed window resets.
+  description: UTC timestamp at which the rate limit resets.
+  example: '2022-02-23T20:19:55Z'
+- name: x-call-credits-spent
+  description: Credits billed for this call.
+  example: '1'
+- name: x-call-credits-type
+  description: >-
+    Credit type billed — one of enrich, search, search_company, enrich_company,
+    enrich_skill, enrich_job_title, preview_search, person_identify.
+  example: enrich
+- name: x-lifetime-used
+  description: Total credits used over the account's lifetime.
+  example: '984152'
+- name: x-totallimit-remaining
+  description: >-
+    Total credits available (purchased plus overage). When this reaches zero all requests
+    return 402.
+  example: '1342'
+- name: x-totallimit-purchased-remaining
+  description: Purchased credits remaining.
+  example: '342'
+- name: x-totallimit-overages-remaining
+  description: Overage credits remaining.
+  example: '1000'
+responseSizeLimit:
+  bytes: 1048576
+  note: >-
+    A hard 1MB ceiling on all responses, most often hit by Search and Bulk Person
+    Enrichment when requesting 80-100 records. Documented mitigations: send
+    `Accept-Encoding: gzip`, narrow the payload with `data_include`, or request ~50 records.
 limits:
 - name: Person Enrichment API
   scope: api-key

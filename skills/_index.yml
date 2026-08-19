@@ -1,0 +1,30 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.peopledatalabs.com/.well-known/agent-skills/peopledatalabs/skill.md
+note: >-
+  People Data Labs publishes its own Agent Skill from its documentation host and
+  references it from its A2A agent card. The file below is that skill saved
+  verbatim — nothing in it was written by API Evangelist.
+skills:
+- file: peopledatalabs-peopledatalabs.md
+  name: Peopledatalabs
+  description: >-
+    Use when enriching person or company profiles with real-time data, searching for
+    people or companies matching specific criteria, identifying individuals from
+    partial information, or building lead lists and talent pipelines.
+  api: openapi/_original/peopledatalabs-openapi.yml
+  source: https://docs.peopledatalabs.com/.well-known/agent-skills/peopledatalabs/skill.md
+  method: searched
+  operations:
+  - GET /v5/person/enrich
+  - POST /v5/person/bulk
+  - POST /v5/person/search
+  - POST /v5/person/identify
+  - GET /v5/company/enrich
+  - POST /v5/company/bulk
+  - POST /v5/company/search
+  note: >-
+    The skill's endpoint table names /v5/person/bulk and /v5/company/bulk. Those bulk
+    routes are documented (Bulk Person Enrichment API, Bulk Company Enrichment API)
+    but are absent from both published OpenAPI documents, which describe
+    /v5/person/retrieve/bulk instead. Recorded as published, not corrected.

@@ -1,0 +1,67 @@
+generated: '2026-08-14'
+method: probed
+source: https://docs.peopledatalabs.com/.well-known/agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: docs.peopledatalabs.com
+  note: >-
+    Served from the People Data Labs documentation host, which the company controls
+    (docs.peopledatalabs.com). The card is emitted by the Mintlify documentation
+    platform People Data Labs runs its docs on; the API host
+    (api.peopledatalabs.com) and the marketing and dashboard hosts return 404 for
+    both /.well-known/agent-card.json and the legacy /.well-known/agent.json.
+conformance:
+  spec: A2A 1.0.0
+  grade: flavored
+  protocol_version: '0.3'
+  preferred_transport: HTTP+JSON
+  hard_checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+  deviations:
+  - missing-required-description
+  - supportedInterfaces-instead-of-additionalInterfaces
+  note: >-
+    All three structural hard checks pass. The card is graded flavored because it
+    omits the A2A-required top-level `description` field and carries the pre-1.0
+    `supportedInterfaces` member in place of `additionalInterfaces`.
+card:
+  name: People Data Labs Documentation
+  url: https://docs.peopledatalabs.com/
+  version: 1.0.0
+  provider: People Data Labs Documentation
+  documentation_url: https://docs.peopledatalabs.com/
+  capabilities:
+    streaming: false
+    pushNotifications: false
+  default_input_modes:
+  - text/plain
+  default_output_modes:
+  - text/plain
+  skills: 1
+  skill_ids:
+  - peopledatalabs
+  file: peopledatalabs-agent-card.json
+related:
+  agent_skill: https://docs.peopledatalabs.com/.well-known/agent-skills/peopledatalabs/skill.md
+  mcp_manifest: https://docs.peopledatalabs.com/.well-known/mcp.json
+x-evidence:
+  fetched: '2026-08-14'
+  url: https://docs.peopledatalabs.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  negative_probes:
+  - url: https://api.peopledatalabs.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://api.peopledatalabs.com/.well-known/agent.json
+    http_status: 404
+  - url: https://www.peopledatalabs.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://www.peopledatalabs.com/.well-known/agent.json
+    http_status: 404
+  - url: https://dashboard.peopledatalabs.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://docs.peopledatalabs.com/.well-known/agent.json
+    http_status: 404

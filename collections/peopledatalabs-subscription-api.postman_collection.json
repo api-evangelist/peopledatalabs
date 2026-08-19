@@ -1,0 +1,598 @@
+{
+  "item": [
+    {
+      "id": "730f9cdf-2977-4e4a-8bd6-998efc1d5329",
+      "name": "Subscription",
+      "description": {
+        "content": "Webhook subscription management: create, list, retrieve, update and delete the HTTPS target URLs People Data Labs pushes person-update events to.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5294f86b-f0d5-437d-bb43-8977cdefe780",
+          "name": "/v5/subscription",
+          "request": {
+            "name": "/v5/subscription",
+            "description": {
+              "content": "Retrieves a list of subscriptions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c71b6882-1a74-41fd-80ea-397d7c3551dc",
+              "name": "All existing subscriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_timestamp\": \"2018-02-27T19:48:14.239Z\",\n    \"last_verified_timestamp\": \"1984-10-26T09:50:28.524Z\",\n    \"target_url\": \"https://callbackapi.example.com/endpoint\",\n    \"event_type\": \"string\",\n    \"id\": \"string\",\n    \"status\": \"string\",\n    \"headers\": {\n      \"x-custom-header\": \"very-secure-value\"\n    }\n  },\n  {\n    \"created_timestamp\": \"1963-04-17T20:52:25.099Z\",\n    \"last_verified_timestamp\": \"1962-04-30T07:05:14.484Z\",\n    \"target_url\": \"https://callbackapi.example.com/endpoint\",\n    \"event_type\": \"string\",\n    \"id\": \"string\",\n    \"status\": \"string\",\n    \"headers\": {\n      \"x-custom-header\": \"very-secure-value\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d85e960-7a9c-4213-93ab-8a534a3e6be0",
+          "name": "/v5/subscription",
+          "request": {
+            "name": "/v5/subscription",
+            "description": {
+              "content": "Creates a new subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_url\": \"<url>\",\n  \"event_type\": \"<string>\",\n  \"headers\": {\n    \"key_0\": \"<string>\"\n  },\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d60e75d3-4828-45a0-ab03-6138088e37db",
+              "name": "The created subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_url\": \"https://callbackapi.example.com/endpoint\",\n  \"event_type\": \"<string>\",\n  \"headers\": {\n    \"x-custom-header\": \"very-secure-value\"\n  },\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_timestamp\": \"2006-10-03T17:00:52.034Z\",\n  \"last_verified_timestamp\": \"1986-12-17T08:10:48.968Z\",\n  \"target_url\": \"https://callbackapi.example.com/endpoint\",\n  \"event_type\": \"string\",\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"headers\": {\n    \"x-custom-header\": \"very-secure-value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ce4a287-1795-4835-b209-7c12ac018387",
+          "name": "/subscription/<subscription_id>",
+          "request": {
+            "name": "/subscription/<subscription_id>",
+            "description": {
+              "content": "Retrieves a subscription based on object ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "subscription",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) The ID of the subscription"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bb5bc337-3a3b-45f0-bca2-80b93df88193",
+              "name": "The requested subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "subscription",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) The ID of the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_timestamp\": \"2006-10-03T17:00:52.034Z\",\n  \"last_verified_timestamp\": \"1986-12-17T08:10:48.968Z\",\n  \"target_url\": \"https://callbackapi.example.com/endpoint\",\n  \"event_type\": \"string\",\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"headers\": {\n    \"x-custom-header\": \"very-secure-value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74f296ff-1c03-40fd-a068-b974c2e1e67e",
+          "name": "/v5/subscription/<subscription_id>",
+          "request": {
+            "name": "/v5/subscription/<subscription_id>",
+            "description": {
+              "content": "Deletes a subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "subscription",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) The ID of the subscription."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc6bd177-ae9b-4652-bbcb-4600cddd0669",
+              "name": "Deleted subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "subscription",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) The ID of the subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00167e84-30dc-4116-9b4e-f942d5110281",
+          "name": "/v5/subscription/<subscription_id>",
+          "request": {
+            "name": "/v5/subscription/<subscription_id>",
+            "description": {
+              "content": "Updates a subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "subscription",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) The ID of the subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_url\": \"<url>\",\n  \"event_type\": \"<string>\",\n  \"headers\": {\n    \"key_0\": \"<string>\"\n  },\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6215a93a-ebc4-4ab4-9caa-d7143e50d277",
+              "name": "The updated subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "subscription",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) The ID of the subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_url\": \"https://callbackapi.example.com/endpoint\",\n  \"event_type\": \"<string>\",\n  \"headers\": {\n    \"x-custom-header\": \"very-secure-value\"\n  },\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_timestamp\": \"2006-10-03T17:00:52.034Z\",\n  \"last_verified_timestamp\": \"1986-12-17T08:10:48.968Z\",\n  \"target_url\": \"https://callbackapi.example.com/endpoint\",\n  \"event_type\": \"string\",\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"headers\": {\n    \"x-custom-header\": \"very-secure-value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.peopledatalabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0cc57325-7df1-45b8-a83b-7f20d0999b5a",
+    "name": "api.peopledatalabs.com Subscription API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "People Data Labs API",
+      "type": "text/plain"
+    }
+  }
+}

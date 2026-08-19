@@ -1,0 +1,122 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.peopledatalabs.com/docs/webhooks
+spec_type: Webhooks
+asyncapi:
+  published: false
+  probes:
+  - url: https://docs.peopledatalabs.com/asyncapi.yaml
+    http_status: 404
+  - url: https://api.peopledatalabs.com/asyncapi.json
+    http_status: 404
+  - url: https://docs.peopledatalabs.com/api-reference/asyncapi.json
+    http_status: 404
+  note: >-
+    People Data Labs publishes no AsyncAPI document. It does publish a real webhook
+    surface, captured below, plus a REST subscription-management API described in its
+    own OpenAPI (openapi/peopledatalabs-subscription-api-openapi.yml).
+summary: >-
+  PDL pushes person-data update notifications to a customer-registered HTTPS endpoint.
+  Notifications are batched ID lists — they carry no record payload, so a consumer must
+  call the enrichment or retrieve APIs to resolve what changed. Availability is gated:
+  webhooks are enterprise API and Data License customers only, and registration goes
+  through a Customer Success Manager rather than self-serve.
+availability:
+  self_serve: false
+  audience: enterprise API and Data License customers
+  registration: via the assigned PDL Customer Success Manager
+  contact: https://www.peopledatalabs.com/talk-to-sales
+management_api:
+  openapi: openapi/peopledatalabs-subscription-api-openapi.yml
+  operations:
+  - GET /v5/subscription
+  - POST /v5/subscription
+  - GET /v5/subscription/{subscription_id}
+  - PUT /v5/subscription/{subscription_id}
+  - DELETE /v5/subscription/{subscription_id}
+  request_fields:
+  - event_type
+  - target_url
+  - headers
+  - status
+  response_fields:
+  - id
+  - event_type
+  - target_url
+  - headers
+  - status
+  - created_timestamp
+  - last_verified_timestamp
+transport:
+  protocol: https
+  method: POST
+  target_url_requirement: must be an https endpoint supplied by the customer
+  auth: >-
+    Customer-supplied custom request headers, registered with the subscription. The docs
+    recommend at minimum a shared secret in an Authorization header. There is no
+    signature-verification scheme (no HMAC signature header is documented).
+delivery:
+  batching: batches of 1,000 ids per payload
+  frequency: once per month, around the monthly data release and post Data-License delivery
+  retries: false
+  retry_note: >-
+    If the target does not return 200, PDL does NOT automatically resend. The customer
+    must ask their PDL team to resend, and the resend covers the entire batch.
+  payload_shape: JSON array of PDL Person ID strings
+  payload_example: |
+    [
+        "9adnit66-hdZ5lkBbq-AOQ_0000",
+        "YraxDoP16jzyjfxtn-1XJQ_0000",
+        "6Wu6sKeyNfaLF3CVBgoysg_0000"
+    ]
+events:
+  semantics: >-
+    Filters are OR-ed. If two filters on one subscription both match a record in a single
+    release, that PDL ID appears twice in the payload — the docs recommend one webhook per
+    filter to avoid duplication.
+  filters:
+  - name: education
+    triggers_on:
+    - education
+  - name: job_change
+    triggers_on:
+    - job_company_id
+    - job_title
+  - name: location
+    triggers_on:
+    - location_name
+    - location_locality
+    - location_metro
+    - location_region
+    - location_country
+    - location_continent
+    - location_street_address
+    - location_address_line_2
+    - location_postal_code
+    - location_geo
+  - name: mobile_phone_number
+    triggers_on:
+    - mobile_phone
+  - name: personal_emails
+    triggers_on:
+    - personal_emails
+    - recommended_personal_email
+  - name: phone_number
+    triggers_on:
+    - mobile_phone
+    - phone_numbers
+  - name: social_profile
+    triggers_on:
+    - linkedin_url
+    - linkedin_username
+    - linkedin_id
+    - facebook_url
+    - facebook_username
+    - facebook_id
+    - twitter_url
+    - twitter_username
+    - github_url
+    - github_username
+  - name: work_email
+    triggers_on:
+    - work_email

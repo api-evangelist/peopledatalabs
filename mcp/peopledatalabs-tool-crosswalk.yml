@@ -1,0 +1,97 @@
+generated: '2026-08-14'
+method: derived
+source: mcp/peopledatalabs-mcp.yml + openapi/_original/peopledatalabs-openapi.yml + openapi/_original/peopledatalabs-docs-openapi.json
+summary: >-
+  People Data Labs ships both an OpenAPI-described REST data API and a live,
+  unauthenticated MCP server — but they do not overlap at all. Every MCP tool
+  operates on the documentation site; every REST operation operates on the data
+  platform. This is a complete surface divergence, not a coverage gap: an agent
+  connected to the PDL MCP server can read the docs and nothing else.
+surfaces:
+  openapi:
+    files:
+    - openapi/_original/peopledatalabs-openapi.yml
+    - openapi/_original/peopledatalabs-docs-openapi.json
+    host: https://api.peopledatalabs.com
+    gated: false
+    note: >-
+      Neither published spec declares operationId on any operation, so REST
+      operations are identified below by METHOD + path. This is a real contract-quality
+      gap on the provider side, not an omission in this crosswalk.
+  graphql:
+    present: false
+  mcp:
+    url: https://docs.peopledatalabs.com/mcp
+    gated: false
+    tools_list_status: 200
+    note: tools/list answers anonymously; the tool schemas below are the real published inputSchemas.
+crosswalk: []
+mcp_only:
+- tool: search_people_data_labs_documentation
+  reason: >-
+    Full-text search over the documentation corpus. No public REST operation exposes
+    documentation search; api.peopledatalabs.com serves data, not docs.
+- tool: query_docs_filesystem_people_data_labs_documentation
+  reason: >-
+    Read-only virtual filesystem over the docs pages and OpenAPI specs. Server-side
+    docs primitive with no REST equivalent.
+- tool: submit_feedback
+  reason: >-
+    Writes a documentation feedback record to the Mintlify docs platform. No public
+    REST operation accepts documentation feedback.
+rest_only:
+- capability: Person enrichment
+  operations:
+  - GET /v5/person/enrich
+  - GET /v5/person/enrich/preview
+  - POST /v5/person/retrieve/bulk
+  - GET /v5/person/retrieve/{person_id}
+- capability: Person identity resolution
+  operations:
+  - GET /v5/person/identify
+- capability: Person search
+  operations:
+  - GET /v5/person/search
+  - POST /v5/person/search
+- capability: Company enrichment and search
+  operations:
+  - GET /v5/company/enrich
+  - GET /v5/company/search
+  - POST /v5/company/search
+- capability: IP enrichment
+  operations:
+  - GET /v5/ip/enrich
+- capability: Reference-data cleaners
+  operations:
+  - GET /v5/company/clean
+  - POST /v5/company/clean
+  - GET /v5/school/clean
+  - POST /v5/school/clean
+  - GET /v5/location/clean
+  - POST /v5/location/clean
+- capability: Taxonomy enrichment
+  operations:
+  - GET /v5/job_title/enrich
+  - POST /v5/job_title/enrich
+  - GET /v5/skill/enrich
+- capability: Autocomplete
+  operations:
+  - GET /v5/autocomplete
+  - POST /v5/autocomplete
+- capability: Webhook subscription management
+  operations:
+  - GET /v5/subscription
+  - POST /v5/subscription
+  - GET /v5/subscription/{subscription_id}
+  - PUT /v5/subscription/{subscription_id}
+  - DELETE /v5/subscription/{subscription_id}
+- capability: Privacy / data-subject requests
+  operations:
+  - GET /v5/person/subjectrequest
+coverage:
+  tools_named: 3
+  tools_bound_to_rest: 0
+  mcp_only: 3
+  rest_operations_total: 28
+  rest_operations_with_a_tool: 0
+  rest_coverage_pct: 0

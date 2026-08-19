@@ -1,0 +1,30 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.peopledatalabs.com/docs/react-component-for-autocomplete
+summary:
+  families: 1
+  components: 1
+  note: >-
+    People Data Labs ships one embeddable client-side component. There is no hosted
+    or prebuilt UI surface, no embedded dashboard and no web-component library — the
+    dashboard at dashboard.peopledatalabs.com is a first-party product console, not
+    an embeddable surface.
+families:
+- name: Autocomplete
+  description: >-
+    Typeahead input backed by the People Data Labs Autocomplete API (/v5/autocomplete),
+    for company, country, industry, location, major, region, role, school, sub_role,
+    skill and title values.
+  components:
+  - name: pdl-react-autocomplete
+    framework: react
+    registry: npm
+    package: pdl-react-autocomplete
+    url: https://www.npmjs.com/package/pdl-react-autocomplete
+    install:
+    - npm i -S pdl-react-autocomplete
+    - yarn add pdl-react-autocomplete
+    repository: https://github.com/peopledatalabs/pdl-react-autocomplete
+    docs: https://docs.peopledatalabs.com/docs/react-component-for-autocomplete
+    backing_operation: GET /v5/autocomplete
+    official: true

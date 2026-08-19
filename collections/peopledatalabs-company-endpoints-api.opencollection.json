@@ -1,0 +1,227 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "api.peopledatalabs.com Autocomplete Company Endpoints API",
+    "version": "5.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Company Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/company/enrich",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/company/enrich",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "pdl_id",
+                "value": "",
+                "type": "query",
+                "description": "The PDL ID of the company to enrich."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the company."
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query",
+                "description": "A social profile of the company (linkedin/facebook/twitter/crunchbase)."
+              },
+              {
+                "name": "ticker",
+                "value": "",
+                "type": "query",
+                "description": "The company's stock ticker, if publicly traded."
+              },
+              {
+                "name": "website",
+                "value": "",
+                "type": "query",
+                "description": "A website the company uses."
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "The location of the company's headquarters. This can be anything from a street address to a country name."
+              },
+              {
+                "name": "street_address",
+                "value": "",
+                "type": "query",
+                "description": "The company HQ's street address."
+              },
+              {
+                "name": "locality",
+                "value": "",
+                "type": "query",
+                "description": "The company HQ's locality. e.g. San Francisco"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "The company HQ's region. e.g. California"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "The company HQ's country."
+              },
+              {
+                "name": "postal_code",
+                "value": "",
+                "type": "query",
+                "description": "The company HQ's postal code."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether the output should have human-readable indentation."
+              },
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "All text in API responses returns as lowercase by default. Setting titlecase to true will titlecase response data instead."
+              },
+              {
+                "name": "include_if_matched",
+                "value": "",
+                "type": "query",
+                "description": "If true, the response will include the top-level field matched that contains a list of every input that matched this profile."
+              },
+              {
+                "name": "min_likelihood",
+                "value": "",
+                "type": "query",
+                "description": "The minimum likelihood score a response must possess in order to return a 200."
+              },
+              {
+                "name": "required",
+                "value": "",
+                "type": "query",
+                "description": "The fields a response must have in order to count as a match."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/company/enrich"
+        },
+        {
+          "info": {
+            "name": "/company/search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/company/search",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "An Elasticsearch (v7.7) query. See our underlying Elasticsearch mapping for reference."
+              },
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query",
+                "description": "A SQL query of the format: SELECT * FROM company WHERE XXX, where XXX is a standard SQL boolean query involving PDL fields. Any use of column selections or the LIMIT keyword will be ignored."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of matched records to return for this query if they exist*. Must be between 1 and 100"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "An offset value for pagination. Can be a number between 0 and 9999. Pagination can be executed up to a maximum of 10,000 records per query. Be sure to use the \"total\" response field to help discover how many total records exist in the dataset for your query"
+              },
+              {
+                "name": "scroll_token",
+                "value": "",
+                "type": "query",
+                "description": "Setting titlecase to true will titlecase any records returned"
+              },
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "Setting titlecase to true will titlecase any records returned"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether the output should have human-readable indentation."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/company/search"
+        },
+        {
+          "info": {
+            "name": "/company/search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/company/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/company/search"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,104 @@
+generated: '2026-08-14'
+method: probed
+source: live GET of /.well-known/* on every People Data Labs host in apis.yml and openapi servers[]
+summary:
+  hosts_probed: 4
+  paths_probed_per_host: 9
+  documents_found: 2
+  note: >-
+    Only the documentation host serves anything under /.well-known/. The API host
+    answers every /.well-known/ path with its normal JSON 404 envelope; the
+    marketing and dashboard hosts answer with an HTML 404 shell. No security.txt,
+    no OpenID/OAuth discovery, no api-catalog and no ai-plugin.json anywhere.
+hosts:
+- host: https://docs.peopledatalabs.com
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: application/json
+    file: ../a2a/peopledatalabs-agent-card.json
+    note: A2A Agent Card; captured and graded in a2a/peopledatalabs-a2a.yml
+  - path: /.well-known/mcp.json
+    status: 200
+    content_type: application/json
+    file: peopledatalabs-mcp.json
+    note: MCP server manifest; captured in mcp/peopledatalabs-mcp.yml
+  - path: /.well-known/agent-skills/peopledatalabs/skill.md
+    status: 200
+    content_type: text/markdown
+    file: ../skills/peopledatalabs-peopledatalabs.md
+    note: Provider-published Agent Skill referenced by the agent card
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://api.peopledatalabs.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/mcp.json
+    status: 404
+- host: https://www.peopledatalabs.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/mcp.json
+    status: 404
+- host: https://dashboard.peopledatalabs.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/mcp.json
+    status: 404

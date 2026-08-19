@@ -1,0 +1,189 @@
+openapi: 3.0.3
+info:
+  description: People Data Labs API
+  title: api.peopledatalabs.com Subscription API
+  version: '5.0'
+servers:
+- url: https://api.peopledatalabs.com
+tags:
+- name: Subscription
+  description: 'Webhook subscription management: create, list, retrieve, update and delete the HTTPS target URLs
+    People Data Labs pushes person-update events to.'
+paths:
+  /v5/subscription:
+    get:
+      tags:
+      - Subscription
+      summary: /v5/subscription
+      description: Retrieves a list of subscriptions.
+      security:
+      - APIKeyHeader: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SubscriptionResponse'
+          description: All existing subscriptions
+    post:
+      tags:
+      - Subscription
+      summary: /v5/subscription
+      description: Creates a new subscription.
+      security:
+      - APIKeyHeader: []
+      requestBody:
+        description: A subscription object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionRequest'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+          description: The created subscription
+  /v5/subscription/{subscription_id}:
+    get:
+      tags:
+      - Subscription
+      summary: /subscription/<subscription_id>
+      description: Retrieves a subscription based on object ID.
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: subscription_id
+        in: path
+        description: The ID of the subscription
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+          description: The requested subscription
+    delete:
+      tags:
+      - Subscription
+      summary: /v5/subscription/<subscription_id>
+      description: Deletes a subscription.
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: subscription_id
+        in: path
+        description: The ID of the subscription.
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Deleted subscription
+    put:
+      tags:
+      - Subscription
+      summary: /v5/subscription/<subscription_id>
+      description: Updates a subscription.
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: subscription_id
+        in: path
+        description: The ID of the subscription.
+        schema:
+          type: string
+        required: true
+      requestBody:
+        description: A subscription object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+          description: The updated subscription
+components:
+  securitySchemes:
+    APIKeyHeader:
+      in: header
+      name: X-API-Key
+      type: apiKey
+  schemas:
+    SubscriptionRequest:
+      type: object
+      properties:
+        event_type:
+          type: string
+          description: The type of event to subscribe to
+        target_url:
+          type: string
+          format: url
+          description: The URL the subscription will be sent to; scheme must be https
+          example: https://callbackapi.example.com/endpoint
+        headers:
+          type: object
+          description: Custom headers
+          example:
+            x-custom-header: very-secure-value
+          additionalProperties:
+            type: string
+        status:
+          type: string
+          description: The status of the subscription
+      required:
+      - target_url
+      - event_type
+      additionalProperties: false
+    SubscriptionResponse:
+      type: object
+      properties:
+        event_type:
+          type: string
+          description: The type of event to subscribe to
+        target_url:
+          type: string
+          format: url
+          description: The URL the subscription will be sent to; scheme must be https
+          example: https://callbackapi.example.com/endpoint
+        headers:
+          type: object
+          description: Custom headers
+          example:
+            x-custom-header: very-secure-value
+          additionalProperties:
+            type: string
+        created_timestamp:
+          type: string
+          format: date-time
+          description: The date and time when the subscription was created
+        id:
+          type: string
+          description: The unique identifier of the subscription
+        status:
+          type: string
+          description: The status of the subscription
+        last_verified_timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of most recent target URL verification
+      required:
+      - created_timestamp
+      - last_verified_timestamp
+      - target_url
+      - event_type
+      - id
+      - status
+      additionalProperties: false

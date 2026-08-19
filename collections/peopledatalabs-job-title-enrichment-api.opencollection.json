@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "api.peopledatalabs.com Autocomplete Job Title Enrichment API",
+    "version": "5.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job Title Enrichment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/job_title/enrich",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/job_title/enrich",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "job_title",
+                "value": "",
+                "type": "query",
+                "description": "Job title that will be enriched"
+              },
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "Setting to `true` will titlecase any records returned"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether the output should have human-readable indentation"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/job_title/enrich"
+        },
+        {
+          "info": {
+            "name": "/job_title/enrich",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.peopledatalabs.com/v5/job_title/enrich",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/job_title/enrich"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

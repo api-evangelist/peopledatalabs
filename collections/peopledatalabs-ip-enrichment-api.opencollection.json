@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "api.peopledatalabs.com Autocomplete IP Enrichment API",
+    "version": "5.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IP Enrichment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/ip/enrich",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/ip/enrich",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "IP that will be enriched."
+              },
+              {
+                "name": "return_ip_location",
+                "value": "",
+                "type": "query",
+                "description": "IP responses will not include location data for the IP by default.  Setting to `true` will return IP specific location info."
+              },
+              {
+                "name": "return_ip_metadata",
+                "value": "",
+                "type": "query",
+                "description": "IP responses will not include metadata for the IP by default.  Setting to `true` will return IP specific metadata."
+              },
+              {
+                "name": "return_person",
+                "value": "",
+                "type": "query",
+                "description": "Setting to `true` will return person fields associated with the IP."
+              },
+              {
+                "name": "return_if_unmatched",
+                "value": "",
+                "type": "query",
+                "description": "Setting to `true` will return IP specific metadata or location data regardless of a company match."
+              },
+              {
+                "name": "titlecase",
+                "value": "",
+                "type": "query",
+                "description": "Setting to `true` will titlecase any records returned."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Whether the output should have human-readable indentation."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "/ip/enrich"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

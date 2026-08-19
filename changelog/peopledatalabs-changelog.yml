@@ -1,0 +1,80 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.peopledatalabs.com/links/release-notes
+index: https://docs.peopledatalabs.com/llms.txt
+scheme:
+  api_version: v5
+  dataset_version: 'major.minor (e.g. v35.0)'
+  cadence: monthly
+  note: >-
+    Two version trains run side by side and only one of them moves. The API contract has
+    been v5 since 2019; what ships monthly is the DATASET version, published as release
+    notes. Every entry below is a dataset release, not an API release — no breaking API
+    change has been announced in the captured window.
+  history_start: '2019-10'
+  entries_published: 48
+current:
+  api_version: v5
+  dataset_version: v35.0
+  released: '2026-07-21'
+entries:
+- version: v35.0
+  date: '2026-07-21'
+  title: July 2026 Release Notes
+  url: https://docs.peopledatalabs.com/changelog/july-2026-release-notes-v350
+  breaking: false
+  additions:
+  - PDLScores™ for Person Data reached GA (profile_score, activity_score) and were added to Person Base Bundles
+  - New premium score-factor bundles (profile_score_factors, activity_score_factors)
+  - New Technology Data Fields signalling a company's tech stack
+  - Job Posting dataset coverage and quality improvements, including new industry fields
+  highlights:
+  - Full visual refresh of the documentation site
+  - Refreshed 37M+ resume experiences, 40M+ locations, detected 3M+ job changes
+- version: v34.2
+  date: '2026-06-16'
+  title: June 2026 Release Notes
+  url: https://docs.peopledatalabs.com/changelog/june-2026-release-notes-v342
+  breaking: false
+  additions:
+  - PDLScores™ Early Access for the Person dataset
+  highlights:
+  - More GitHub data, better phone-number coverage, improved academic work experience
+  - Verified 32M+ jobs, detected 2M+ job changes
+- version: v34.1
+  date: '2026-05-22'
+  title: May 2026 Release Notes
+  url: https://docs.peopledatalabs.com/changelog/may-2026-release-notes-v341
+  breaking: false
+  additions:
+  - Direct Downloads delivery reached GA, with AWS IAM Role authentication
+  highlights:
+  - More complete parent/subsidiary company relationships
+  - Bug fixes to school-type classification and job-verification timestamps
+  - Verified 36M+ jobs, detected 4M+ job changes
+- version: v34.0
+  date: '2026-04-21'
+  title: April 2026 Release Notes
+  url: https://docs.peopledatalabs.com/changelog/april-2026-release-notes-v340
+  breaking: false
+  additions:
+  - Beta launch of the Job Posting Search API for real-time global hiring data
+  highlights:
+  - Improved work-email deliverability, location and school matching
+  - Person dataset deduplication fixes
+  - Verified 68M+ jobs, detected 6M+ job changes
+- version: v33.2
+  date: '2026-03-19'
+  title: March 2026 Release Notes
+  url: https://docs.peopledatalabs.com/changelog/march-2026-release-notes-v332
+  breaking: false
+- version: v33.1
+  date: '2026-02-17'
+  title: February 2026 Release Notes
+  url: https://docs.peopledatalabs.com/changelog/february-2026-release-notes-v331
+  breaking: false
+- version: v33.0
+  date: '2026-01-20'
+  title: January 2026 Release Notes
+  url: https://docs.peopledatalabs.com/changelog/january-2026-release-notes-v330
+  breaking: false

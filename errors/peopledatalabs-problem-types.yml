@@ -1,0 +1,102 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.peopledatalabs.com/docs/errors
+derived_from:
+- openapi/_original/peopledatalabs-openapi.yml
+- openapi/_original/peopledatalabs-docs-openapi.json
+format: vendor-json
+envelope:
+  media_type: application/json
+  rfc9457: false
+  note: >-
+    People Data Labs does not use RFC 9457 problem+json. Errors are returned as a
+    plain JSON object with a numeric `status`, and a nested `error` object carrying
+    `type` and `message`. The same envelope is used on every endpoint, and the HTTP
+    status is repeated inside the body.
+  fields:
+  - name: status
+    type: integer
+    description: The HTTP response status code, repeated in the body.
+  - name: error
+    type: object
+    description: Container for the error type and message.
+  - name: error.type
+    type: string
+    description: Machine-readable error type slug.
+  - name: error.message
+    type: string
+    description: Human-readable error message.
+  example: |
+    {
+        "status": 404,
+        "error": {
+            "type": "not_found",
+            "message": "No records were found matching your request"
+        }
+    }
+semantics:
+  note: >-
+    404 is not a failure on the enrichment and search endpoints — it is the documented
+    "no matching record" result and it is not billed. Agents must treat 200 and 404 as
+    the two normal outcomes and only 4xx-other/5xx as faults.
+problems:
+- status: 400
+  type: invalid_request_error
+  title: Request contained either missing or invalid parameters
+  remediation: >-
+    Check the endpoint's minimum-input requirements. For person enrichment the minimum
+    is profile OR email OR phone OR email_hash OR lid OR (name AND (location OR company
+    OR school)).
+  retryable: false
+  applies_to: all operations
+- status: 401
+  type: authentication_error
+  title: Request contained a missing or invalid key
+  remediation: Supply a valid key in the X-Api-Key header (or the api_key query parameter).
+  retryable: false
+  applies_to: all operations
+- status: 402
+  type: payment_required
+  title: You have reached your account maximum (all matches have been used)
+  remediation: >-
+    x-totallimit-remaining has reached zero. Purchase more credits or wait for the
+    monthly allowance to reset.
+  retryable: false
+  applies_to: all operations
+- status: 404
+  type: not_found
+  title: No records were found matching your request
+  remediation: >-
+    Not an error condition. Widen the query, lower min_likelihood, or relax the
+    `required` expression. Not billed.
+  retryable: false
+  applies_to: enrichment, identify, search, cleaner, autocomplete operations
+- status: 405
+  type: invalid_request_error
+  title: You cannot use the request method on the requested resource
+  remediation: >-
+    GET is supported on every endpoint; POST only on person/enrich, person/search,
+    company/search, autocomplete, the cleaner APIs and job_title/enrich.
+  retryable: false
+  applies_to: all operations
+- status: 429
+  type: rate_limit_error
+  title: An error occurred due to requests hitting the API too quick
+  remediation: >-
+    Per-key fixed 60-second window is exhausted. Read x-ratelimit-reset and back off
+    with jitter until the window resets.
+  retryable: true
+  applies_to: all operations
+- status: 503
+  type: api_error
+  title: Internal Error of our systems
+  remediation: Retry with backoff.
+  retryable: true
+  applies_to: GET /v5/person/subjectrequest
+  source_operation: openapi/peopledatalabs-subject-request-api-openapi.yml#/v5/person/subjectrequest
+- status: 5xx
+  type: api_error
+  title: The server encountered an unexpected condition that prevented it from fulfilling the request
+  remediation: Retry with exponential backoff; contact support@peopledatalabs.com if persistent.
+  retryable: true
+  applies_to: all operations

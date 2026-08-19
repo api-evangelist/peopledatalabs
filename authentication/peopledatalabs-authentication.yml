@@ -1,19 +1,75 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/peopledatalabs-openapi.yml
+generated: '2026-08-14'
+method: searched
+source: https://docs.peopledatalabs.com/docs/authentication
+derived_from:
+- openapi/_original/peopledatalabs-openapi.yml
+- openapi/_original/peopledatalabs-docs-openapi.json
+docs: https://docs.peopledatalabs.com/docs/authentication
 summary:
   types:
   - apiKey
+  api_key_in:
+  - header
+  - query
+  oauth2_flows: []
+  scopes: none
+  note: >-
+    One credential, three placements. Every People Data Labs endpoint — including the
+    sandbox host and the subscription/webhook management surface — is authenticated by a
+    single account API key. There are no scopes, no OAuth, no per-endpoint permissions and
+    no token exchange, so an agent handed a PDL key holds the full account: every dataset
+    the plan includes, every credit on the account, and the ability to create, change and
+    delete webhook subscriptions.
 schemes:
 - name: APIKeyHeader
   type: apiKey
   in: header
   parameterName: X-Api-Key
+  recommended: true
   description: >-
-    People Data Labs authenticates every request with an API key issued in the
-    PDL dashboard. The key is passed in the X-Api-Key request header. The key can
-    also be supplied as an api_key query-string parameter, but the header is the
-    recommended method. All requests must be made over HTTPS.
+    The documented and recommended placement. The published OpenAPI declares the header as
+    X-API-Key; the documentation and every SDK example use X-Api-Key. HTTP header names are
+    case-insensitive, so both work.
   sources:
-  - openapi/peopledatalabs-openapi.yml
+  - openapi/_original/peopledatalabs-openapi.yml
+  - openapi/_original/peopledatalabs-docs-openapi.json
   - https://docs.peopledatalabs.com/docs/authentication
+- name: APIKeyQuery
+  type: apiKey
+  in: query
+  parameterName: api_key
+  recommended: false
+  description: >-
+    Documented alternative — the key may be passed in the query string
+    (?api_key=...). Not declared in either OpenAPI document. It works, and it puts a
+    long-lived credential in URLs, logs and referrers; prefer the header.
+  sources:
+  - https://docs.peopledatalabs.com/docs/authentication
+key_management:
+  issuance: https://dashboard.peopledatalabs.com
+  rotation: >-
+    Self-serve rotation is not documented. To request a new key or delete an existing one
+    the docs direct customers to their account manager or support@peopledatalabs.com.
+  expiry: not documented
+  scopes: none
+  environments:
+    note: >-
+      The same key authenticates both the production host and
+      sandbox.api.peopledatalabs.com. There is no separate test key and no key prefix that
+      distinguishes test from live.
+transport:
+  https_required: true
+  note: Requests over plain HTTP fail.
+failure_modes:
+- status: 401
+  type: authentication_error
+  cause: missing or invalid key
+sdk_support:
+- language: python
+  snippet: 'PDLPY(api_key="YOUR API KEY")'
+- language: javascript
+  snippet: 'new PDLJS({ apiKey: "YOUR API KEY" })'
+- language: ruby
+  snippet: 'Peopledatalabs.api_key = "YOUR API KEY"'
+- language: go
+  snippet: 'pdl.New(apiKey)'

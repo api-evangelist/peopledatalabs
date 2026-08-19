@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "api.peopledatalabs.com Subject Request API",
+    "version": "5.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subject Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/v5/person/subjectrequest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.peopledatalabs.com/v5/person/subjectrequest",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves a CSV file containing the PDL Person IDs that have Opt-ed out of our data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

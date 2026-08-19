@@ -1,0 +1,137 @@
+generated: '2026-08-14'
+method: searched
+source:
+- https://docs.peopledatalabs.com/docs/introduction
+- https://docs.peopledatalabs.com/docs/authentication
+- https://docs.peopledatalabs.com/docs/request-parameters
+- https://docs.peopledatalabs.com/docs/usage-limits
+- https://docs.peopledatalabs.com/docs/errors
+derived_from:
+- openapi/_original/peopledatalabs-openapi.yml
+- openapi/_original/peopledatalabs-docs-openapi.json
+transport:
+  scheme: https-only
+  note: Calls made over plain HTTP fail. All responses, including errors, are JSON.
+  base_url: https://api.peopledatalabs.com
+  structure: '{BaseURL}/{version}/{entity}/{endpoint}?{parameters}'
+  methods:
+    get: every endpoint
+    post: >-
+      person/enrich, person/search, company/search, autocomplete, the cleaner APIs and
+      job_title/enrich only
+authentication:
+  style: api-key
+  header: X-Api-Key
+  query_parameter: api_key
+  precedence: >-
+    Parameters found in a JSON request body take precedence over the same parameters in
+    the URL.
+  artifact: authentication/peopledatalabs-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    People Data Labs documents no idempotency key and neither published OpenAPI declares
+    an Idempotency-Key parameter. The read endpoints are naturally idempotent (GET, and
+    POST used only as a query envelope), but the write surface — POST/PUT/DELETE
+    /v5/subscription — has no replay-protection contract.
+pagination:
+  styles:
+  - name: offset
+    params:
+    - from
+    - size
+    applies_to: person/search, company/search
+    constraints: from 0-9999; size 1-100; maximum 10,000 records reachable per query
+    response_fields:
+    - total
+  - name: cursor
+    params:
+    - scroll_token
+    applies_to: person/search, company/search
+    response_fields:
+    - scroll_token
+    note: >-
+      Each search response returns a scroll_token; pass it on the next request to fetch
+      the next `size` matching records. This is the path past the 10,000-record offset
+      ceiling.
+field_selection:
+  parameters:
+  - name: data_include
+    description: >-
+      Comma-separated list of fields to return; prefix a field with `-` to exclude it.
+      The documented mitigation for the 1MB response ceiling.
+  - name: required
+    description: >-
+      Boolean expression a record must satisfy to count as a match, e.g.
+      "location AND (website OR linkedin_url)".
+  - name: min_likelihood
+    description: Minimum match confidence (0-10) required to return a 200.
+  - name: titlecase
+    description: Titlecase every record in the response.
+  - name: pretty
+    description: Human-readable indentation in the response body.
+metadata:
+  supported: true
+  note: >-
+    Bulk requests accept a per-record `metadata` object that is echoed back on the
+    matching response, which is the documented way to correlate bulk responses to
+    inputs.
+request_tracing:
+  request_id_header: null
+  note: No request-id or correlation header is documented or present in either OpenAPI.
+versioning:
+  scheme: uri-path
+  current: v5
+  note: All live endpoints operate on v5. Dataset releases are versioned separately (v35.0 as of July 2026).
+  artifact: lifecycle/peopledatalabs-lifecycle.yml
+error_envelope:
+  rfc9457: false
+  shape: '{status, error: {type, message}}'
+  artifact: errors/peopledatalabs-problem-types.yml
+rate_limit_signaling:
+  strategy: fixed-window
+  window: 60s
+  scope: per-api-key, per-endpoint
+  status_on_exhaustion: 429
+  retry_after_header: false
+  headers:
+  - x-ratelimit-limit
+  - x-ratelimit-limit.minute
+  - x-ratelimit-limit.day
+  - x-ratelimit-limit.month
+  - x-ratelimit-remaining
+  - x-ratelimit-remaining.minute
+  - x-ratelimit-remaining.day
+  - x-ratelimit-remaining.month
+  - x-ratelimit-reset
+  artifact: rate-limits/peopledatalabs-rate-limits.yml
+credit_signaling:
+  headers:
+  - x-call-credits-spent
+  - x-call-credits-type
+  - x-lifetime-used
+  - x-totallimit-remaining
+  - x-totallimit-purchased-remaining
+  - x-totallimit-overages-remaining
+  status_on_exhaustion: 402
+  credit_types:
+  - enrich
+  - search
+  - search_company
+  - enrich_company
+  - enrich_skill
+  - enrich_job_title
+  - preview_search
+  - person_identify
+  note: >-
+    Unusual and worth calling out — PDL signals BILLING on every response, not just
+    rate limits. An agent can read exactly how many credits a call cost and how many
+    remain, which is a stronger runtime cost signal than most APIs publish.
+response_limits:
+  max_response_bytes: 1048576
+  note: >-
+    Hard 1MB ceiling on all responses. Mitigations the docs name: send
+    `Accept-Encoding: gzip` (roughly 5x smaller), use `data_include`, or request ~50
+    records instead of 100.
+sandbox:
+  artifact: sandbox/peopledatalabs-sandbox.yml

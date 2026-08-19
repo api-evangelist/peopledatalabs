@@ -1,0 +1,2006 @@
+{
+  "item": [
+    {
+      "id": "8df22580-de6c-43d6-9e2f-967b2cf23c33",
+      "name": "Company Endpoints",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e1dc4431-9071-4d12-8481-a30219656975",
+          "name": "/company/enrich",
+          "request": {
+            "name": "/company/enrich",
+            "description": {},
+            "url": {
+              "path": [
+                "v5",
+                "company",
+                "enrich"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pdl_id",
+                  "value": "<string>",
+                  "description": "The PDL ID of the company to enrich."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the company."
+                },
+                {
+                  "disabled": false,
+                  "key": "profile",
+                  "value": "<string>",
+                  "description": "A social profile of the company (linkedin/facebook/twitter/crunchbase)."
+                },
+                {
+                  "disabled": false,
+                  "key": "ticker",
+                  "value": "<string>",
+                  "description": "The company's stock ticker, if publicly traded."
+                },
+                {
+                  "disabled": false,
+                  "key": "website",
+                  "value": "<string>",
+                  "description": "A website the company uses."
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "The location of the company's headquarters. This can be anything from a street address to a country name."
+                },
+                {
+                  "disabled": false,
+                  "key": "street_address",
+                  "value": "<string>",
+                  "description": "The company HQ's street address."
+                },
+                {
+                  "disabled": false,
+                  "key": "locality",
+                  "value": "<string>",
+                  "description": "The company HQ's locality. e.g. San Francisco"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "The company HQ's region. e.g. California"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "The company HQ's country."
+                },
+                {
+                  "disabled": false,
+                  "key": "postal_code",
+                  "value": "<string>",
+                  "description": "The company HQ's postal code."
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "false",
+                  "description": "Whether the output should have human-readable indentation."
+                },
+                {
+                  "disabled": false,
+                  "key": "titlecase",
+                  "value": "false",
+                  "description": "All text in API responses returns as lowercase by default. Setting titlecase to true will titlecase response data instead."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_if_matched",
+                  "value": "false",
+                  "description": "If true, the response will include the top-level field matched that contains a list of every input that matched this profile."
+                },
+                {
+                  "disabled": false,
+                  "key": "min_likelihood",
+                  "value": "2",
+                  "description": "The minimum likelihood score a response must possess in order to return a 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "required",
+                  "value": "<string>",
+                  "description": "The fields a response must have in order to count as a match."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d7f75e64-93af-40ad-a3dc-ea08f2c4cee8",
+              "name": "Company Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pdl_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ticker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "website",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_if_matched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "min_likelihood",
+                      "value": "2"
+                    },
+                    {
+                      "key": "required",
+                      "value": "location AND (website OR linkedin_url)"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"affiliated_profiles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"alternative_names\": [\n    \"string\",\n    \"string\"\n  ],\n  \"employee_count\": 7875,\n  \"facebook_url\": \"string\",\n  \"founded\": 4091,\n  \"headline\": \"string\",\n  \"id\": \"string\",\n  \"industry\": \"dairy\",\n  \"linkedin_id\": \"string\",\n  \"linkedin_url\": \"string\",\n  \"location\": {\n    \"geo\": \"string\",\n    \"street_address\": \"string\",\n    \"address_line_2\": \"string\",\n    \"continent\": \"north america\",\n    \"locality\": \"string\",\n    \"metro\": \"santa fe, new mexico\",\n    \"postal_code\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"cameroon\",\n    \"region\": \"string\"\n  },\n  \"name\": \"string\",\n  \"profiles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"size\": \"10001+\",\n  \"summary\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"ticker\": \"string\",\n  \"twitter_url\": \"string\",\n  \"type\": \"public\",\n  \"website\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8561faf5-6ae1-4a19-8f61-e53e717f499b",
+              "name": "Request contained either missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pdl_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ticker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "website",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_if_matched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "min_likelihood",
+                      "value": "2"
+                    },
+                    {
+                      "key": "required",
+                      "value": "location AND (website OR linkedin_url)"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c830ed61-9840-450c-8c5a-19dc7690a67f",
+              "name": "Request contained a missing or invalid key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pdl_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ticker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "website",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_if_matched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "min_likelihood",
+                      "value": "2"
+                    },
+                    {
+                      "key": "required",
+                      "value": "location AND (website OR linkedin_url)"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60aa59b5-65b5-4b28-ac33-8f7dadbf2060",
+              "name": "You have reached your account maximum (all matches used)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pdl_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ticker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "website",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_if_matched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "min_likelihood",
+                      "value": "2"
+                    },
+                    {
+                      "key": "required",
+                      "value": "location AND (website OR linkedin_url)"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e92e4470-1eaf-4d08-b443-623855244241",
+              "name": "No records were found matching your request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pdl_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ticker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "website",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_if_matched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "min_likelihood",
+                      "value": "2"
+                    },
+                    {
+                      "key": "required",
+                      "value": "location AND (website OR linkedin_url)"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d6e87f02-ff75-406f-987f-eb1366d10735",
+              "name": "Request method is not allowed on the requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pdl_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ticker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "website",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_if_matched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "min_likelihood",
+                      "value": "2"
+                    },
+                    {
+                      "key": "required",
+                      "value": "location AND (website OR linkedin_url)"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "264ee446-2d38-448f-aa9f-482a44c2b2de",
+              "name": "An error occurred due to requests hitting the API too quickly",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pdl_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ticker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "website",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_if_matched",
+                      "value": "false"
+                    },
+                    {
+                      "key": "min_likelihood",
+                      "value": "2"
+                    },
+                    {
+                      "key": "required",
+                      "value": "location AND (website OR linkedin_url)"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29b70b41-0877-427c-8fa5-d1f3e1a211a0",
+          "name": "/company/search",
+          "request": {
+            "name": "/company/search",
+            "description": {},
+            "url": {
+              "path": [
+                "v5",
+                "company",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "An Elasticsearch (v7.7) query. See our underlying Elasticsearch mapping for reference."
+                },
+                {
+                  "disabled": false,
+                  "key": "sql",
+                  "value": "<string>",
+                  "description": "A SQL query of the format: SELECT * FROM company WHERE XXX, where XXX is a standard SQL boolean query involving PDL fields. Any use of column selections or the LIMIT keyword will be ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "1",
+                  "description": "The number of matched records to return for this query if they exist*. Must be between 1 and 100"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "0",
+                  "description": "An offset value for pagination. Can be a number between 0 and 9999. Pagination can be executed up to a maximum of 10,000 records per query. Be sure to use the \"total\" response field to help discover how many total records exist in the dataset for your query"
+                },
+                {
+                  "disabled": false,
+                  "key": "scroll_token",
+                  "value": "<string>",
+                  "description": "Setting titlecase to true will titlecase any records returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "titlecase",
+                  "value": "false",
+                  "description": "Setting titlecase to true will titlecase any records returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "false",
+                  "description": "Whether the output should have human-readable indentation."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9e63a335-37f3-414a-96ea-9979f982cef2",
+              "name": "Company Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "scroll_token",
+                      "value": "104$14.278746"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"affiliated_profiles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"alternative_names\": [\n    \"string\",\n    \"string\"\n  ],\n  \"employee_count\": 4879,\n  \"facebook_url\": \"string\",\n  \"founded\": 265,\n  \"headline\": \"string\",\n  \"id\": \"string\",\n  \"industry\": \"accounting\",\n  \"linkedin_id\": \"string\",\n  \"linkedin_url\": \"string\",\n  \"location\": {\n    \"geo\": \"string\",\n    \"street_address\": \"string\",\n    \"address_line_2\": \"string\",\n    \"continent\": \"antarctica\",\n    \"locality\": \"string\",\n    \"metro\": \"kennewick, washington\",\n    \"postal_code\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"jordan\",\n    \"region\": \"string\"\n  },\n  \"name\": \"string\",\n  \"profiles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"size\": \"201-500\",\n  \"summary\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"ticker\": \"string\",\n  \"twitter_url\": \"string\",\n  \"type\": \"private\",\n  \"website\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e1a1ed8-6cb5-496f-9bff-cd48802f967b",
+              "name": "Request contained either missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "scroll_token",
+                      "value": "104$14.278746"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf47d076-01c0-4566-bd9e-97b56c0fc5ba",
+              "name": "Request contained a missing or invalid key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "scroll_token",
+                      "value": "104$14.278746"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b27cabc1-e4bc-406d-a1a3-52994054c0ee",
+              "name": "You have reached your account maximum (all searches used)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "scroll_token",
+                      "value": "104$14.278746"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6f45e0a-e9a3-4764-ae95-ea9b6092e97e",
+              "name": "Request didn't return any records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "scroll_token",
+                      "value": "104$14.278746"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ebc36d5-669c-4130-a2f3-3d6609c26e5f",
+              "name": "Request method is not allowed on the requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "scroll_token",
+                      "value": "104$14.278746"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a184c0cf-88b6-4ae6-8228-101ed1ff0744",
+              "name": "An error occurred due to requests hitting the API too quickly",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "scroll_token",
+                      "value": "104$14.278746"
+                    },
+                    {
+                      "key": "titlecase",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb021f4f-94ac-4d33-8feb-409193e12754",
+          "name": "/company/search",
+          "request": {
+            "name": "/company/search",
+            "description": {},
+            "url": {
+              "path": [
+                "v5",
+                "company",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f049cc61-e872-45fd-a5f1-01b38493d6cb",
+              "name": "Company Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"affiliated_profiles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"alternative_names\": [\n    \"string\",\n    \"string\"\n  ],\n  \"employee_count\": 4879,\n  \"facebook_url\": \"string\",\n  \"founded\": 265,\n  \"headline\": \"string\",\n  \"id\": \"string\",\n  \"industry\": \"accounting\",\n  \"linkedin_id\": \"string\",\n  \"linkedin_url\": \"string\",\n  \"location\": {\n    \"geo\": \"string\",\n    \"street_address\": \"string\",\n    \"address_line_2\": \"string\",\n    \"continent\": \"antarctica\",\n    \"locality\": \"string\",\n    \"metro\": \"kennewick, washington\",\n    \"postal_code\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"jordan\",\n    \"region\": \"string\"\n  },\n  \"name\": \"string\",\n  \"profiles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"size\": \"201-500\",\n  \"summary\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"ticker\": \"string\",\n  \"twitter_url\": \"string\",\n  \"type\": \"private\",\n  \"website\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b541e901-1c7d-450d-850c-bda6cdc73c52",
+              "name": "Request contained either missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c225a19c-4e99-46ec-9ea8-549796c6ff29",
+              "name": "Request contained a missing or invalid key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7afc4cd5-c46c-4088-bca1-2e23dcdfca0e",
+              "name": "You have reached your account maximum (all searches used)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "899465f5-abab-4698-af98-506a134178db",
+              "name": "Request didn't return any records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6b18bdc-3e12-4593-bf59-76586b1a63ba",
+              "name": "Request method is not allowed on the requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9dc9b557-7d2d-4eeb-9c16-c262d033514b",
+              "name": "An error occurred due to requests hitting the API too quickly",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.peopledatalabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea5ab032-16d8-4762-ab4c-6c68c203b052",
+    "name": "api.peopledatalabs.com Autocomplete Company Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "People Data Labs API",
+      "type": "text/plain"
+    }
+  }
+}

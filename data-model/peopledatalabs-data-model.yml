@@ -1,0 +1,222 @@
+generated: '2026-08-14'
+method: derived
+source:
+- openapi/_original/peopledatalabs-openapi.yml
+- openapi/_original/peopledatalabs-docs-openapi.json
+enriched_from:
+- https://docs.peopledatalabs.com/docs/fields
+- https://docs.peopledatalabs.com/docs/company-schema
+- https://docs.peopledatalabs.com/docs/persistent-ids
+summary: >-
+  People Data Labs is a read-only reference-data graph, not a transactional object model.
+  There are no create/update operations on the data entities — every REST verb except the
+  subscription surface is a lookup — so the relationships below are containment and
+  identity links, derived from OpenAPI $ref edges and id-reference fields, not from
+  foreign keys the caller writes.
+identifiers:
+  scheme: PDL persistent ID
+  docs: https://docs.peopledatalabs.com/docs/persistent-ids
+  shape: opaque base64url-ish string suffixed with _NNNN
+  example: qEnOZ5Oh0poWnQ1luFBfVw_0000
+  note: >-
+    Person.id and Company.id are stable PDL persistent IDs. They are the join key between
+    the enrichment, retrieve, search and webhook surfaces — the webhook payload is a bare
+    array of Person IDs, so an integrator needs the persistent ID to make webhooks useful.
+entities:
+- name: Person
+  root: true
+  schema: '#/components/schemas/Person'
+  primary_key: id
+  external_keys:
+  - linkedin_id
+  - facebook_id
+  operations:
+  - GET /v5/person/enrich
+  - GET /v5/person/enrich/preview
+  - GET /v5/person/identify
+  - GET /v5/person/search
+  - POST /v5/person/search
+  - GET /v5/person/retrieve/{person_id}
+  - POST /v5/person/retrieve/bulk
+- name: PersonPreview
+  schema: '#/components/schemas/PersonPreview'
+  operations:
+  - GET /v5/person/enrich/preview
+  note: >-
+    Projection of Person in which most fields are booleans indicating whether the field
+    exists rather than the value itself. Field-presence probe, not a record.
+- name: PersonRetrieve
+  schema: '#/components/schemas/PersonRetrieve'
+  operations:
+  - GET /v5/person/retrieve/{person_id}
+- name: PersonRetrieveBulk
+  schema: '#/components/schemas/PersonRetrieveBulk'
+  operations:
+  - POST /v5/person/retrieve/bulk
+- name: Company
+  root: true
+  schema: '#/components/schemas/Company'
+  primary_key: id
+  external_keys:
+  - linkedin_id
+  - ticker
+  operations:
+  - GET /v5/company/enrich
+  - GET /v5/company/search
+  - POST /v5/company/search
+  - GET /v5/company/clean
+  - POST /v5/company/clean
+- name: IP
+  root: true
+  schema: '#/components/schemas/IP'
+  operations:
+  - GET /v5/ip/enrich
+- name: JobTitle
+  root: true
+  schema: '#/components/schemas/JobTitle'
+  operations:
+  - GET /v5/job_title/enrich
+  - POST /v5/job_title/enrich
+- name: Skill
+  root: true
+  schema: '#/components/schemas/Skill'
+  operations:
+  - GET /v5/skill/enrich
+- name: Location
+  root: true
+  schema: '#/components/schemas/Location'
+  operations:
+  - GET /v5/location/clean
+  - POST /v5/location/clean
+- name: School
+  schema: '#/components/schemas/School'
+  primary_key: id
+  external_keys:
+  - linkedin_id
+  operations:
+  - GET /v5/school/clean
+  - POST /v5/school/clean
+- name: Experience
+  schema: '#/components/schemas/Experience'
+- name: ExperienceCompany
+  schema: '#/components/schemas/ExperienceCompany'
+- name: ExperienceCompanyLocation
+  schema: '#/components/schemas/ExperienceCompanyLocation'
+- name: Education
+  schema: '#/components/schemas/Education'
+- name: SchoolLocation
+  schema: '#/components/schemas/SchoolLocation'
+- name: CompanyLocation
+  schema: '#/components/schemas/CompanyLocation'
+- name: Email
+  schema: '#/components/schemas/Email'
+- name: StreetAddress
+  schema: '#/components/schemas/StreetAddress'
+- name: Title
+  schema: '#/components/schemas/Title'
+- name: Profiles
+  schema: '#/components/schemas/Profiles'
+- name: VersionStatus
+  schema: '#/components/schemas/VersionStatus'
+- name: Subscription
+  root: true
+  schema: '#/components/schemas/SubscriptionResponse'
+  primary_key: id
+  operations:
+  - GET /v5/subscription
+  - POST /v5/subscription
+  - GET /v5/subscription/{subscription_id}
+  - PUT /v5/subscription/{subscription_id}
+  - DELETE /v5/subscription/{subscription_id}
+  note: The only writable entity in the whole API.
+relationships:
+- from: Person
+  to: Experience
+  kind: has_many
+  via: experience
+  evidence: $ref
+- from: Person
+  to: Education
+  kind: has_many
+  via: education
+  evidence: $ref
+- from: Person
+  to: Email
+  kind: has_many
+  via: emails
+  evidence: $ref
+- from: Person
+  to: Profiles
+  kind: has_many
+  via: profiles
+  evidence: $ref
+- from: Person
+  to: StreetAddress
+  kind: has_one
+  via: street_addresses
+  evidence: $ref
+- from: Person
+  to: VersionStatus
+  kind: has_one
+  via: version_status
+  evidence: $ref
+- from: Person
+  to: Company
+  kind: belongs_to
+  via: job_company_id
+  evidence: id-reference
+  note: >-
+    job_company_id carries a PDL Company persistent ID, so a Person record resolves to a
+    Company record via GET /v5/company/enrich. This is the single most useful join in the
+    graph and it is not expressed as a $ref in the spec.
+- from: Experience
+  to: ExperienceCompany
+  kind: has_one
+  via: company
+  evidence: $ref
+- from: Experience
+  to: Title
+  kind: has_one
+  via: title
+  evidence: $ref
+- from: ExperienceCompany
+  to: ExperienceCompanyLocation
+  kind: has_one
+  via: location
+  evidence: $ref
+- from: Education
+  to: School
+  kind: has_one
+  via: school
+  evidence: $ref
+- from: School
+  to: SchoolLocation
+  kind: has_one
+  via: location
+  evidence: $ref
+- from: Company
+  to: CompanyLocation
+  kind: has_one
+  via: location
+  evidence: $ref
+- from: IP
+  to: CompanyLocation
+  kind: has_one
+  via: company.location
+  evidence: $ref
+  note: IP enrichment resolves an address to a company, which is why IP reuses the company location shape.
+- from: PersonRetrieveBulk
+  to: PersonRetrieve
+  kind: has_many
+  via: responses
+  evidence: $ref
+- from: PersonRetrieve
+  to: Profiles
+  kind: has_many
+  via: profiles
+  evidence: $ref
+coverage:
+  entities: 21
+  relationships: 16
+  ref_edges: 15
+  id_reference_edges: 1

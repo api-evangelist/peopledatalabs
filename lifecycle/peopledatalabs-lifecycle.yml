@@ -1,0 +1,51 @@
+generated: '2026-08-14'
+method: searched
+source:
+- https://docs.peopledatalabs.com/docs/introduction
+- https://docs.peopledatalabs.com/links/release-notes
+- https://status.peopledatalabs.com/
+versioning:
+  scheme: uri-path
+  current: v5
+  docs: https://docs.peopledatalabs.com/docs/introduction
+  note: >-
+    "All live endpoints operate on v5." The API version has not moved since the v5 line
+    began; what versions monthly is the dataset (v35.0 as of July 2026), tracked in
+    changelog/peopledatalabs-changelog.yml.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No deprecation or sunset policy is published. There is no deprecation page in the
+    documentation index, neither published OpenAPI marks any operation `deprecated`, and
+    no RFC 8594 Sunset/Deprecation header is documented. The only deprecation-shaped
+    signal in the docs is the retention of "legacy" taxonomy pages (Legacy Job Title
+    Roles / Subroles, pre-v27.1) alongside their replacements, which is dataset
+    versioning rather than an API deprecation contract.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime commitment is published; SLAs are named as an enterprise contract term only.
+status_page:
+  url: https://status.peopledatalabs.com/
+  platform: Atlassian Statuspage
+  machine_readable:
+  - https://status.peopledatalabs.com/api/v2/summary.json
+  - https://status.peopledatalabs.com/api/v2/status.json
+  probed: '2026-08-14'
+  http_status: 200
+deprecated_operations: []
+data_lifecycle:
+  subject_requests: https://docs.peopledatalabs.com/docs/subject-request-api
+  opt_out_feed: GET /v5/person/subjectrequest
+  note: >-
+    PDL publishes a data-subject opt-out feed: /v5/person/subjectrequest returns a CSV of
+    PDL Person IDs that have opted out and must be deleted downstream. For a B2B data
+    provider this is the operationally important lifecycle contract — record deletion,
+    not endpoint deprecation.
+release_cadence:
+  frequency: monthly
+  most_recent: '2026-07-21'
+  most_recent_version: v35.0
+  history_start: '2019-10'

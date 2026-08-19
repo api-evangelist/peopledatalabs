@@ -1,0 +1,75 @@
+generated: '2026-08-14'
+method: searched
+source:
+- https://docs.peopledatalabs.com/docs/sandbox-apis
+- https://docs.peopledatalabs.com/docs/sandbox-apis-reference
+- https://docs.peopledatalabs.com/docs/sandbox-apis-examples
+summary: >-
+  People Data Labs separates test from live by HOST, not by key prefix or account mode.
+  The same API key works against a sandbox host that mirrors the production endpoints
+  and returns synthetic records with the identical object structure. Sandbox calls are
+  free and consume no credits, and every plan — including Free — has access.
+separation:
+  model: separate-host
+  live_host: https://api.peopledatalabs.com
+  sandbox_host: https://sandbox.api.peopledatalabs.com
+  key_prefixes: null
+  note: >-
+    There is no test key and no live key. The same X-Api-Key authenticates both hosts;
+    the only switch is which host you call (or the SDK sandbox flag).
+billing:
+  consumes_credits: false
+  plans_with_access: all
+  note: Sandbox endpoints are free and do not decrement credits.
+data:
+  kind: synthetic
+  note: >-
+    Sandbox records contain only artificial data, structured identically to production
+    records. Documented purpose is integration testing and evaluating use cases without
+    exposing proprietary or regulated data.
+endpoints:
+- api: Person Enrichment
+  path: v5/person/enrich
+  url: https://sandbox.api.peopledatalabs.com/v5/person/enrich
+- api: Person Search
+  path: v5/person/search
+  url: https://sandbox.api.peopledatalabs.com/v5/person/search
+- api: Person Identify
+  path: v5/person/identify
+  url: https://sandbox.api.peopledatalabs.com/v5/person/identify
+- api: Bulk Person Enrichment
+  path: v5/person/bulk
+  url: https://sandbox.api.peopledatalabs.com/v5/person/bulk
+- api: Company Enrichment
+  path: v5/company/enrich
+  url: https://sandbox.api.peopledatalabs.com/v5/company/enrich
+- api: Company Search
+  path: v5/company/search
+  url: https://sandbox.api.peopledatalabs.com/v5/company/search
+not_available:
+- Company Cleaner API
+- Location Cleaner API
+- School Cleaner API
+- Skill Enrichment API
+- Job Title Enrichment API
+- IP Enrichment API
+- Job Posting Search API
+- Autocomplete API
+sdk_switches:
+- language: python
+  snippet: 'CLIENT = PDLPY(api_key="YOUR API KEY", sandbox=True)'
+- language: javascript
+  snippet: 'const params = { email: "irussell@example.org", min_likelihood: 6, sandbox: true }'
+- language: ruby
+  snippet: 'Peopledatalabs.sandbox = true'
+- language: go
+  snippet: 'client := pdl.New(apiKey, api.ClientOptions(func(c *api.Client) { c.Sandbox = true }))'
+test_values:
+  note: >-
+    People Data Labs publishes no magic test identifiers, test cards or fixture triggers.
+    The only documented sandbox input appearing in the docs is the example address
+    irussell@example.org in the JavaScript snippet above, which is illustrative rather
+    than a guaranteed-match fixture. Nothing further is recorded because nothing further
+    is published.
+time_simulation:
+  supported: false

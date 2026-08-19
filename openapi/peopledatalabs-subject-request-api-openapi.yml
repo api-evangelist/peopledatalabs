@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info:
+  description: People Data Labs API
+  title: api.peopledatalabs.com Subject Request API
+  version: '5.0'
+servers:
+- url: https://api.peopledatalabs.com
+tags:
+- name: Subject Request
+  description: 'Data-subject request endpoint: retrieves a CSV of PDL Person IDs that have opted out of People Data
+    Labs data.'
+paths:
+  /v5/person/subjectrequest:
+    get:
+      summary: /v5/person/subjectrequest
+      description: Retrieves a CSV file containing the PDL Person IDs that have Opt-ed out of our data.
+      security:
+      - APIKeyHeader: []
+      parameters: []
+      responses:
+        '200':
+          description: List of PDL IDs to be deleted.
+        '503':
+          description: Internal Error of our systems.
+      tags:
+      - Subject Request
+components:
+  securitySchemes:
+    APIKeyHeader:
+      in: header
+      name: X-API-Key
+      type: apiKey
