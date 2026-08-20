@@ -297,6 +297,10 @@ apis:
   baseURL: https://api.peopledatalabs.com/v5
   tags:
   - Subscription
+  - Webhook
+  - Event Notifications
+  tags_raw:
+  - Subscription
   - Webhooks
   - Event Notifications
   properties:
