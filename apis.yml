@@ -182,7 +182,8 @@ apis:
     url: https://docs.peopledatalabs.com/docs/cleaner-apis-reference
 - aid: peopledatalabs:peopledatalabs-job-title-enrichment-api
   name: People Data Labs Job Title Enrichment API
-  description: The Job Title Enrichment API from People Data Labs — 1 operation(s) for job title enrichment.
+  description: >-
+    The Job Title Enrichment API from People Data Labs — 1 operation(s) for job title enrichment.
   humanURL: https://docs.peopledatalabs.com/docs/job-title-enrichment-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
@@ -290,9 +291,10 @@ apis:
     url: https://docs.peopledatalabs.com/docs/cleaner-apis-reference
 - aid: peopledatalabs:peopledatalabs-subscription-api
   name: People Data Labs Subscription API
-  description: 'The Subscription API from People Data Labs — 5 operations for managing webhook subscriptions: create,
-    list, retrieve, update and delete the HTTPS target URL that People Data Labs pushes batched person-update notifications
-    to. Webhook access itself is limited to enterprise API and Data License customers.'
+  description: >-
+    The Subscription API from People Data Labs — 5 operations for managing webhook subscriptions: create,
+    list, retrieve, update and delete the HTTPS target URL that People Data Labs pushes batched person-update
+    notifications to. Webhook access itself is limited to enterprise API and Data License customers.
   humanURL: https://docs.peopledatalabs.com/docs/webhooks
   baseURL: https://api.peopledatalabs.com/v5
   tags:
@@ -314,9 +316,10 @@ apis:
     url: https://docs.peopledatalabs.com/docs/webhooks
 - aid: peopledatalabs:peopledatalabs-preview-enrichment-api
   name: People Data Labs Preview Enrichment API
-  description: 'The Preview Enrichment API from People Data Labs — 1 operation returning a preview of a person match:
-    a small set of identity fields plus booleans indicating which further fields exist on the record, so a caller
-    can test coverage before spending a full enrichment credit.'
+  description: >-
+    The Preview Enrichment API from People Data Labs — 1 operation returning a preview of a person match:
+    a small set of identity fields plus booleans indicating which further fields exist on the record,
+    so a caller can test coverage before spending a full enrichment credit.
   humanURL: https://docs.peopledatalabs.com/docs/preview-enrichment-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
@@ -331,9 +334,10 @@ apis:
     url: https://docs.peopledatalabs.com/docs/preview-enrichment-api
 - aid: peopledatalabs:peopledatalabs-subject-request-api
   name: People Data Labs Subject Request API
-  description: The Subject Request API from People Data Labs — 1 operation returning a CSV of PDL Person IDs belonging
-    to data subjects who have opted out of People Data Labs data, so downstream systems can delete the matching
-    records. The privacy-compliance surface of the platform.
+  description: >-
+    The Subject Request API from People Data Labs — 1 operation returning a CSV of PDL Person IDs belonging
+    to data subjects who have opted out of People Data Labs data, so downstream systems can delete the
+    matching records. The privacy-compliance surface of the platform.
   humanURL: https://docs.peopledatalabs.com/docs/subject-request-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
@@ -347,6 +351,46 @@ apis:
     url: overlays/peopledatalabs-subject-request-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/subject-request-api
+- aid: peopledatalabs:peopledatalabs-company-api
+  name: People Data Labs Company API
+  description: Company enrichment and search operations.
+  humanURL: https://docs.peopledatalabs.com/docs/autocomplete-api
+  baseURL: https://api.peopledatalabs.com/v5
+  tags:
+  - Company
+  properties:
+  - type: OpenAPI
+    url: openapi/peopledatalabs-company-api-openapi.yml
+- aid: peopledatalabs:peopledatalabs-ip-api
+  name: People Data Labs IP API
+  description: IP-based enrichment operations.
+  humanURL: https://docs.peopledatalabs.com/docs/autocomplete-api
+  baseURL: https://api.peopledatalabs.com/v5
+  tags:
+  - IP
+  properties:
+  - type: OpenAPI
+    url: openapi/peopledatalabs-ip-api-openapi.yml
+- aid: peopledatalabs:peopledatalabs-jobs-api
+  name: People Data Labs Jobs API
+  description: Job posting search operations.
+  humanURL: https://docs.peopledatalabs.com/docs/autocomplete-api
+  baseURL: https://api.peopledatalabs.com/v5
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/peopledatalabs-jobs-api-openapi.yml
+- aid: peopledatalabs:peopledatalabs-person-api
+  name: People Data Labs Person API
+  description: Person enrichment, search, and identification operations.
+  humanURL: https://docs.peopledatalabs.com/docs/autocomplete-api
+  baseURL: https://api.peopledatalabs.com/v5
+  tags:
+  - Person
+  properties:
+  - type: OpenAPI
+    url: openapi/peopledatalabs-person-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/peopledatalabs-agentic-access.yml
