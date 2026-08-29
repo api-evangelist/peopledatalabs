@@ -8,6 +8,18 @@ description: People Data Labs (PDL) is a B2B data enrichment and web intelligenc
   look up companies from a domain or LinkedIn URL, and clean and standardize job titles, skills, schools, companies,
   and locations. Authentication is a single X-Api-Key header, all endpoints are HTTPS REST, and PDL publishes an
   official OpenAPI specification.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
