@@ -7,14 +7,16 @@ deployment:
   endpoint: https://docs.peopledatalabs.com/mcp
   auth: none
   verified: probed
-  note: >-
-    The manifest at https://docs.peopledatalabs.com/.well-known/mcp.json advertises
-    a single public server whose canonical URL is the Mintlify tenant
-    https://peopledatalabs.main-kill-isr.mintlify.me/mcp. Both that URL and the
-    provider-domain alias https://docs.peopledatalabs.com/mcp answer an
-    unauthenticated tools/list with the same three tools; the provider-domain alias
-    is recorded as the endpoint an agent should call. There is no stdio package —
-    People Data Labs publishes no MCP package on npm or PyPI.
+  note: The manifest at https://docs.peopledatalabs.com/.well-known/mcp.json advertises a single public
+    server whose canonical URL is the Mintlify tenant https://peopledatalabs.main-kill-isr.mintlify.me/mcp.
+    Both that URL and the provider-domain alias https://docs.peopledatalabs.com/mcp answer an unauthenticated
+    tools/list with the same three tools; the provider-domain alias is recorded as the endpoint an agent
+    should call. There is no stdio package — People Data Labs publishes no MCP package on npm or PyPI.
+  probe_prior: (never probed)
+  probe: live
+  probe_why: live
+  checked: '2026-09-11'
+  source: claimed-backlog re-probe 2026-09-11
 server:
   name: People Data Labs Documentation
   transport: http
@@ -26,19 +28,15 @@ server:
 scope:
   surface: documentation
   covers_data_api: false
-  note: >-
-    IMPORTANT — this MCP server exposes the People Data Labs DOCUMENTATION, not the
-    People Data Labs data API. Its tools search and read docs pages; none of them
-    call /v5/person/enrich, /v5/company/enrich or any other api.peopledatalabs.com
-    operation. An agent can use it to learn how to call the API, but it cannot use
-    it to enrich a person or a company. The divergence is recorded in
-    mcp/peopledatalabs-tool-crosswalk.yml.
+  note: IMPORTANT — this MCP server exposes the People Data Labs DOCUMENTATION, not the People Data Labs
+    data API. Its tools search and read docs pages; none of them call /v5/person/enrich, /v5/company/enrich
+    or any other api.peopledatalabs.com operation. An agent can use it to learn how to call the API, but
+    it cannot use it to enrich a person or a company. The divergence is recorded in mcp/peopledatalabs-tool-crosswalk.yml.
 tools:
 - name: search_people_data_labs_documentation
   title: Search documentation
-  description: >-
-    Search across the People Data Labs Documentation knowledge base to find relevant
-    information, code examples, API references, and guides.
+  description: Search across the People Data Labs Documentation knowledge base to find relevant information,
+    code examples, API references, and guides.
   input_schema:
     query: string (required)
   annotations:
@@ -47,10 +45,8 @@ tools:
     idempotentHint: true
     openWorldHint: false
 - name: query_docs_filesystem_people_data_labs_documentation
-  description: >-
-    Run a read-only shell-like query (head/cat/ls/grep style) against a virtualized
-    in-memory filesystem containing only the People Data Labs documentation pages and
-    OpenAPI specs.
+  description: Run a read-only shell-like query (head/cat/ls/grep style) against a virtualized in-memory
+    filesystem containing only the People Data Labs documentation pages and OpenAPI specs.
   input_schema:
     command: string (required)
 - name: submit_feedback
@@ -64,10 +60,9 @@ third_party:
 - name: peopledatalabs-mcp
   url: https://github.com/phxdev1/peopledatalabs-mcp
   official: false
-  note: >-
-    A community MCP server wrapping the PDL data API exists on GitHub under the
-    phxdev1 account. It is NOT published or endorsed by People Data Labs and is
-    recorded here only so it is not mistaken for a first-party surface.
+  note: A community MCP server wrapping the PDL data API exists on GitHub under the phxdev1 account. It
+    is NOT published or endorsed by People Data Labs and is recorded here only so it is not mistaken for
+    a first-party surface.
 x-evidence:
   fetched: '2026-08-14'
   probes:
