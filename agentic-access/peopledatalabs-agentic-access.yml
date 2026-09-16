@@ -1,21 +1,28 @@
-generated: '2026-07-15'
+generated: '2026-09-16'
 method: generated
-source: openapi/peopledatalabs-openapi.yml
+source: openapi/peopledatalabs-autocomplete-api-openapi.yml, openapi/peopledatalabs-cleaner-endpoints-api-openapi.yml,
+  openapi/peopledatalabs-company-api-openapi.yml, openapi/peopledatalabs-company-endpoints-api-openapi.yml,
+  openapi/peopledatalabs-ip-api-openapi.yml, openapi/peopledatalabs-ip-enrichment-api-openapi.yml,
+  openapi/peopledatalabs-job-title-api-openapi.yml, openapi/peopledatalabs-job-title-enrichment-api-openapi.yml,
+  openapi/peopledatalabs-jobs-api-openapi.yml, openapi/peopledatalabs-person-api-openapi.yml,
+  openapi/peopledatalabs-person-endpoints-api-openapi.yml, openapi/peopledatalabs-skill-enrichment-api-openapi.yml,
+  openapi/peopledatalabs-subscription-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 21
+  operations: 46
   by_action_class:
-    connected: 13
-    acting: 8
+    connected: 31
+    acting: 15
   by_consequence:
-    read: 13
-    write: 8
+    read: 31
+    write: 15
   human_in_the_loop_required: 0
 operations:
-- path: /v5/person/enrich
+- path: /v5/autocomplete
   method: get
+  operationId: getV5Autocomplete
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -23,50 +30,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v5/person/identify
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v5/person/search
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v5/person/search
+- path: /v5/autocomplete
   method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v5/person/retrieve/{person_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v5/person/retrieve/bulk
-  method: post
+  operationId: postV5Autocomplete
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -82,6 +48,7 @@ operations:
     audit: required
 - path: /v5/company/clean
   method: get
+  operationId: getV5CompanyClean
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -91,6 +58,7 @@ operations:
     audit: none
 - path: /v5/company/clean
   method: post
+  operationId: postV5CompanyClean
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -106,6 +74,7 @@ operations:
     audit: required
 - path: /v5/school/clean
   method: get
+  operationId: getV5SchoolClean
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -115,6 +84,7 @@ operations:
     audit: none
 - path: /v5/school/clean
   method: post
+  operationId: postV5SchoolClean
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -130,6 +100,7 @@ operations:
     audit: required
 - path: /v5/location/clean
   method: get
+  operationId: getV5LocationClean
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -139,6 +110,7 @@ operations:
     audit: none
 - path: /v5/location/clean
   method: post
+  operationId: postV5LocationClean
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -154,6 +126,7 @@ operations:
     audit: required
 - path: /v5/company/enrich
   method: get
+  operationId: getV5CompanyEnrich
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -163,6 +136,7 @@ operations:
     audit: none
 - path: /v5/company/search
   method: get
+  operationId: getV5CompanySearch
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -172,6 +146,7 @@ operations:
     audit: none
 - path: /v5/company/search
   method: post
+  operationId: postV5CompanySearch
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -185,8 +160,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v5/autocomplete
+- path: /company/enrich
   method: get
+  operationId: getCompanyEnrich
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -194,8 +170,39 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v5/autocomplete
+- path: /company/search
+  method: get
+  operationId: getCompanySearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/company/enrich
+  method: get
+  operationId: getV5CompanyEnrich
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/company/search
+  method: get
+  operationId: getV5CompanySearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/company/search
   method: post
+  operationId: postV5CompanySearch
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -209,8 +216,19 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /ip/enrich
+  method: get
+  operationId: getIpEnrich
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v5/ip/enrich
   method: get
+  operationId: getV5IpEnrich
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -220,6 +238,17 @@ operations:
     audit: none
 - path: /v5/job_title/enrich
   method: get
+  operationId: getV5JobTitleEnrich
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/job_title/enrich
+  method: get
+  operationId: getV5JobTitleEnrich
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -229,6 +258,227 @@ operations:
     audit: none
 - path: /v5/job_title/enrich
   method: post
+  operationId: postV5JobTitleEnrich
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /job_posting/search
+  method: get
+  operationId: getJobPostingSearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/subjectrequest
+  method: get
+  operationId: getV5PersonSubjectrequest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/enrich
+  method: get
+  operationId: getV5PersonEnrich
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/enrich/preview
+  method: get
+  operationId: getV5PersonEnrichPreview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/identify
+  method: get
+  operationId: getV5PersonIdentify
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/search
+  method: get
+  operationId: getV5PersonSearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/search
+  method: post
+  operationId: postV5PersonSearch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v5/person/retrieve/{person_id}
+  method: get
+  operationId: getV5PersonRetrieveByPersonId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/retrieve/bulk
+  method: post
+  operationId: postV5PersonRetrieveBulk
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /person/enrich
+  method: get
+  operationId: getPersonEnrich
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /person/search
+  method: get
+  operationId: getPersonSearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /person/identify
+  method: get
+  operationId: getPersonIdentify
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /person/bulk
+  method: post
+  operationId: postPersonBulk
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v5/person/enrich
+  method: get
+  operationId: getV5PersonEnrich
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/identify
+  method: get
+  operationId: getV5PersonIdentify
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/search
+  method: get
+  operationId: getV5PersonSearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/search
+  method: post
+  operationId: postV5PersonSearch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v5/person/retrieve/{person_id}
+  method: get
+  operationId: getV5PersonRetrieveByPersonId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/person/retrieve/bulk
+  method: post
+  operationId: postV5PersonRetrieveBulk
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -244,6 +494,7 @@ operations:
     audit: required
 - path: /v5/skill/enrich
   method: get
+  operationId: getV5SkillEnrich
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -251,3 +502,71 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /v5/subscription/{subscription_id}
+  method: get
+  operationId: getV5SubscriptionBySubscriptionId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/subscription/{subscription_id}
+  method: delete
+  operationId: deleteV5SubscriptionBySubscriptionId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v5/subscription/{subscription_id}
+  method: put
+  operationId: putV5SubscriptionBySubscriptionId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v5/subscription
+  method: get
+  operationId: getV5Subscription
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v5/subscription
+  method: post
+  operationId: postV5Subscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
