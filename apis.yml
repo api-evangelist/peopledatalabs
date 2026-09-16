@@ -326,43 +326,6 @@ apis:
     url: overlays/peopledatalabs-subscription-api-overlay.yaml
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/webhooks
-- aid: peopledatalabs:peopledatalabs-preview-enrichment-api
-  name: People Data Labs Preview Enrichment API
-  description: >-
-    The Preview Enrichment API from People Data Labs — 1 operation returning a preview of a person match:
-    a small set of identity fields plus booleans indicating which further fields exist on the record,
-    so a caller can test coverage before spending a full enrichment credit.
-  humanURL: https://docs.peopledatalabs.com/docs/preview-enrichment-api
-  baseURL: https://api.peopledatalabs.com/v5
-  tags:
-  - Preview Enrichment
-  - Person Data
-  properties:
-  - type: OpenAPI
-    url: openapi/peopledatalabs-preview-enrichment-api-openapi.yml
-  - type: Overlay
-    url: overlays/peopledatalabs-preview-enrichment-api-overlay.yaml
-  - type: Documentation
-    url: https://docs.peopledatalabs.com/docs/preview-enrichment-api
-- aid: peopledatalabs:peopledatalabs-subject-request-api
-  name: People Data Labs Subject Request API
-  description: >-
-    The Subject Request API from People Data Labs — 1 operation returning a CSV of PDL Person IDs belonging
-    to data subjects who have opted out of People Data Labs data, so downstream systems can delete the
-    matching records. The privacy-compliance surface of the platform.
-  humanURL: https://docs.peopledatalabs.com/docs/subject-request-api
-  baseURL: https://api.peopledatalabs.com/v5
-  tags:
-  - Subject Request
-  - Privacy
-  - Compliance
-  properties:
-  - type: OpenAPI
-    url: openapi/peopledatalabs-subject-request-api-openapi.yml
-  - type: Overlay
-    url: overlays/peopledatalabs-subject-request-api-overlay.yaml
-  - type: Documentation
-    url: https://docs.peopledatalabs.com/docs/subject-request-api
 - aid: peopledatalabs:peopledatalabs-company-api
   name: People Data Labs Company API
   description: Company enrichment and search operations.
@@ -407,7 +370,25 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/peopledatalabs-person-api-openapi.yml
+- aid: peopledatalabs:peopledatalabs-job-title-api
+  name: People Data Labs Job Title API
+  description: The job_title API from People Data Labs — 1 operation(s) for job_title.
+  humanURL: https://docs.peopledatalabs.com/docs/autocomplete-api
+  baseURL: https://api.peopledatalabs.com/v5
+  tags:
+  - job_title
+  properties:
+  - type: OpenAPI
+    url: openapi/peopledatalabs-job-title-api-openapi.yml
+  - type: Documentation
+    url: https://docs.peopledatalabs.com/docs/preview-enrichment-api
+  - type: Documentation
+    url: https://docs.peopledatalabs.com/docs/subject-request-api
 common:
+- type: Overlay
+  url: overlays/peopledatalabs-preview-enrichment-api-overlay.yaml
+- type: Overlay
+  url: overlays/peopledatalabs-subject-request-api-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/peopledatalabs-agentic-access.yml
 - type: Authentication
