@@ -376,6 +376,8 @@ apis:
   humanURL: https://docs.peopledatalabs.com/docs/autocomplete-api
   baseURL: https://api.peopledatalabs.com/v5
   tags:
+  - JobTitle
+  tags_raw:
   - job_title
   properties:
   - type: OpenAPI
