@@ -1,24 +1,245 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: People Data Labs Autocomplete Company API
-  description: People Data Labs (PDL) provides APIs for enriching and building people and company profiles at scale. The API offers person enrichment, person search, person identification, company enrichment, company search, IP enrichment, and job posting search across a dataset of professional profiles and organizations.
-  version: v5
-  contact:
-    name: People Data Labs Support
-    url: https://docs.peopledatalabs.com/docs/support
-  license:
-    name: People Data Labs Terms of Service
-    url: https://www.peopledatalabs.com/terms-of-service
+  title: Peopledatalabs Company API
+  version: '1.0'
+  description: 'Operations tagged company across 2 of this provider''s published API definitions: peopledatalabs-docs-openapi.json, peopledatalabs-company-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
+- url: https://api.peopledatalabs.com
+- url: http://api.peopledatalabs.com
 - url: https://api.peopledatalabs.com/v5
   description: People Data Labs production API
-security:
-- ApiKeyAuth: []
 tags:
 - name: Company
-  description: Company enrichment and search operations.
 paths:
+  /v5/company/enrich:
+    get:
+      tags:
+      - Company
+      summary: /company/enrich
+      description: Enrich a company
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type
+        schema:
+          type: string
+          default: application/json
+          enum:
+          - application/json
+      - name: name
+        in: query
+        description: The name of the company
+        schema:
+          type: string
+      - name: website
+        in: query
+        description: A website the company uses
+        schema:
+          type: string
+      - name: pdl_id
+        in: query
+        description: The PLD unique ID
+        schema:
+          type: string
+      - name: profile
+        in: query
+        description: A social profile of the company (linkedin/facebook/twitter/crunchbase)
+        schema:
+          type: string
+      - name: pretty
+        in: query
+        description: Whether the output should have human-readable indentation.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Company Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+        '400':
+          description: Request contained either missing or invalid parameters
+        '401':
+          description: Request contained a missing or invalid key
+        '402':
+          description: You have reached your account maximum (all matches used)
+        '404':
+          description: No records were found matching your request
+        '405':
+          description: Request method is not allowed on the requested resource
+        '429':
+          description: An error occurred due to requests hitting the API too quick
+      operationId: getV5CompanyEnrich
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.peopledatalabs.com
+    - url: http://api.peopledatalabs.com
+  /v5/company/search:
+    get:
+      tags:
+      - Company
+      summary: /company/search
+      description: Search People Data Labs Dataset
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type
+        schema:
+          type: string
+          default: application/json
+          enum:
+          - application/json
+      - name: query
+        in: query
+        description: An Elasticsearch (v7.7) query. See our underlying Elasticsearch mapping for reference.
+        schema:
+          type: string
+      - name: sql
+        in: query
+        description: 'A SQL query of the format: SELECT * FROM company WHERE XXX, where XXX is a standard SQL boolean query involving PDL fields. Any use of column selections or the LIMIT keyword will be ignored.'
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: The number of matched records to return for this query if they exist*. Must be between 1 and 100
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          format: int32
+          default: 1
+      - name: from
+        in: query
+        description: An offset value for pagination. Can be a number between 0 and 9999. Pagination can be executed up to a maximum of 10,000 records per query. Be sure to use the "total" response field to help discover how many total records exist in the dataset for your query
+        schema:
+          type: integer
+          maximum: 9999
+          minimum: 0
+          format: int32
+          default: 0
+      - name: titlecase
+        in: query
+        description: Setting titlecase to true will titlecase any records returned
+        schema:
+          type: boolean
+          default: false
+      - name: pretty
+        in: query
+        description: Whether the output should have human-readable indentation.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Company Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+        '400':
+          description: Request contained either missing or invalid parameters
+        '401':
+          description: Request contained a missing or invalid key
+        '402':
+          description: You have reached your account maximum (all searches used)
+        '404':
+          description: Request didn't return any records.
+        '405':
+          description: Request method is not allowed on the requested resource
+        '429':
+          description: An error occurred due to requests hitting the API too quick
+      operationId: getV5CompanySearch
+      x-operation-id-source: derived
+    post:
+      tags:
+      - Company
+      summary: /company/search
+      description: Search People Data Labs Dataset
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type
+        schema:
+          type: string
+          default: application/json
+          enum:
+          - application/json
+      - name: query
+        in: query
+        description: An Elasticsearch (v7.7) query. See our underlying Elasticsearch mapping for reference.
+        schema:
+          type: string
+      - name: sql
+        in: query
+        description: 'A SQL query of the format: SELECT * FROM company WHERE XXX, where XXX is a standard SQL boolean query involving PDL fields. Any use of column selections or the LIMIT keyword will be ignored.'
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: The number of matched records to return for this query if they exist*. Must be between 1 and 100
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          format: int32
+          default: 1
+      - name: from
+        in: query
+        description: An offset value for pagination. Can be a number between 0 and 9999. Pagination can be executed up to a maximum of 10,000 records per query. Be sure to use the "total" response field to help discover how many total records exist in the dataset for your query
+        schema:
+          type: integer
+          maximum: 9999
+          minimum: 0
+          format: int32
+          default: 0
+      - name: titlecase
+        in: query
+        description: Setting titlecase to true will titlecase any records returned
+        schema:
+          type: boolean
+          default: false
+      - name: pretty
+        in: query
+        description: Whether the output should have human-readable indentation.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Company Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+        '400':
+          description: Request contained either missing or invalid parameters
+        '401':
+          description: Request contained a missing or invalid key
+        '402':
+          description: You have reached your account maximum (all searches used)
+        '404':
+          description: Request didn't return any records.
+        '405':
+          description: Request method is not allowed on the requested resource
+        '429':
+          description: An error occurred due to requests hitting the API too quick
+      operationId: postV5CompanySearch
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.peopledatalabs.com
+    - url: http://api.peopledatalabs.com
   /company/enrich:
+    servers:
+    - url: https://api.peopledatalabs.com/v5
+      description: People Data Labs production API
     get:
       tags:
       - Company
@@ -48,7 +269,14 @@ paths:
       responses:
         '200':
           description: An enriched company record.
+      security:
+      - ApiKeyAuth: []
+      operationId: getCompanyEnrich
+      x-operation-id-source: derived
   /company/search:
+    servers:
+    - url: https://api.peopledatalabs.com/v5
+      description: People Data Labs production API
     get:
       tags:
       - Company
@@ -72,9 +300,126 @@ paths:
       responses:
         '200':
           description: A list of matching company profiles.
+      security:
+      - ApiKeyAuth: []
+      operationId: getCompanySearch
+      x-operation-id-source: derived
 components:
+  schemas:
+    CompanyLocation:
+      type: object
+      properties:
+        address_line_2:
+          type: string
+          description: The company's current HQ address line 2
+        continent:
+          type: string
+          description: The company's current HQ continent
+        country:
+          type: string
+          description: The company's current HQ country
+        geo:
+          type: string
+          description: The company's current HQ city-level Geo
+        locality:
+          type: string
+          description: The company's current HQ locality
+        metro:
+          type: string
+          description: The company's current HQ metro (US only)
+        name:
+          type: string
+          description: The company's current HQ location name, generated from our canonical location data with the format locality, region, country
+        postal_code:
+          type: string
+          description: The company's current HQ postal code
+        region:
+          type: string
+          description: The company's current HQ region
+        street_address:
+          type: string
+          description: The company's current HQ street address
+      additionalProperties: false
+    Company:
+      type: object
+      properties:
+        affiliated_profiles:
+          type: array
+          description: A list of company IDs that PDL has flagged as being affiliated and having an association to this company (either parent or child)
+          items:
+            type: string
+        alternative_names:
+          type: array
+          description: The list of names associated with this company filtered to ensure data quality
+          items:
+            type: string
+        employee_count:
+          type: integer
+          description: The current integer number of employees working at the company.
+        facebook_url:
+          type: string
+          description: Primary company facebook
+        founded:
+          type: integer
+          description: The founded year of the company
+        headline:
+          type: string
+          description: The company's 'headline' summary
+        id:
+          type: string
+          description: PDL company ID. This is currently non-persistent and generated from the company's primary linkedin username
+        industry:
+          type: string
+          description: Self reported industry -- the enum is from linkedin's standard industries
+        linkedin_id:
+          type: string
+          description: Primary company linkedin ID
+        linkedin_url:
+          type: string
+          description: Primary company linkedin url
+        location:
+          $ref: '#/components/schemas/CompanyLocation'
+        name:
+          type: string
+          description: The company's main common name
+        profiles:
+          type: array
+          description: A list of all profiles associated with the company
+          items:
+            type: string
+        size:
+          type: string
+          description: A range representing the number of people working at the company
+        summary:
+          type: string
+          description: Company description
+        tags:
+          type: array
+          description: Tags associated with the company
+          items:
+            type: string
+        ticker:
+          type: string
+          description: Company Ticker, (only for public companies)
+        twitter_url:
+          type: string
+          description: Primary company twitter url
+        type:
+          type: string
+          description: The type of the company
+        website:
+          type: string
+          description: Primary company website
+      additionalProperties: false
   securitySchemes:
+    APIKeyHeader:
+      in: header
+      name: X-API-Key
+      type: apiKey
     ApiKeyAuth:
       type: apiKey
       in: header
       name: X-API-Key
+x-refined-from:
+- peopledatalabs-docs-openapi.json
+- peopledatalabs-company-api-openapi.yml

@@ -1,0 +1,87 @@
+openapi: 3.2.0
+info:
+  description: People Data Labs API
+  title: api.peopledatalabs.com Job Title API
+  version: '5.0'
+servers:
+- url: https://api.peopledatalabs.com
+- url: http://api.peopledatalabs.com
+tags:
+- name: Job Title
+paths:
+  /v5/job_title/enrich:
+    get:
+      tags:
+      - Job Title
+      summary: /job_title/enrich
+      description: Enrich a job_title
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type
+        schema:
+          type: string
+          default: application/json
+          enum:
+          - application/json
+      - name: job_title
+        in: query
+        description: A job_title to be enriched
+        schema:
+          type: string
+      - name: pretty
+        in: query
+        description: Whether the output should have human-readable indentation.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Job Title Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitle'
+        '400':
+          description: Request contained either missing or invalid parameters
+        '401':
+          description: Request contained a missing or invalid key
+        '402':
+          description: You have reached your account maximum (all matches used)
+        '404':
+          description: No records were found matching your request
+        '405':
+          description: Request method is not allowed on the requested resource
+        '429':
+          description: An error occurred due to requests hitting the API too quick
+      operationId: getV5JobTitleEnrich
+      x-operation-id-source: derived
+components:
+  schemas:
+    JobTitle:
+      type: object
+      properties:
+        cleaned_job_title:
+          type: string
+          description: The job title matching the API input job title after being run through our internal job title cleaner.
+        similar_job_titles:
+          type: array
+          description: Up to five of the most contextually similar job titles to the cleaned_job_title determined using PDL’s global resume data.
+          items:
+            type: string
+        relevant_skills:
+          type: array
+          description: Up to five of the most contextually relevant skills to the cleaned_job_title determined using PDL’s global resume data.
+          items:
+            type: string
+        id:
+          type: string
+          description: PDL Job Title entity ID. This is currently non-persistent and generated from the cleaned_job_title
+      additionalProperties: false
+  securitySchemes:
+    APIKeyHeader:
+      in: header
+      name: X-API-Key
+      type: apiKey

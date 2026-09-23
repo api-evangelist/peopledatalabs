@@ -1,26 +1,68 @@
 {
   "provider": "peopledatalabs",
   "sources": [
-    "peopledatalabs-autocomplete-api-openapi.yml",
-    "peopledatalabs-cleaner-endpoints-api-openapi.yml",
-    "peopledatalabs-company-endpoints-api-openapi.yml",
-    "peopledatalabs-ip-enrichment-api-openapi.yml",
-    "peopledatalabs-job-title-enrichment-api-openapi.yml",
-    "peopledatalabs-person-endpoints-api-openapi.yml",
-    "peopledatalabs-skill-enrichment-api-openapi.yml"
+    "_original/peopledatalabs-docs-openapi.json",
+    "_original/peopledatalabs-openapi.yml",
+    "peopledatalabs-company-api-openapi.yml",
+    "peopledatalabs-ip-api-openapi.yml",
+    "peopledatalabs-jobs-api-openapi.yml",
+    "peopledatalabs-person-api-openapi.yml"
   ],
   "outputs": [
+    "peopledatalabs-person-api-openapi.yml",
     "peopledatalabs-autocomplete-api-openapi.yml",
+    "peopledatalabs-company-api-openapi.yml",
+    "peopledatalabs-job-title-api-openapi.yml",
+    "peopledatalabs-subscription-api-openapi.yml",
     "peopledatalabs-cleaner-endpoints-api-openapi.yml",
     "peopledatalabs-company-endpoints-api-openapi.yml",
     "peopledatalabs-ip-enrichment-api-openapi.yml",
     "peopledatalabs-job-title-enrichment-api-openapi.yml",
     "peopledatalabs-person-endpoints-api-openapi.yml",
-    "peopledatalabs-skill-enrichment-api-openapi.yml"
+    "peopledatalabs-skill-enrichment-api-openapi.yml",
+    "peopledatalabs-ip-api-openapi.yml",
+    "peopledatalabs-jobs-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "peopledatalabs-company-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /company/enrich get, /company/search get); its other 3 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "peopledatalabs-ip-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /ip/enrich get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "peopledatalabs-jobs-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /job_posting/search get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "peopledatalabs-person-api-openapi.yml: previously refined output kept for 4 operation(s) no archived document covers (e.g. /person/bulk post, /person/enrich get, /person/identify get); its other 8 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "peopledatalabs-docs-openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "peopledatalabs-docs-openapi.json: tagged paths GET /v5/person/subjectrequest -> Person",
+    "peopledatalabs-docs-openapi.json: declared missing tag: Person",
+    "peopledatalabs-docs-openapi.json: declared missing tag: autocomplete",
+    "peopledatalabs-docs-openapi.json: declared missing tag: company",
+    "peopledatalabs-docs-openapi.json: declared missing tag: job_title",
+    "peopledatalabs-docs-openapi.json: declared missing tag: person",
+    "peopledatalabs-docs-openapi.json: declared missing tag: subscription",
+    "peopledatalabs-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "peopledatalabs-openapi.yml: declared missing tag: Autocomplete",
+    "peopledatalabs-openapi.yml: declared missing tag: Cleaner Endpoints",
+    "peopledatalabs-openapi.yml: declared missing tag: Company Endpoints",
+    "peopledatalabs-openapi.yml: declared missing tag: IP Enrichment",
+    "peopledatalabs-openapi.yml: declared missing tag: Job Title Enrichment",
+    "peopledatalabs-openapi.yml: declared missing tag: Person Endpoints",
+    "peopledatalabs-openapi.yml: declared missing tag: Skill Enrichment",
+    "tag 'Person' spans 2 source specs (peopledatalabs-docs-openapi.json, peopledatalabs-person-api-openapi.yml): per-path servers applied",
+    "tag 'autocomplete' spans 2 source specs (peopledatalabs-docs-openapi.json, peopledatalabs-openapi.yml): per-path servers applied",
+    "tag 'company' spans 2 source specs (peopledatalabs-docs-openapi.json, peopledatalabs-company-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "peopledatalabs-autocomplete-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "peopledatalabs-cleaner-endpoints-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "peopledatalabs-company-endpoints-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "peopledatalabs-ip-enrichment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "peopledatalabs-job-title-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "peopledatalabs-job-title-enrichment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "peopledatalabs-person-endpoints-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "peopledatalabs-skill-enrichment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "peopledatalabs-subscription-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
