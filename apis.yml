@@ -44,6 +44,7 @@ tags:
 - Reference Data
 - Firmographics
 - Identity Resolution
+- A2A
 created: '2026-07-11'
 modified: '2026-08-14'
 specificationVersion: '0.23'
@@ -491,3 +492,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 38
   pass: local-v1
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://docs.peopledatalabs.com/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.3"
+  control: 404

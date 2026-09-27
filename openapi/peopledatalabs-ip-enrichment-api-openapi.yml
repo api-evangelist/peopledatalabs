@@ -89,6 +89,226 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    IP:
+      type: object
+      properties:
+        status:
+          type: integer
+          enum:
+          - 200
+          - 400
+          - 401
+          - 402
+          - 404
+          - 405
+          - 429
+          description: The return status code for IP Enrichment
+        data:
+          type: object
+          description: The information about the IP address from the ip input parameter.
+          properties:
+            ip:
+              type: object
+              description: Information related to the IP address.
+              properties:
+                address:
+                  type: string
+                  description: The matched IP address.
+                metadata:
+                  type: object
+                  description: Premium fields targeted towards identifying IPs as mobile or using hosting, proxy, Tor, VPN, relay or other services.
+                  properties:
+                    version:
+                      type: integer
+                      enum:
+                      - 4
+                      - 6
+                      description: The type of IP Address (IPv4 or IPv6).
+                    mobile:
+                      type: boolean
+                      description: If the IP is a known mobile address.
+                    hosting:
+                      type: boolean
+                      description: If the IP is a known hosting address.
+                    proxy:
+                      type: boolean
+                      description: If the IP is a known proxy address.
+                    tor:
+                      type: boolean
+                      description: If the IP is a known Tor address.
+                    vpn:
+                      type: boolean
+                      description: If the IP is a known VPN address.
+                    relay:
+                      type: boolean
+                      description: If the IP is a known relay address.
+                    service:
+                      type: string
+                      description: If known, the name of the service for the address.
+                    asn_domain:
+                      type: string
+                      description: The domain associated with the ASN block.
+                location:
+                  type: object
+                  description: The location associated with the IP address.
+                  $ref: '#/components/schemas/CompanyLocation'
+            company:
+              type: object
+              description: Information related to the company associated with the IP address.
+              properties:
+                confidence:
+                  type: string
+                  enum:
+                  - very high
+                  - high
+                  - moderate
+                  - low
+                  - very low
+                  description: How confident we are that the returned company is associated with requested IP.
+                id:
+                  type: string
+                  description: The PDL ID of the company associated with the IP address.
+                website:
+                  type: string
+                  description: The primary website of the company associated with the IP address.
+                name:
+                  type: string
+                  description: The name of the company associated with the IP address.
+                location:
+                  type: object
+                  description: The location of the company's primary HQ associated with the IP address.
+                  $ref: '#/components/schemas/CompanyLocation'
+                size:
+                  type: string
+                  enum:
+                  - 1-10
+                  - 11-50
+                  - 51-200
+                  - 201-500
+                  - 501-1000
+                  - 1001-5000
+                  - 5001-10000
+                  - 10001+
+                  description: The self-reported size range of the company associated with the IP address.
+                industry:
+                  type: string
+                  description: The self-reported industry of the company associated with the IP address.
+                inferred_revenue:
+                  type: string
+                  description: The estimated annual revenue (in USD) of the company associated with the IP address.
+                employee_count:
+                  type: integer
+                  description: The current number of employees working at the company associated with the IP address.
+                tags:
+                  type: array
+                  description: Tags associated with the company associated with the IP address.
+                  items:
+                    type: string
+            person:
+              type: object
+              description: Information related to the person associated with the IP address.
+              properties:
+                confidence:
+                  type: string
+                  enum:
+                  - very high
+                  - high
+                  - moderate
+                  - low
+                  - very low
+                  description: How confident we are that the returned person is associated with requested IP.
+                job_title_role:
+                  type: string
+                  enum:
+                  - customer_service
+                  - design
+                  - education
+                  - engineering
+                  - finance
+                  - health
+                  - human_resources
+                  - legal
+                  - marketing
+                  - media
+                  - operations
+                  - public_relations
+                  - real_estate
+                  - sales
+                  - trades
+                  description: A person's current job title derived role
+                job_title_sub_role:
+                  type: string
+                  enum:
+                  - accounting
+                  - accounts
+                  - brand_marketing
+                  - broadcasting
+                  - business_development
+                  - compensation
+                  - content_marketing
+                  - customer_success
+                  - data
+                  - dental
+                  - devops
+                  - doctor
+                  - editorial
+                  - education_administration
+                  - electrical
+                  - employee_development
+                  - events
+                  - fitness
+                  - graphic_design
+                  - information_technology
+                  - investment
+                  - journalism
+                  - judicial
+                  - lawyer
+                  - logistics
+                  - mechanical
+                  - media_relations
+                  - network
+                  - nursing
+                  - office_management
+                  - paralegal
+                  - pipeline
+                  - product
+                  - product_design
+                  - product_marketing
+                  - professor
+                  - project_engineering
+                  - project_management
+                  - property_management
+                  - quality_assurance
+                  - realtor
+                  - recruiting
+                  - researcher
+                  - security
+                  - software
+                  - support
+                  - systems
+                  - tax
+                  - teacher
+                  - therapy
+                  - video
+                  - web
+                  - web_design
+                  - wellness
+                  - writing
+                  description: A person's job title derived subrole. Each subrole maps to a role
+                job_title_levels:
+                  type: string
+                  enum:
+                  - unpaid
+                  - training
+                  - entry
+                  - manager
+                  - senior
+                  - partner
+                  - director
+                  - vp
+                  - owner
+                  - cxo
+                  description: A person's current job title derived levels
     CompanyLocation:
       type: object
       properties:
@@ -750,226 +970,6 @@ components:
         region:
           type: string
           description: The company's current HQ region
-    IP:
-      type: object
-      properties:
-        status:
-          type: integer
-          enum:
-          - 200
-          - 400
-          - 401
-          - 402
-          - 404
-          - 405
-          - 429
-          description: The return status code for IP Enrichment
-        data:
-          type: object
-          description: The information about the IP address from the ip input parameter.
-          properties:
-            ip:
-              type: object
-              description: Information related to the IP address.
-              properties:
-                address:
-                  type: string
-                  description: The matched IP address.
-                metadata:
-                  type: object
-                  description: Premium fields targeted towards identifying IPs as mobile or using hosting, proxy, Tor, VPN, relay or other services.
-                  properties:
-                    version:
-                      type: integer
-                      enum:
-                      - 4
-                      - 6
-                      description: The type of IP Address (IPv4 or IPv6).
-                    mobile:
-                      type: boolean
-                      description: If the IP is a known mobile address.
-                    hosting:
-                      type: boolean
-                      description: If the IP is a known hosting address.
-                    proxy:
-                      type: boolean
-                      description: If the IP is a known proxy address.
-                    tor:
-                      type: boolean
-                      description: If the IP is a known Tor address.
-                    vpn:
-                      type: boolean
-                      description: If the IP is a known VPN address.
-                    relay:
-                      type: boolean
-                      description: If the IP is a known relay address.
-                    service:
-                      type: string
-                      description: If known, the name of the service for the address.
-                    asn_domain:
-                      type: string
-                      description: The domain associated with the ASN block.
-                location:
-                  type: object
-                  description: The location associated with the IP address.
-                  $ref: '#/components/schemas/CompanyLocation'
-            company:
-              type: object
-              description: Information related to the company associated with the IP address.
-              properties:
-                confidence:
-                  type: string
-                  enum:
-                  - very high
-                  - high
-                  - moderate
-                  - low
-                  - very low
-                  description: How confident we are that the returned company is associated with requested IP.
-                id:
-                  type: string
-                  description: The PDL ID of the company associated with the IP address.
-                website:
-                  type: string
-                  description: The primary website of the company associated with the IP address.
-                name:
-                  type: string
-                  description: The name of the company associated with the IP address.
-                location:
-                  type: object
-                  description: The location of the company's primary HQ associated with the IP address.
-                  $ref: '#/components/schemas/CompanyLocation'
-                size:
-                  type: string
-                  enum:
-                  - 1-10
-                  - 11-50
-                  - 51-200
-                  - 201-500
-                  - 501-1000
-                  - 1001-5000
-                  - 5001-10000
-                  - 10001+
-                  description: The self-reported size range of the company associated with the IP address.
-                industry:
-                  type: string
-                  description: The self-reported industry of the company associated with the IP address.
-                inferred_revenue:
-                  type: string
-                  description: The estimated annual revenue (in USD) of the company associated with the IP address.
-                employee_count:
-                  type: integer
-                  description: The current number of employees working at the company associated with the IP address.
-                tags:
-                  type: array
-                  description: Tags associated with the company associated with the IP address.
-                  items:
-                    type: string
-            person:
-              type: object
-              description: Information related to the person associated with the IP address.
-              properties:
-                confidence:
-                  type: string
-                  enum:
-                  - very high
-                  - high
-                  - moderate
-                  - low
-                  - very low
-                  description: How confident we are that the returned person is associated with requested IP.
-                job_title_role:
-                  type: string
-                  enum:
-                  - customer_service
-                  - design
-                  - education
-                  - engineering
-                  - finance
-                  - health
-                  - human_resources
-                  - legal
-                  - marketing
-                  - media
-                  - operations
-                  - public_relations
-                  - real_estate
-                  - sales
-                  - trades
-                  description: A person's current job title derived role
-                job_title_sub_role:
-                  type: string
-                  enum:
-                  - accounting
-                  - accounts
-                  - brand_marketing
-                  - broadcasting
-                  - business_development
-                  - compensation
-                  - content_marketing
-                  - customer_success
-                  - data
-                  - dental
-                  - devops
-                  - doctor
-                  - editorial
-                  - education_administration
-                  - electrical
-                  - employee_development
-                  - events
-                  - fitness
-                  - graphic_design
-                  - information_technology
-                  - investment
-                  - journalism
-                  - judicial
-                  - lawyer
-                  - logistics
-                  - mechanical
-                  - media_relations
-                  - network
-                  - nursing
-                  - office_management
-                  - paralegal
-                  - pipeline
-                  - product
-                  - product_design
-                  - product_marketing
-                  - professor
-                  - project_engineering
-                  - project_management
-                  - property_management
-                  - quality_assurance
-                  - realtor
-                  - recruiting
-                  - researcher
-                  - security
-                  - software
-                  - support
-                  - systems
-                  - tax
-                  - teacher
-                  - therapy
-                  - video
-                  - web
-                  - web_design
-                  - wellness
-                  - writing
-                  description: A person's job title derived subrole. Each subrole maps to a role
-                job_title_levels:
-                  type: string
-                  enum:
-                  - unpaid
-                  - training
-                  - entry
-                  - manager
-                  - senior
-                  - partner
-                  - director
-                  - vp
-                  - owner
-                  - cxo
-                  description: A person's current job title derived levels
   securitySchemes:
     APIKeyHeader:
       in: header
