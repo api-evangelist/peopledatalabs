@@ -126,31 +126,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    SubscriptionRequest:
-      type: object
-      properties:
-        event_type:
-          type: string
-          description: The type of event to subscribe to
-        target_url:
-          type: string
-          format: url
-          description: The URL the subscription will be sent to; scheme must be https
-          example: https://callbackapi.example.com/endpoint
-        headers:
-          type: object
-          description: Custom headers
-          example:
-            x-custom-header: very-secure-value
-          additionalProperties:
-            type: string
-        status:
-          type: string
-          description: The status of the subscription
-      required:
-      - target_url
-      - event_type
-      additionalProperties: false
     SubscriptionResponse:
       type: object
       properties:
@@ -190,6 +165,31 @@ components:
       - event_type
       - id
       - status
+      additionalProperties: false
+    SubscriptionRequest:
+      type: object
+      properties:
+        event_type:
+          type: string
+          description: The type of event to subscribe to
+        target_url:
+          type: string
+          format: url
+          description: The URL the subscription will be sent to; scheme must be https
+          example: https://callbackapi.example.com/endpoint
+        headers:
+          type: object
+          description: Custom headers
+          example:
+            x-custom-header: very-secure-value
+          additionalProperties:
+            type: string
+        status:
+          type: string
+          description: The status of the subscription
+      required:
+      - target_url
+      - event_type
       additionalProperties: false
   securitySchemes:
     APIKeyHeader:
