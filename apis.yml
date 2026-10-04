@@ -388,6 +388,9 @@ apis:
   - type: Documentation
     url: https://docs.peopledatalabs.com/docs/subject-request-api
 common:
+- type: CapabilityMap
+  url: capabilities/peopledatalabs-capability-edges.yml
+  name: People Data Labs Business Capability Map
 - type: Overlay
   url: overlays/peopledatalabs-preview-enrichment-api-overlay.yaml
 - type: Overlay
