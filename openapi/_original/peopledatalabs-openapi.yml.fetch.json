@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/peopledatalabs/openAPI-specifications/HEAD/pdl-specs.json",
+ "requested_url": "https://raw.githubusercontent.com/peopledatalabs/openAPI-specifications/HEAD/pdl-specs.json",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 480678,
+ "sha256": "c75f23548f5b9648bc4af485a031e78eb983fd521b9b523c4ced71120cf87ff1",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
