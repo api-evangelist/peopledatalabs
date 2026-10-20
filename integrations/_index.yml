@@ -238,3 +238,31 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: peopledatalabs-databricks-marketplace
+  label: Databricks Marketplace
+  partner: databricks
+  partner_name: Databricks Marketplace
+  category: data product listing
+  type: marketplace
+  marketplace: databricks-marketplace
+  channel: distribution
+  evidence: https://marketplace.databricks.com/provider/066869f4-06d9-4b50-b56d-e05bebcfddcd
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: People Data Labs
+    matched_domain: peopledatalabs.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - Company Data License
+    - Free Company Dataset
+    - Person Data License
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
