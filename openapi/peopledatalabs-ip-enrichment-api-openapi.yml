@@ -979,3 +979,9 @@ x-readme:
   explorer-enabled: true
   proxy-enabled: true
   samples-enabled: true
+x-provenance:
+  method: harvested
+  publisher: People Data Labs
+  source: https://raw.githubusercontent.com/peopledatalabs/openAPI-specifications/HEAD/pdl-specs.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
