@@ -1,4 +1,4 @@
-# People Data Labs (peopledatalabs)
+# People Data Labs
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,156 +64,199 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-People Data Labs (PDL) is a B2B data enrichment and web intelligence provider offering a REST API over a dataset of nearly three billion person profiles and tens of millions of company records. The `api.peopledatalabs.com/v5` API lets developers enrich, identify, and search person and company data, resolve contacts and firmographics, look up companies from a domain or LinkedIn URL, and clean and standardize job titles, skills, schools, companies, and locations. Every endpoint is HTTPS REST, authentication is a single `X-Api-Key` header, and PDL publishes an official OpenAPI specification.
+People Data Labs (PDL) is a B2B data enrichment and web intelligence provider offering a REST API over a dataset of nearly three billion person profiles and tens of millions of company records. The api.peopledatalabs.com/v5 API lets developers enrich, identify, and search person and company data, resolve contacts and firmographics, look up companies from a domain or LinkedIn URL, and clean and standardize job titles, skills, schools, companies, and locations. Authentication is a single X-Api-Key header, all endpoints are HTTPS REST, and PDL publishes an official OpenAPI specification.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/peopledatalabs/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/peopledatalabs/refs/heads/main/apis.yml)
+**Areas:** Data Enrichment · Web Intelligence · Person Data · Company Data · B2B Data · Contact Discovery · Reference Data · Firmographics · Identity Resolution · A2A
 
-## Access Model
+## People Data Labs on APIs.io
 
-PDL is a commercial, key-gated data API - there is no anonymous access. You create an account, obtain an API key from the PDL dashboard, and pass it in the `X-Api-Key` header (an `api_key` query parameter is also accepted). Usage is metered on **credits**: a credit is consumed each time an endpoint returns a matched record, and person, company, and IP endpoints draw on separate credit pools. A free-forever plan (roughly 100 person/company lookups and 25 IP lookups per month, with sensitive contact fields restricted) is available for evaluation, along with a time-limited free trial that grants API credits. Paid self-serve and custom enterprise plans raise credit allowances and per-minute rate limits and unlock full field access and bulk data licensing. All numbers should be reconciled against the PDL pricing pages, as they change over time.
+Everything profiled for People Data Labs is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/peopledatalabs/](https://apis.io/providers/peopledatalabs/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (13)
 
-- Data Enrichment
-- Web Intelligence
-- Person Data
-- Company Data
-- B2B Data
-- Contact Discovery
-- Reference Data
-- Firmographics
-- Identity Resolution
+- [People Data Labs Autocomplete API](https://apis.io/apis/peopledatalabs/peopledatalabs-autocomplete-api/) — The Autocomplete API from People Data Labs — 1 operation(s) for autocomplete.
+- [People Data Labs Cleaner Endpoints API](https://apis.io/apis/peopledatalabs/peopledatalabs-cleaner-endpoints-api/) — The Cleaner Endpoints API from People Data Labs — 3 operation(s) for cleaner endpoints.
+- [People Data Labs Company Endpoints API](https://apis.io/apis/peopledatalabs/peopledatalabs-company-endpoints-api/) — The Company Endpoints API from People Data Labs — 2 operation(s) for company endpoints.
+- [People Data Labs IP Enrichment API](https://apis.io/apis/peopledatalabs/peopledatalabs-ip-enrichment-api/) — The IP Enrichment API from People Data Labs — 1 operation(s) for ip enrichment.
+- [People Data Labs Job Title Enrichment API](https://apis.io/apis/peopledatalabs/peopledatalabs-job-title-enrichment-api/) — The Job Title Enrichment API from People Data Labs — 1 operation(s) for job title enrichment.
+- [People Data Labs Person Endpoints API](https://apis.io/apis/peopledatalabs/peopledatalabs-person-endpoints-api/) — The Person Endpoints API from People Data Labs — 5 operation(s) for person endpoints.
+- [People Data Labs Skill Enrichment API](https://apis.io/apis/peopledatalabs/peopledatalabs-skill-enrichment-api/) — The Skill Enrichment API from People Data Labs — 1 operation(s) for skill enrichment.
+- [People Data Labs Subscription API](https://apis.io/apis/peopledatalabs/peopledatalabs-subscription-api/) — The Subscription API from People Data Labs — 5 operations for managing webhook subscriptions: create, list, retrieve, update and delete the HTTPS target URL…
+- [People Data Labs Company API](https://apis.io/apis/peopledatalabs/peopledatalabs-company-api/) — Company enrichment and search operations.
+- [People Data Labs IP API](https://apis.io/apis/peopledatalabs/peopledatalabs-ip-api/) — IP-based enrichment operations.
+- [People Data Labs Jobs API](https://apis.io/apis/peopledatalabs/peopledatalabs-jobs-api/) — Job posting search operations.
+- [People Data Labs Person API](https://apis.io/apis/peopledatalabs/peopledatalabs-person-api/) — Person enrichment, search, and identification operations.
+- [People Data Labs Job Title API](https://apis.io/apis/peopledatalabs/peopledatalabs-job-title-api/) — The job_title API from People Data Labs — 1 operation(s) for job_title.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-11
-- **Modified:** 2026-07-11
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### People Data Labs Person Enrichment API
+Event-driven and webhook contracts.
 
-Performs a one-to-one match against nearly three billion person profiles and returns the single best profile for identifying attributes such as name, email, phone, LinkedIn or other social profile, and company. Returns the full Person Schema - names, contact details, employment history, education, location, and social accounts - via `GET /person/enrich`, with bulk person enrichment for up to 100 records per request.
+- [Peopledatalabs Webhooks](https://apis.io/asyncapis/peopledatalabs/peopledatalabs-webhooks/)
 
-- **Human URL:** [https://docs.peopledatalabs.com/docs/person-enrichment-api](https://docs.peopledatalabs.com/docs/person-enrichment-api)
-- **Base URL:** `https://api.peopledatalabs.com/v5`
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- Person Data
-- Data Enrichment
-- Contact Discovery
-- Identity Resolution
+- [People Data Labs Documentation](https://apis.io/servers/peopledatalabs/people-data-labs-documentation/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://docs.peopledatalabs.com/docs/person-enrichment-api)
-- [API Reference](https://docs.peopledatalabs.com/docs/reference-person-enrichment-api)
-- [OpenAPI](openapi/peopledatalabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/peopledatalabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/peopledatalabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### People Data Labs Person Search API
+- [Peopledatalabs Agentic Access](https://apis.io/agentic-access/peopledatalabs/peopledatalabs-agentic-access/)
 
-Finds every profile that satisfies a set of criteria using Elasticsearch or SQL queries (`GET` and `POST /person/search`), returns a ranked selection of candidate profiles for broadly identifying inputs via `/person/identify`, and retrieves specific records by PDL id via `/person/retrieve/{person_id}` and `/person/retrieve/bulk`. Built for list building, audience discovery, and identity resolution across the person dataset.
+#### Collections (15)
 
-- **Human URL:** [https://docs.peopledatalabs.com/docs/person-endpoints](https://docs.peopledatalabs.com/docs/person-endpoints)
-- **Base URL:** `https://api.peopledatalabs.com/v5`
+Postman and Open Collection request collections.
 
-#### Tags
+- [People Data Labs API](https://apis.io/collections/peopledatalabs/open-people-data-labs/)
+- [People Data Labs API](https://apis.io/collections/peopledatalabs/open-peopledatalabs/)
+- [api.peopledatalabs.com Autocomplete API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-autocomplete-api/)
+- [api.peopledatalabs.com Autocomplete Cleaner Endpoints API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-cleaner-endpoints-api/)
+- [People Data Labs Autocomplete Company API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-company-api/)
+- [api.peopledatalabs.com Autocomplete Company Endpoints API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-company-endpoints-api/)
+- [People Data Labs Autocomplete IP API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-ip-api/)
+- [api.peopledatalabs.com Autocomplete IP Enrichment API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-ip-enrichment-api/)
+- [api.peopledatalabs.com Autocomplete Job Title Enrichment API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-job-title-enrichment-api/)
+- [People Data Labs Autocomplete Jobs API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-jobs-api/)
+- [People Data Labs Autocomplete Person API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-person-api/)
+- [api.peopledatalabs.com Autocomplete Person Endpoints API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-person-endpoints-api/)
+- [api.peopledatalabs.com Autocomplete Skill Enrichment API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-skill-enrichment-api/)
+- [api.peopledatalabs.com Subject Request API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-subject-request-api/)
+- [api.peopledatalabs.com Subscription API](https://apis.io/collections/peopledatalabs/open-peopledatalabs-subscription-api/)
 
-- Person Data
-- Search
-- Contact Discovery
-- Web Intelligence
+#### Overlays (27)
 
-#### Properties
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- [Documentation](https://docs.peopledatalabs.com/docs/person-endpoints)
-- [API Reference](https://docs.peopledatalabs.com/docs/reference-person-search-api)
-- [OpenAPI](openapi/peopledatalabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/peopledatalabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/peopledatalabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Peopledatalabs Autocomplete Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-autocomplete-api-overlay/)
+- [Peopledatalabs Autocomplete Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-autocomplete-api-phrasing-overlay/)
+- [Peopledatalabs Cleaner Endpoints Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-cleaner-endpoints-api-overlay/)
+- [Peopledatalabs Cleaner Endpoints Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-cleaner-endpoints-api-phrasing-overlay/)
+- [Peopledatalabs Company Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-company-api-overlay/)
+- [Peopledatalabs Company Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-company-api-phrasing-overlay/)
+- [Peopledatalabs Company Endpoints Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-company-endpoints-api-overlay/)
+- [Peopledatalabs Company Endpoints Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-company-endpoints-api-phrasing-overlay/)
+- [Peopledatalabs Ip Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-ip-api-overlay/)
+- [Peopledatalabs Ip Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-ip-api-phrasing-overlay/)
+- [Peopledatalabs Ip Enrichment Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-ip-enrichment-api-overlay/)
+- [Peopledatalabs Ip Enrichment Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-ip-enrichment-api-phrasing-overlay/)
+- [Peopledatalabs Job Title Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-job-title-api-phrasing-overlay/)
+- [Peopledatalabs Job Title Enrichment Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-job-title-enrichment-api-overlay/)
+- [Peopledatalabs Job Title Enrichment Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-job-title-enrichment-api-phrasing-overlay/)
+- [Peopledatalabs Jobs Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-jobs-api-overlay/)
+- [Peopledatalabs Jobs Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-jobs-api-phrasing-overlay/)
+- [Peopledatalabs Person Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-person-api-overlay/)
+- [Peopledatalabs Person Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-person-api-phrasing-overlay/)
+- [Peopledatalabs Person Endpoints Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-person-endpoints-api-overlay/)
+- [Peopledatalabs Person Endpoints Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-person-endpoints-api-phrasing-overlay/)
+- [Peopledatalabs Preview Enrichment Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-preview-enrichment-api-overlay/)
+- [Peopledatalabs Skill Enrichment Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-skill-enrichment-api-overlay/)
+- [Peopledatalabs Skill Enrichment Api Phrasing Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-skill-enrichment-api-phrasing-overlay/)
+- [Peopledatalabs Subject Request Api Overlay](https://apis.io/overlays/peopledatalabs/peopledatalabs-subject-request-api-overlay/)
+- …and 2 more published on APIs.io
 
-### People Data Labs Company Enrichment API
+#### Security (3)
 
-Resolves a company from an identifier such as a website domain, LinkedIn URL, or name and returns firmographic reference data - industry, employee count, headquarters location, founding year, ticker, tags, and social profiles - via `GET /company/enrich`. Ideal for domain-to-company lookups, CRM enrichment, and account intelligence.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.peopledatalabs.com/docs/company-enrichment-api](https://docs.peopledatalabs.com/docs/company-enrichment-api)
-- **Base URL:** `https://api.peopledatalabs.com/v5`
+- [Peopledatalabs Authentication](https://apis.io/security/peopledatalabs/peopledatalabs-authentication/)
+- [Peopledatalabs Domain Security](https://apis.io/security/peopledatalabs/peopledatalabs-domain-security/)
+- [Peopledatalabs Trust Center](https://apis.io/security/peopledatalabs/peopledatalabs-trust-center/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Company Data
-- Firmographics
-- Data Enrichment
-- Reference Data
+Published plans, tiers and prices.
 
-#### Properties
+- [Peopledatalabs Plans Pricing](https://apis.io/plans/peopledatalabs/peopledatalabs-plans-pricing/)
 
-- [Documentation](https://docs.peopledatalabs.com/docs/company-enrichment-api)
-- [API Reference](https://docs.peopledatalabs.com/docs/company-endpoints)
-- [OpenAPI](openapi/peopledatalabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/peopledatalabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/peopledatalabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### People Data Labs Company Search API
+Published request limits.
 
-Finds all companies matching Elasticsearch or SQL criteria across firmographic fields such as industry, size, location, tags, and founding year via `GET` and `POST /company/search`. Powers target-account list building, market mapping, and total-addressable-market analysis over the company dataset.
+- [Peopledatalabs Rate Limits](https://apis.io/rate-limits/peopledatalabs/peopledatalabs-rate-limits/)
 
-- **Human URL:** [https://docs.peopledatalabs.com/docs/company-endpoints](https://docs.peopledatalabs.com/docs/company-endpoints)
-- **Base URL:** `https://api.peopledatalabs.com/v5`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Company Data
-- Search
-- Firmographics
-- B2B Data
+- [Peopledatalabs Finops](https://apis.io/finops/peopledatalabs/peopledatalabs-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.peopledatalabs.com/docs/company-endpoints)
-- [API Reference](https://docs.peopledatalabs.com/docs/reference-company-search-api)
-- [OpenAPI](openapi/peopledatalabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/peopledatalabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/peopledatalabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### People Data Labs Cleaner and Enrichment Utilities API
-
-Standardizes and enriches reference data with the Cleaner APIs - company (`/company/clean`), school (`/school/clean`), and location (`/location/clean`) - plus job title enrichment (`/job_title/enrich`), skill enrichment (`/skill/enrich`), IP enrichment (`/ip/enrich`), and typeahead suggestions via `/autocomplete`. Used to normalize messy inputs before enrichment and to build data-quality and web-intelligence pipelines.
-
-- **Human URL:** [https://docs.peopledatalabs.com/docs/cleaner-apis](https://docs.peopledatalabs.com/docs/cleaner-apis)
-- **Base URL:** `https://api.peopledatalabs.com/v5`
-
-#### Tags
-
-- Reference Data
-- Data Cleaning
-- Autocomplete
-- Web Intelligence
-
-#### Properties
-
-- [Documentation](https://docs.peopledatalabs.com/docs/cleaner-apis)
-- [API Reference](https://docs.peopledatalabs.com/docs/cleaner-apis-reference)
-- [OpenAPI](openapi/peopledatalabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/peopledatalabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/peopledatalabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Authentication](authentication/peopledatalabs-authentication.yml)
-- [GitHub Organization](https://github.com/peopledatalabs)
-- [LinkedIn](https://www.linkedin.com/company/people-data-labs)
 - [Website](https://www.peopledatalabs.com)
 - [Documentation](https://docs.peopledatalabs.com)
-- [Plans](plans/peopledatalabs-plans-pricing.yml)
-- [Rate Limits](rate-limits/peopledatalabs-rate-limits.yml)
-- [Fin Ops](finops/peopledatalabs-finops.yml)
+- [Getting started](https://docs.peopledatalabs.com/docs/quickstart)
+- [API reference](https://docs.peopledatalabs.com/docs/endpoints)
+- [Pricing](https://www.peopledatalabs.com/pricing)
+- [Sign up](https://dashboard.peopledatalabs.com/signup)
+- [Support](https://support.peopledatalabs.com/hc/en-us)
+- [Changelog](https://docs.peopledatalabs.com/links/release-notes)
 - [Blog](https://www.peopledatalabs.com/blog)
+- [Compliance](https://www.peopledatalabs.com/security)
+- [Terms of service](https://www.peopledatalabs.com/terms-of-service)
+- [Privacy policy](https://www.peopledatalabs.com/privacy-policy)
+- [GitHub](https://github.com/peopledatalabs)
+- [Status](https://status.peopledatalabs.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 65.3** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 56.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 73.7 |
+| Developer ergonomics | 81.0 |
+| Access clarity | 75.0 |
+
+**Agent readiness 33.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 25.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/peopledatalabs/](https://apis.io/providers/peopledatalabs/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for People Data Labs: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/peopledatalabs/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
